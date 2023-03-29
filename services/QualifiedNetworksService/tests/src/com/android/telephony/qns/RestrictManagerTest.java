@@ -89,7 +89,6 @@ public class RestrictManagerTest extends QnsTest {
     @Mock DataConnectionStatusTracker mMockDcst;
 
     private MockitoSession mMockSession;
-    private AlternativeEventListener mAltListener;
     private QnsTelephonyListener mTelephonyListener;
 
     private static final int DEFAULT_GUARDING_TIME = 30000;
@@ -107,9 +106,6 @@ public class RestrictManagerTest extends QnsTest {
                 @Override
                 protected void onLooperPrepared() {
                     super.onLooperPrepared();
-                    mAltListener =
-                            new AlternativeEventListener(
-                                    sMockContext, mMockQnsTelephonyListener, 0);
                     mTelephonyListener = new QnsTelephonyListener(sMockContext, 0);
                     mQnsImsManager = new QnsImsManager(sMockContext, 0);
                     setReady(true);
@@ -160,7 +156,6 @@ public class RestrictManagerTest extends QnsTest {
         mQnsComponents[0] =
                 new QnsComponents(
                         sMockContext,
-                        mAltListener,
                         mMockCellNetStatusTracker,
                         mMockCellularQm,
                         mMockIwlanNetworkStatusTracker,
