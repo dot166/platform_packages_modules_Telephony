@@ -320,7 +320,7 @@ class RestrictManager {
 
     class LowRtpQualityRestriction extends Restriction{
         private int mReason;
-        LowRtpQualityRestriction(int type, int[] releaseEvents, int restrictTime, int reason) {
+        LowRtpQualityRestriction(int type, int[] releaseEvents, long restrictTime, int reason) {
             super(type, releaseEvents, restrictTime);
             mReason = reason;
         }
