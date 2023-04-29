@@ -53,7 +53,7 @@ class AccessNetworkSelectionPolicyBuilder {
     static final int GUARDING_CELL = QnsConstants.GUARDING_CELLULAR;
     static final int GUARDING_WIFI = QnsConstants.GUARDING_WIFI;
 
-    static HashMap<AnspKey, String[]> sPolicyMap;
+    static final HashMap<AnspKey, String[]> sPolicyMap;
 
     static {
         // Default policy map
