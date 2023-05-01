@@ -751,6 +751,7 @@ class RestrictManager {
         clearInitialPdnConnectionFailFallbackRestriction();
 
         checkIfCancelNonPreferredRestriction(QnsUtils.getOtherTransportType(transportType));
+        releaseRestriction(transportType, RESTRICT_TYPE_THROTTLING, true);
         if (mNetCapability == NetworkCapabilities.NET_CAPABILITY_IMS) {
             if (mLastEvaluatedTransportType == AccessNetworkConstants.TRANSPORT_TYPE_INVALID
                     || transportType == mLastEvaluatedTransportType) {
