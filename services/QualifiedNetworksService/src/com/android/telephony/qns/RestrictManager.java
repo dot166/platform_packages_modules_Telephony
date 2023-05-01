@@ -139,6 +139,8 @@ class RestrictManager {
     private static final int[] ignorableRestrictionsOnSingleRat =
             new int[] {
                 RESTRICT_TYPE_GUARDING,
+                //Ignore throttling restriction at single RAT, let FWK control throttling.
+                RESTRICT_TYPE_THROTTLING,
                 RESTRICT_TYPE_RTP_LOW_QUALITY,
                 RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL,
                 RESTRICT_TYPE_FALLBACK_TO_WWAN_IMS_REGI_FAIL,
@@ -373,6 +375,15 @@ class RestrictManager {
             }
         }
 
+        boolean isRestrictionExpired(long elapsedRealTime) {
+            if (mReleaseTime != 0 && (mReleaseTime - elapsedRealTime < 0)) {
+                Log.d(mLogTag, restrictTypeToString(mRestrictType) + " was expired."
+                        + "release time:" + mReleaseTime + ", now:" + elapsedRealTime);
+                return true;
+            }
+            return false;
+        }
+
         @Override
         public String toString() {
             StringBuilder builder = new StringBuilder();
@@ -397,18 +408,26 @@ class RestrictManager {
 
     class RestrictInfo {
         private int mTransportMode; // AccessNetworkConstants.TRANSPORT_TYPE_WWAN;
-        private HashMap<Integer, Restriction> mRestrictionMap = new HashMap<>();
+        private Map<Integer, Restriction> mRestrictionMap = new ConcurrentHashMap<>();
 
         RestrictInfo(int transportMode) {
             mTransportMode = transportMode;
         }
 
-        HashMap<Integer, Restriction> getRestrictionMap() {
+        Map<Integer, Restriction> getRestrictionMap() {
             return mRestrictionMap;
         }
 
         boolean isRestricted() {
+            checkUpExpirationTime();
             return mRestrictionMap.size() != 0;
+        }
+
+        private void checkUpExpirationTime() {
+            if (mRestrictionMap.size() > 0) {
+                long now = QnsUtils.getSystemElapsedRealTime();
+                mRestrictionMap.entrySet().removeIf(e -> e.getValue().isRestrictionExpired(now));
+            }
         }
 
         /**
@@ -673,7 +692,7 @@ class RestrictManager {
                 if ((reason & 1 << QnsConstants.RTP_LOW_QUALITY_REASON_NO_RTP) != 0) {
                     releaseRestriction(QnsUtils.getOtherTransportType(mTransportType),
                             RESTRICT_TYPE_GUARDING, true);
-                    HashMap<Integer, Restriction> restrictionMap = mRestrictInfos
+                    Map<Integer, Restriction> restrictionMap = mRestrictInfos
                             .get(QnsUtils.getOtherTransportType(mTransportType))
                             .getRestrictionMap();
                     Restriction restrictionOtherSide = restrictionMap.get(
@@ -1134,7 +1153,7 @@ class RestrictManager {
         int currGuardingTransport = QnsUtils.getOtherTransportType(mTransportType);
         if (mRestrictInfos.get(currGuardingTransport) == null) return;
 
-        HashMap<Integer, Restriction> restrictionMap =
+        Map<Integer, Restriction> restrictionMap =
                 mRestrictInfos.get(currGuardingTransport).getRestrictionMap();
         Restriction restriction = restrictionMap.get(RESTRICT_TYPE_GUARDING);
 
@@ -1192,7 +1211,7 @@ class RestrictManager {
 
     void addRestriction(int transport, Restriction restrictObj, long timeMillis) {
         boolean needNotify = false;
-        HashMap<Integer, Restriction> restrictionMap =
+        Map<Integer, Restriction> restrictionMap =
                 mRestrictInfos.get(transport).getRestrictionMap();
         Restriction restriction = restrictionMap.get(restrictObj.mRestrictType);
         Log.d(
@@ -1236,7 +1255,7 @@ class RestrictManager {
 
     void addRestriction(int transport, int type, int[] releaseEvents, long timeMillis) {
         boolean needNotify = false;
-        HashMap<Integer, Restriction> restrictionMap =
+        Map<Integer, Restriction> restrictionMap =
                 mRestrictInfos.get(transport).getRestrictionMap();
         Restriction restriction = restrictionMap.get(type);
         Log.d(
@@ -1284,7 +1303,7 @@ class RestrictManager {
 
     void releaseRestriction(int transport, int type, boolean skipNotify) {
         boolean needNotify = false;
-        HashMap<Integer, Restriction> restrictionMap =
+        Map<Integer, Restriction> restrictionMap =
                 mRestrictInfos.get(transport).getRestrictionMap();
         Restriction restriction = restrictionMap.get(type);
         Log.d(
@@ -1312,7 +1331,7 @@ class RestrictManager {
 
     void processReleaseEvent(int transportType, int event) {
         ArrayList<Integer> releaseList = new ArrayList<>();
-        HashMap<Integer, Restriction> restrictMap =
+        Map<Integer, Restriction> restrictMap =
                 mRestrictInfos.get(transportType).getRestrictionMap();
         Log.d(
                 mLogTag,
