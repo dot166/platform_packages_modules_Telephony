@@ -907,9 +907,9 @@ public class QnsCallStatusTracker {
         for (CallState cs : mCallStates) {
             if (cs.getImsCallServiceType() == ImsCallProfile.SERVICE_TYPE_NORMAL
                     && cs.getImsCallType() == ImsCallProfile.CALL_TYPE_VT
-                    && (cs.getCallState() != PreciseCallState.PRECISE_CALL_STATE_ALERTING
-                    && cs.getCallState() != PreciseCallState.PRECISE_CALL_STATE_DIALING
-                    && cs.getCallState() != PreciseCallState.PRECISE_CALL_STATE_INCOMING)) {
+                    && (cs.getCallState() == PreciseCallState.PRECISE_CALL_STATE_DISCONNECTING
+                            || cs.getCallState() == PreciseCallState.PRECISE_CALL_STATE_HOLDING
+                            || cs.getCallState() == PreciseCallState.PRECISE_CALL_STATE_ACTIVE)) {
                 return true;
             }
         }
