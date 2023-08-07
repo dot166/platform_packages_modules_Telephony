@@ -1251,11 +1251,21 @@ class AccessNetworkEvaluator {
             }
         }
 
-        /* Check handover policy */
-        if (needHandoverPolicyCheck()) {
-            if (!moveTransportTypeAllowed()) {
-                log("Handover is not allowed. Skip this evaluation.");
-                return;
+        if (mDataConnectionStatusTracker.isActiveState()) {
+            /* Check handover policy */
+            if (isHandoverPolicyCheckAvailable()) {
+                if (!moveTransportTypeAllowed()) {
+                    log("Handover is not allowed. Skip this evaluation.");
+                    return;
+                }
+            } else {
+                if (specificReason == EVALUATE_SPECIFIC_REASON_IWLAN_DISABLE
+                        && !mCellularAvailable) {
+                    log("Allow evaluation without handover policy check");
+                } else {
+                    log("Handover policy check is not available. Skip this evaluation.");
+                    return;
+                }
             }
         }
 
@@ -1394,7 +1404,7 @@ class AccessNetworkEvaluator {
     }
 
     @VisibleForTesting
-    boolean needHandoverPolicyCheck() {
+    boolean isHandoverPolicyCheckAvailable() {
         if (mDataConnectionStatusTracker.isActiveState()) {
             int srcTransportType = mDataConnectionStatusTracker.getLastTransportType();
             boolean targetNetworkAvailable =
@@ -1402,11 +1412,11 @@ class AccessNetworkEvaluator {
                             ? mCellularAvailable
                             : mIwlanAvailable;
             if (srcTransportType == getLastQualifiedTransportType() && targetNetworkAvailable) {
-                log("Need to check handover policy for this evaluation.");
+                log(" handover policy check is available for this evaluation.");
                 return true;
             }
         }
-        log("No need to check handover policy for this evaluation.");
+        log("handover policy check is not available for this evaluation.");
         return false;
     }
 
