@@ -1,7 +1,8 @@
 {
   "presubmit": [
     {
-      "name": "QualifiedNetworksServiceTests"
+      "name": "QualifiedNetworksServiceTests",
+      "keywords": ["cf"]
     }
   ]
 }
