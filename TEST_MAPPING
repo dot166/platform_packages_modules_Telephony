@@ -2,7 +2,7 @@
   "presubmit": [
     {
       "name": "QualifiedNetworksServiceTests",
-      "keywords": ["cf"]
+      "keywords": ["internal"]
     }
   ]
 }
