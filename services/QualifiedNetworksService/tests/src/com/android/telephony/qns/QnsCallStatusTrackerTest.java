@@ -289,6 +289,21 @@ public class QnsCallStatusTrackerTest extends QnsTest {
         mTestCallStateList.add(new CallState.Builder(PreciseCallState.PRECISE_CALL_STATE_ACTIVE)
                 .setImsCallType(ImsCallProfile.CALL_TYPE_VOICE)
                 .setImsCallServiceType(ImsCallProfile.SERVICE_TYPE_NORMAL).build());
+        mTestCallStateList.add(new CallState.Builder(PreciseCallState.PRECISE_CALL_STATE_WAITING)
+                .setImsCallType(ImsCallProfile.CALL_TYPE_VT)
+                .setImsCallServiceType(ImsCallProfile.SERVICE_TYPE_NORMAL).build());
+        mCallTracker.updateCallState(mTestCallStateList);
+        msg = mTestLooperListener.nextMessage();
+        // Video call is still in waiting state, QNS call type changed event should not be happened.
+        assertNull(msg);
+        assertFalse(mCallTracker.isCallIdle()); // for IMS calls only
+        assertTrue(mCallTracker.isCallIdle(NetworkCapabilities.NET_CAPABILITY_EIMS));
+        assertFalse(mCallTracker.isCallIdle(NetworkCapabilities.NET_CAPABILITY_IMS));
+
+        mTestCallStateList.clear();
+        mTestCallStateList.add(new CallState.Builder(PreciseCallState.PRECISE_CALL_STATE_ACTIVE)
+                .setImsCallType(ImsCallProfile.CALL_TYPE_VOICE)
+                .setImsCallServiceType(ImsCallProfile.SERVICE_TYPE_NORMAL).build());
         mTestCallStateList.add(new CallState.Builder(PreciseCallState.PRECISE_CALL_STATE_HOLDING)
                 .setImsCallType(ImsCallProfile.CALL_TYPE_VT)
                 .setImsCallServiceType(ImsCallProfile.SERVICE_TYPE_NORMAL).build());

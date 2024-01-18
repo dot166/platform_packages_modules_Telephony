@@ -304,7 +304,7 @@ public class AccessNetworkEvaluatorTest extends QnsTest {
                 mMockQnsTelephonyListener.new QnsTelephonyInfoIms(info, true, true, false, false);
         mAne.onQnsTelephonyInfoChanged(infoIms);
         mAne.updateLastNotifiedQualifiedNetwork(accessNetworks);
-        assertFalse(mAne.needHandoverPolicyCheck());
+        assertFalse(mAne.isHandoverPolicyCheckAvailable());
         assertTrue(mAne.moveTransportTypeAllowed());
 
         info = mMockQnsTelephonyListener.new QnsTelephonyInfo();
@@ -316,7 +316,7 @@ public class AccessNetworkEvaluatorTest extends QnsTest {
         infoIms = mMockQnsTelephonyListener.new QnsTelephonyInfoIms(info, true, true, true, true);
         mAne.onQnsTelephonyInfoChanged(infoIms);
         mAne.updateLastNotifiedQualifiedNetwork(accessNetworks);
-        assertTrue(mAne.needHandoverPolicyCheck());
+        assertTrue(mAne.isHandoverPolicyCheckAvailable());
         assertTrue(mAne.moveTransportTypeAllowed());
 
         info = mMockQnsTelephonyListener.new QnsTelephonyInfo();
@@ -328,7 +328,7 @@ public class AccessNetworkEvaluatorTest extends QnsTest {
         infoIms = mMockQnsTelephonyListener.new QnsTelephonyInfoIms(info, true, true, true, true);
         mAne.onQnsTelephonyInfoChanged(infoIms);
         mAne.updateLastNotifiedQualifiedNetwork(accessNetworks);
-        assertTrue(mAne.needHandoverPolicyCheck());
+        assertTrue(mAne.isHandoverPolicyCheckAvailable());
         assertTrue(mAne.moveTransportTypeAllowed());
     }
 
@@ -367,7 +367,7 @@ public class AccessNetworkEvaluatorTest extends QnsTest {
         mAne.onQnsTelephonyInfoChanged(infoIms);
         mAne.updateLastNotifiedQualifiedNetwork(accessNetworks);
         mAne.onSetCallType(QnsConstants.CALL_TYPE_EMERGENCY);
-        assertTrue(mAne.needHandoverPolicyCheck());
+        assertTrue(mAne.isHandoverPolicyCheckAvailable());
         assertTrue(mAne.moveTransportTypeAllowed());
 
         when(mMockQnsConfigManager.isHandoverAllowedByPolicy(
@@ -388,19 +388,19 @@ public class AccessNetworkEvaluatorTest extends QnsTest {
         mAne.onSetCallType(QnsConstants.CALL_TYPE_VOICE);
         when(mMockQnsCallStatusTracker.isCallIdle(NetworkCapabilities.NET_CAPABILITY_IMS))
                 .thenReturn(false);
-        assertTrue(mAne.needHandoverPolicyCheck());
+        assertTrue(mAne.isHandoverPolicyCheckAvailable());
         assertFalse(mAne.moveTransportTypeAllowed());
         mAne.updateLastNotifiedQualifiedNetwork(accessNetworks);
         mAne.onSetCallType(QnsConstants.CALL_TYPE_IDLE);
         when(mMockQnsCallStatusTracker.isCallIdle(NetworkCapabilities.NET_CAPABILITY_IMS))
                 .thenReturn(true);
-        assertTrue(mAne.needHandoverPolicyCheck());
+        assertTrue(mAne.isHandoverPolicyCheckAvailable());
         assertTrue(mAne.moveTransportTypeAllowed());
         mAne.updateLastNotifiedQualifiedNetwork(accessNetworks);
         mAne.onSetCallType(QnsConstants.CALL_TYPE_EMERGENCY);
         when(mMockQnsCallStatusTracker.isCallIdle(NetworkCapabilities.NET_CAPABILITY_IMS))
                 .thenReturn(false);
-        assertTrue(mAne.needHandoverPolicyCheck());
+        assertTrue(mAne.isHandoverPolicyCheckAvailable());
         assertFalse(mAne.moveTransportTypeAllowed());
     }
 
@@ -482,9 +482,9 @@ public class AccessNetworkEvaluatorTest extends QnsTest {
         when(mMockQnsConfigManager.getRatPreference(NetworkCapabilities.NET_CAPABILITY_IMS))
                 .thenReturn(QnsConstants.RAT_PREFERENCE_DEFAULT);
 
-        when(mDataConnectionStatusTracker.isActiveState()).thenReturn(true);
+        when(mDataConnectionStatusTracker.isActiveState()).thenReturn(false);
         when(mDataConnectionStatusTracker.isInactiveState()).thenReturn(true);
-        when(mDataConnectionStatusTracker.isHandoverState()).thenReturn(true);
+        when(mDataConnectionStatusTracker.isHandoverState()).thenReturn(false);
 
         when(mRestrictManager.isRestricted(anyInt())).thenReturn(true);
         when(mRestrictManager.isAllowedOnSingleTransport(anyInt())).thenReturn(true);

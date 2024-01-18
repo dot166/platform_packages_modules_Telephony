@@ -433,6 +433,79 @@ public class RestrictManagerTest extends QnsTest {
     }
 
     @Test
+    public void testCheckExpiredTime() {
+        assertFalse(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
+        assertFalse(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
+        long now = SystemClock.elapsedRealtime();
+        long throttleTime = now + 600000;
+        mRestrictManager.addRestriction(
+                AccessNetworkConstants.TRANSPORT_TYPE_WWAN,
+                RESTRICT_TYPE_RTP_LOW_QUALITY,
+                sReleaseEventMap.get(RESTRICT_TYPE_RTP_LOW_QUALITY),
+                DEFAULT_RESTRICT_WITH_LOW_RTP_QUALITY_TIME);
+        mRestrictManager.notifyThrottling(
+                true, throttleTime, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+        assertTrue(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WWAN,
+                        RESTRICT_TYPE_RTP_LOW_QUALITY));
+        assertTrue(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WWAN,
+                        RESTRICT_TYPE_THROTTLING));
+        lenient().when(QnsUtils.getSystemElapsedRealTime()).thenReturn(now + 3000);
+        assertTrue(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
+
+        lenient().when(QnsUtils.getSystemElapsedRealTime()).thenReturn(now + 100000);
+        assertTrue(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
+        assertFalse(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WWAN,
+                        RESTRICT_TYPE_RTP_LOW_QUALITY));
+        assertTrue(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WWAN,
+                        RESTRICT_TYPE_THROTTLING));
+        lenient().when(QnsUtils.getSystemElapsedRealTime()).thenReturn(now + 700000);
+        assertFalse(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
+        assertFalse(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WWAN,
+                        RESTRICT_TYPE_THROTTLING));
+
+        mRestrictManager.addRestriction(
+                AccessNetworkConstants.TRANSPORT_TYPE_WLAN,
+                RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL,
+                sReleaseEventMap.get(RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL),
+                0);
+        mRestrictManager.notifyThrottling(
+                true, throttleTime, AccessNetworkConstants.TRANSPORT_TYPE_WLAN);
+        assertTrue(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WLAN,
+                        RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL));
+        assertTrue(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WLAN,
+                        RESTRICT_TYPE_THROTTLING));
+        lenient().when(QnsUtils.getSystemElapsedRealTime()).thenReturn(now + 3000);
+        assertTrue(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WLAN));
+        lenient().when(QnsUtils.getSystemElapsedRealTime()).thenReturn(now + 700000);
+        assertTrue(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WLAN));
+        assertTrue(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WLAN,
+                        RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL));
+        assertFalse(
+                mRestrictManager.hasRestrictionType(
+                        AccessNetworkConstants.TRANSPORT_TYPE_WLAN,
+                        RESTRICT_TYPE_THROTTLING));
+        mRestrictManager.releaseRestriction(
+                AccessNetworkConstants.TRANSPORT_TYPE_WLAN, RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL);
+        assertFalse(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WLAN));
+    }
+
+    @Test
     public void testWwanToWlanGuardingOnHandoverStart() {
         DataConnectionStatusTracker.DataConnectionChangedInfo dcInfo =
                 new DataConnectionStatusTracker.DataConnectionChangedInfo(
@@ -1178,8 +1251,8 @@ public class RestrictManagerTest extends QnsTest {
                 DEFAULT_GUARDING_TIME);
         mRestrictManager.addRestriction(
                 AccessNetworkConstants.TRANSPORT_TYPE_WWAN,
-                RESTRICT_TYPE_THROTTLING,
-                sReleaseEventMap.get(RESTRICT_TYPE_THROTTLING),
+                RESTRICT_TYPE_RESTRICT_IWLAN_CS_CALL,
+                sReleaseEventMap.get(RESTRICT_TYPE_RESTRICT_IWLAN_CS_CALL),
                 600000);
         mRestrictManager.addRestriction(
                 AccessNetworkConstants.TRANSPORT_TYPE_WLAN,
@@ -1209,6 +1282,8 @@ public class RestrictManagerTest extends QnsTest {
         mRestrictManager.notifyThrottling(false, 0, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
         mRestrictManager.processReleaseEvent(
                 AccessNetworkConstants.TRANSPORT_TYPE_WLAN, RELEASE_EVENT_DISCONNECT);
+        mRestrictManager.releaseRestriction(
+                AccessNetworkConstants.TRANSPORT_TYPE_WWAN, RESTRICT_TYPE_RESTRICT_IWLAN_CS_CALL);
         assertFalse(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WLAN));
         assertFalse(mRestrictManager.isRestricted(AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
     }
