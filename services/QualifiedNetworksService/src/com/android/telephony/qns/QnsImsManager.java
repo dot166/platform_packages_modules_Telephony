@@ -246,7 +246,7 @@ class QnsImsManager {
                 log("startTrackingImsRegistration: registered MMTEL registration callback");
                 mMmtelImsRegistrationCallback = imsRegistrationCallback;
             } catch (ImsException e) {
-                loge("startTrackingImsRegistration: couldn't register MMTEL callback, " + e);
+                loge("registerImsRegistrationCallback: couldn't register MMTEL callback, " + e);
             }
         }
 
@@ -281,6 +281,8 @@ class QnsImsManager {
                 mRcsSipDialogSessionStateCallback = rcsSipDialogStateCallback;
             } catch (ImsException e) {
                 loge("startTrackingSipDialogSessionState: couldn't register callback, " + e);
+            } catch (UnsupportedOperationException e) {
+                loge("registerSipDialogStateCallback: couldn't register callback, " + e);
             }
         }
     }
@@ -598,7 +600,9 @@ class QnsImsManager {
 
         if (imsAvailable) {
             startTrackingImsRegistration(imsFeature);
-            startTrackingSipDialogSessionState(imsFeature);
+            if (imsFeature == ImsFeature.FEATURE_RCS) {
+                startTrackingSipDialogSessionState(imsFeature);
+            }
         }
 
         ImsState imsState = new ImsState(imsAvailable);
