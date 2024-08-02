@@ -48,8 +48,8 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(JUnit4.class)
 public class AccessNetworkSelectionPolicyBuilderTest {
@@ -72,10 +72,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
     static final int GERAN = AccessNetworkType.GERAN;
     static final int IWLAN = AccessNetworkType.IWLAN;
 
-    private HashMap<String, QnsConfigArray> mTestConfigsMap =
-            new HashMap<>() {
-                {
-                    put(
+    private final Map<String, QnsConfigArray> mTestConfigsMap = Map.ofEntries(
+            Map.entry(
                             AccessNetworkType.EUTRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSRP
@@ -83,8 +81,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.WIFI_PREF,
-                            new QnsConfigArray(-100, -115, -120));
-                    put(
+                            new QnsConfigArray(-100, -115, -120)),
+            Map.entry(
                             AccessNetworkType.EUTRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSRQ
@@ -92,8 +90,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.WIFI_PREF,
-                            new QnsConfigArray(-10, -15, -20));
-                    put(
+                            new QnsConfigArray(-10, -15, -20)),
+            Map.entry(
                             AccessNetworkType.IWLAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSSI
@@ -101,8 +99,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.WIFI_PREF,
-                            new QnsConfigArray(-75, -85));
-                    put(
+                            new QnsConfigArray(-75, -85)),
+            Map.entry(
                             AccessNetworkType.NGRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_SSRSRP
@@ -110,8 +108,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.WIFI_PREF,
-                            new QnsConfigArray(-102, -117, -122));
-                    put(
+                            new QnsConfigArray(-102, -117, -122)),
+            Map.entry(
                             AccessNetworkType.EUTRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSRP
@@ -119,8 +117,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_VOICE
                                     + "-"
                                     + QnsConstants.WIFI_PREF,
-                            new QnsConfigArray(-95, -110, -115));
-                    put(
+                            new QnsConfigArray(-95, -110, -115)),
+            Map.entry(
                             AccessNetworkType.IWLAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSSI
@@ -128,8 +126,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_VOICE
                                     + "-"
                                     + QnsConstants.WIFI_PREF,
-                            new QnsConfigArray(-76, -86));
-                    put(
+                            new QnsConfigArray(-76, -86)),
+            Map.entry(
                             AccessNetworkType.NGRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_SSRSRP
@@ -137,8 +135,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_VOICE
                                     + "-"
                                     + QnsConstants.WIFI_PREF,
-                            new QnsConfigArray(-92, -102, -112));
-                    put(
+                            new QnsConfigArray(-92, -102, -112)),
+            Map.entry(
                             AccessNetworkType.EUTRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSRP
@@ -146,8 +144,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-103, -118, -123));
-                    put(
+                            new QnsConfigArray(-103, -118, -123)),
+            Map.entry(
                             AccessNetworkType.EUTRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSRQ
@@ -155,8 +153,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-12, -16, -18));
-                    put(
+                            new QnsConfigArray(-12, -16, -18)),
+            Map.entry(
                             AccessNetworkType.IWLAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSSI
@@ -164,8 +162,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-60, -75));
-                    put(
+                            new QnsConfigArray(-60, -75)),
+            Map.entry(
                             AccessNetworkType.NGRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_SSRSRP
@@ -173,8 +171,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_IDLE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-100, -110, -120));
-                    put(
+                            new QnsConfigArray(-100, -110, -120)),
+            Map.entry(
                             AccessNetworkType.EUTRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSRP
@@ -182,8 +180,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_VOICE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-101, -116, -121));
-                    put(
+                            new QnsConfigArray(-101, -116, -121)),
+            Map.entry(
                             AccessNetworkType.EUTRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSRQ
@@ -191,8 +189,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_VOICE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-11, -16, -20));
-                    put(
+                            new QnsConfigArray(-11, -16, -20)),
+            Map.entry(
                             AccessNetworkType.IWLAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_RSSI
@@ -200,8 +198,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_VOICE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-70, -80));
-                    put(
+                            new QnsConfigArray(-70, -80)),
+            Map.entry(
                             AccessNetworkType.NGRAN
                                     + "-"
                                     + SIGNAL_MEASUREMENT_TYPE_SSRSRP
@@ -209,9 +207,8 @@ public class AccessNetworkSelectionPolicyBuilderTest {
                                     + QnsConstants.CALL_TYPE_VOICE
                                     + "-"
                                     + QnsConstants.CELL_PREF,
-                            new QnsConfigArray(-90, -100, -110));
-                }
-            };
+                            new QnsConfigArray(-90, -100, -110))
+    );
 
     @Before
     public void setUp() {
