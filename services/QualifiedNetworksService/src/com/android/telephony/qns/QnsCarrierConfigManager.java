@@ -62,10 +62,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -682,40 +682,31 @@ class QnsCarrierConfigManager {
     public static final String KEY_QNS_CELLULAR_SIGNAL_STRENGTH_HYSTERESIS_DB_STRING_ARRAY =
             "qns.cellular_signal_strength_hysteresis_db_string_array";
 
-    static HashMap<Integer, String> sAccessNetworkMap =
-            new HashMap<>() {
-                {
-                    put(AccessNetworkConstants.AccessNetworkType.EUTRAN, "eutran");
-                    put(AccessNetworkConstants.AccessNetworkType.UTRAN, "utran");
-                    put(AccessNetworkConstants.AccessNetworkType.NGRAN, "ngran");
-                    put(AccessNetworkConstants.AccessNetworkType.GERAN, "geran");
-                    put(AccessNetworkConstants.AccessNetworkType.IWLAN, "wifi");
-                }
-            };
+    private static final Map<Integer, String> sAccessNetworkMap = Map.of(
+            AccessNetworkConstants.AccessNetworkType.EUTRAN, "eutran",
+            AccessNetworkConstants.AccessNetworkType.UTRAN, "utran",
+            AccessNetworkConstants.AccessNetworkType.NGRAN, "ngran",
+            AccessNetworkConstants.AccessNetworkType.GERAN, "geran",
+            AccessNetworkConstants.AccessNetworkType.IWLAN, "wifi"
+    );
 
-    static HashMap<Integer, String> sMeasTypeMap =
-            new HashMap<>() {
-                {
-                    put(SIGNAL_MEASUREMENT_TYPE_RSRP, "rsrp");
-                    put(SIGNAL_MEASUREMENT_TYPE_RSRQ, "rsrq");
-                    put(SIGNAL_MEASUREMENT_TYPE_RSSNR, "rssnr");
-                    put(SIGNAL_MEASUREMENT_TYPE_SSRSRP, "ssrsrp");
-                    put(SIGNAL_MEASUREMENT_TYPE_SSRSRQ, "ssrsrq");
-                    put(SIGNAL_MEASUREMENT_TYPE_SSSINR, "sssinr");
-                    put(SIGNAL_MEASUREMENT_TYPE_RSCP, "rscp");
-                    put(SIGNAL_MEASUREMENT_TYPE_RSSI, "rssi");
-                    put(SIGNAL_MEASUREMENT_TYPE_ECNO, "ecno");
-                }
-            };
+    private static final Map<Integer, String> sMeasTypeMap = Map.of(
+            SIGNAL_MEASUREMENT_TYPE_RSRP, "rsrp",
+            SIGNAL_MEASUREMENT_TYPE_RSRQ, "rsrq",
+            SIGNAL_MEASUREMENT_TYPE_RSSNR, "rssnr",
+            SIGNAL_MEASUREMENT_TYPE_SSRSRP, "ssrsrp",
+            SIGNAL_MEASUREMENT_TYPE_SSRSRQ, "ssrsrq",
+            SIGNAL_MEASUREMENT_TYPE_SSSINR, "sssinr",
+            SIGNAL_MEASUREMENT_TYPE_RSCP, "rscp",
+            SIGNAL_MEASUREMENT_TYPE_RSSI, "rssi",
+            SIGNAL_MEASUREMENT_TYPE_ECNO, "ecno"
+    );
 
-    static HashMap<Integer, String> sCallTypeMap =
-            new HashMap<>() {
-                {
-                    put(QnsConstants.CALL_TYPE_IDLE, "idle");
-                    put(QnsConstants.CALL_TYPE_VOICE, "voice");
-                    put(QnsConstants.CALL_TYPE_VIDEO, "video");
-                }
-            };
+    private static final Map<Integer, String> sCallTypeMap = Map.of(
+            QnsConstants.CALL_TYPE_IDLE, "idle",
+            QnsConstants.CALL_TYPE_VOICE, "voice",
+            QnsConstants.CALL_TYPE_VIDEO, "video"
+    );
 
     private final String mLogTag;
     private final int mSlotIndex;
@@ -2437,14 +2428,12 @@ class QnsCarrierConfigManager {
         return netCapabilities;
     }
 
-    private static HashMap<Integer, String> sRatStringMatcher;
-    static {
-        sRatStringMatcher = new HashMap<>();
-        sRatStringMatcher.put(AccessNetworkConstants.AccessNetworkType.EUTRAN, "LTE");
-        sRatStringMatcher.put(AccessNetworkConstants.AccessNetworkType.NGRAN, "NR");
-        sRatStringMatcher.put(AccessNetworkConstants.AccessNetworkType.UTRAN, "3G");
-        sRatStringMatcher.put(AccessNetworkConstants.AccessNetworkType.GERAN, "2G");
-    }
+    private static final Map<Integer, String> sRatStringMatcher = Map.of(
+            AccessNetworkConstants.AccessNetworkType.EUTRAN, "LTE",
+            AccessNetworkConstants.AccessNetworkType.NGRAN, "NR",
+            AccessNetworkConstants.AccessNetworkType.UTRAN, "3G",
+            AccessNetworkConstants.AccessNetworkType.GERAN, "2G"
+    );
 
     /**
      * This method returns Allowed cellular RAT for IMS
