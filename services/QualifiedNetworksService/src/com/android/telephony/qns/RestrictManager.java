@@ -37,7 +37,6 @@ import com.android.telephony.qns.DataConnectionStatusTracker.DataConnectionChang
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -102,40 +101,39 @@ class RestrictManager {
 
     @VisibleForTesting static final int GUARDING_TIMER_HANDOVER_INIT = 30000;
 
-    static final HashMap<Integer, int[]> sReleaseEventMap =
-            new HashMap<Integer, int[]>() {
-                {
-                    put(
+    static final Map<Integer, int[]> sReleaseEventMap = Map.ofEntries(
+                    Map.entry(
                             RESTRICT_TYPE_GUARDING,
                             new int[] {
                                 RELEASE_EVENT_DISCONNECT, RELEASE_EVENT_WFC_PREFER_MODE_CHANGED
-                            });
-                    put(
+                            }),
+                    Map.entry(
                             RESTRICT_TYPE_RTP_LOW_QUALITY,
-                            new int[] {RELEASE_EVENT_CALL_END, RELEASE_EVENT_WIFI_AP_CHANGED});
-                    put(RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL, new int[] {RELEASE_EVENT_CALL_END});
-                    put(
+                            new int[] {RELEASE_EVENT_CALL_END, RELEASE_EVENT_WIFI_AP_CHANGED}),
+                    Map.entry(
+                            RESTRICT_TYPE_RESTRICT_IWLAN_IN_CALL,
+                            new int[] {RELEASE_EVENT_CALL_END}),
+                    Map.entry(
                             RESTRICT_TYPE_FALLBACK_TO_WWAN_IMS_REGI_FAIL,
                             new int[] {
                                 RELEASE_EVENT_DISCONNECT, RELEASE_EVENT_IMS_NOT_SUPPORT_RAT
-                            });
-                    put(
+                            }),
+                    Map.entry(
                             RESTRICT_TYPE_FALLBACK_ON_DATA_CONNECTION_FAIL,
                             new int[] {
                                 RELEASE_EVENT_DISCONNECT,
                                 RELEASE_EVENT_WIFI_AP_CHANGED,
                                 RELEASE_EVENT_WFC_PREFER_MODE_CHANGED,
                                 RELEASE_EVENT_IMS_NOT_SUPPORT_RAT
-                            });
-                    put(
+                            }),
+                    Map.entry(
                             RESTRICT_TYPE_FALLBACK_TO_WWAN_RTT_BACKHAUL_FAIL,
                             new int[] {
                                 RELEASE_EVENT_DISCONNECT,
                                 RELEASE_EVENT_WIFI_AP_CHANGED,
                                 RELEASE_EVENT_IMS_NOT_SUPPORT_RAT
-                            });
-                }
-            };
+                            })
+            );
     private static final int[] ignorableRestrictionsOnSingleRat =
             new int[] {
                 RESTRICT_TYPE_GUARDING,
