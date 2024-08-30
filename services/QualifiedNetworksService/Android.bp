@@ -45,8 +45,8 @@ android_app {
         "telephony-common",
         "ims-common",
         "framework-annotations-lib",
-        "framework-connectivity",
-        "framework-wifi",
+        "framework-connectivity.stubs.module_lib",
+        "framework-wifi.stubs.module_lib",
     ],
 
     plugins: ["auto_value_plugin"],
@@ -83,11 +83,11 @@ android_test {
         ":statslog-qns-java-gen",
     ],
     libs: [
-        "android.test.runner",
+        "android.test.runner.stubs.system",
         "telephony-common",
         "ims-common",
-        "android.test.mock",
-        "android.test.base",
+        "android.test.mock.stubs.system",
+        "android.test.base.stubs.system",
     ],
     static_libs: [
         "androidx.appcompat_appcompat",
