@@ -29,6 +29,7 @@ import android.net.NetworkSpecifier;
 import android.net.TelephonyNetworkSpecifier;
 import android.net.TransportInfo;
 import android.net.vcn.VcnTransportInfo;
+import android.net.vcn.VcnUtils;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -192,7 +193,7 @@ class IwlanNetworkStatusTracker {
                     specifier = nc.getNetworkSpecifier();
                     TransportInfo transportInfo = nc.getTransportInfo();
                     if (transportInfo instanceof VcnTransportInfo) {
-                        activeDataSub = ((VcnTransportInfo) transportInfo).getSubId();
+                        activeDataSub = VcnUtils.getSubIdFromVcnCaps(mConnectivityManager, nc);
                     } else if (specifier instanceof TelephonyNetworkSpecifier) {
                         activeDataSub = ((TelephonyNetworkSpecifier) specifier).getSubscriptionId();
                     }
@@ -476,7 +477,8 @@ class IwlanNetworkStatusTracker {
                         NetworkSpecifier specifier = nc.getNetworkSpecifier();
                         TransportInfo transportInfo = nc.getTransportInfo();
                         if (transportInfo instanceof VcnTransportInfo) {
-                            mConnectedDataSub = ((VcnTransportInfo) transportInfo).getSubId();
+                            mConnectedDataSub =
+                                    VcnUtils.getSubIdFromVcnCaps(mConnectivityManager, nc);
                         } else if (specifier instanceof TelephonyNetworkSpecifier) {
                             mConnectedDataSub =
                                     ((TelephonyNetworkSpecifier) specifier).getSubscriptionId();
@@ -563,7 +565,7 @@ class IwlanNetworkStatusTracker {
                     NetworkSpecifier specifier = nc.getNetworkSpecifier();
                     TransportInfo transportInfo = nc.getTransportInfo();
                     if (transportInfo instanceof VcnTransportInfo) {
-                        activeDataSub = ((VcnTransportInfo) transportInfo).getSubId();
+                        activeDataSub = VcnUtils.getSubIdFromVcnCaps(mConnectivityManager, nc);
                     } else if (specifier instanceof TelephonyNetworkSpecifier) {
                         activeDataSub = ((TelephonyNetworkSpecifier) specifier).getSubscriptionId();
                     }

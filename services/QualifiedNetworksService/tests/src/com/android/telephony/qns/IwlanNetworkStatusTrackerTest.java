@@ -41,6 +41,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.MockitoSession;
 
+import java.util.Collections;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
@@ -211,12 +212,25 @@ public class IwlanNetworkStatusTrackerTest extends QnsTest {
         assertTrue(mIwlanAvailabilityInfo.isCrossWfc());
     }
 
+    static Network newCellNetwork(ConnectivityManager connectivityMgr, int subId) {
+        Network cellNetwork = mock(Network.class);
+        NetworkCapabilities caps =
+                new NetworkCapabilities.Builder()
+                        .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+                        .setNetworkSpecifier(new TelephonyNetworkSpecifier(subId))
+                        .build();
+        when(connectivityMgr.getNetworkCapabilities(cellNetwork)).thenReturn(caps);
+        return cellNetwork;
+    }
+
     private void prepareNetworkCapabilitiesForTest(int subId, boolean isVcn) {
         NetworkCapabilities.Builder builder =
                 new NetworkCapabilities.Builder()
                         .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR);
         if (isVcn) {
-            builder.setTransportInfo(new VcnTransportInfo(subId));
+            Network underlyingCell = newCellNetwork(mMockConnectivityManager, subId);
+            builder.setTransportInfo(new VcnTransportInfo.Builder().build())
+                    .setUnderlyingNetworks(Collections.singletonList(underlyingCell));
         } else {
             builder.setNetworkSpecifier(new TelephonyNetworkSpecifier(subId));
         }
