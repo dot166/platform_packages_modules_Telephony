@@ -39,7 +39,4 @@ apex {
     apps: [
         "QualifiedNetworksService",
     ],
-    java_libs: [
-        "TelephonyStatsLib",
-    ],
 }
