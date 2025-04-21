@@ -57,7 +57,7 @@ android_app {
 
     apex_available: [
         "//apex_available:platform",
-        "com.android.telephonymodules",
+        "com.android.telephony",
     ],
 
     owner: "google",

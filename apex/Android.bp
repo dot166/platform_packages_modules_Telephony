@@ -18,25 +18,27 @@ package {
 }
 
 apex_key {
-    name: "com.android.telephonymodules.key",
-    public_key: "com.android.telephonymodules.avbpubkey",
-    private_key: "com.android.telephonymodules.pem",
+    name: "com.android.telephony.key",
+    public_key: "com.android.telephony.avbpubkey",
+    private_key: "com.android.telephony.pem",
 }
 
 android_app_certificate {
-    name: "com.android.telephonymodules.certificate",
-    certificate: "com.android.telephonymodules",
+    name: "com.android.telephony.certificate",
+    certificate: "com.android.telephony",
 }
 
 apex {
-    name: "com.android.telephonymodules",
+    // This apex will be enabled using release_telephony_module flag
+    enabled: select(release_flag("RELEASE_TELEPHONY_MODULE"), {
+        true: true,
+        false: false,
+    }),
+
+    name: "com.android.telephony",
     manifest: "manifest.json",
-    file_contexts: ":com.android.telephonymodules-file_contexts",
-    key: "com.android.telephonymodules.key",
-    certificate: ":com.android.telephonymodules.certificate",
-    updatable: false,
-    system_ext_specific: true,
-    apps: [
-        "QualifiedNetworksService",
-    ],
+    file_contexts: ":com.android.telephony-file_contexts",
+    key: "com.android.telephony.key",
+    certificate: ":com.android.telephony.certificate",
+    defaults: ["b-launched-apex-module"],
 }
