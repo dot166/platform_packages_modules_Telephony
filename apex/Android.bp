@@ -41,4 +41,53 @@ apex {
     key: "com.android.telephony2.key",
     certificate: ":com.android.telephony2.certificate",
     defaults: ["b-launched-apex-module"],
+    bootclasspath_fragments: ["com.android.telephony-bootclasspath-fragment"],
+}
+
+// Encapsulate the contributions made by the com.android.telephony2 to the bootclasspath.
+bootclasspath_fragment {
+    // This fragment will be enabled using release_telephony_module flag
+    enabled: select(release_flag("RELEASE_TELEPHONY_MODULE"), {
+        true: true,
+        false: false,
+    }),
+
+    name: "com.android.telephony-bootclasspath-fragment",
+    contents: ["framework-telephony"],
+    apex_available: ["com.android.telephony2"],
+    hidden_api: {
+        split_packages: ["*"], // TODO(b/409547011) be more specific
+    },
+
+    // The bootclasspath_fragments that provide APIs on which this depends.
+    fragments: [
+
+        // Needed to access core java APIs.
+        {
+            apex: "com.android.art",
+            module: "art-bootclasspath-fragment",
+        },
+    ],
+
+    // Additional stubs libraries that this fragment's contents use which are
+    // not provided by another bootclasspath_fragment.
+    additional_stubs: [
+        // Needed to access platform APIs.
+        "android-non-updatable",
+    ],
+}
+
+sdk {
+    // This sdk will be enabled using release_telephony_module flag
+    enabled: select(release_flag("RELEASE_TELEPHONY_MODULE"), {
+        true: true,
+        false: false,
+    }),
+
+    name: "telephony-module-sdk",
+    apexes: [
+        // Adds exportable dependencies of the APEX to the sdk,
+        // e.g. *classpath_fragments.
+        "com.android.telephony2",
+    ],
 }
