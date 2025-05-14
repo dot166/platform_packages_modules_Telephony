@@ -18,14 +18,14 @@ package {
 }
 
 apex_key {
-    name: "com.android.telephony.key",
-    public_key: "com.android.telephony.avbpubkey",
-    private_key: "com.android.telephony.pem",
+    name: "com.android.telephony2.key",
+    public_key: "com.android.telephony2.avbpubkey",
+    private_key: "com.android.telephony2.pem",
 }
 
 android_app_certificate {
-    name: "com.android.telephony.certificate",
-    certificate: "com.android.telephony",
+    name: "com.android.telephony2.certificate",
+    certificate: "com.android.telephony2",
 }
 
 apex {
@@ -35,10 +35,10 @@ apex {
         false: false,
     }),
 
-    name: "com.android.telephony",
+    name: "com.android.telephony2",
     manifest: "manifest.json",
-    file_contexts: ":com.android.telephony-file_contexts",
-    key: "com.android.telephony.key",
-    certificate: ":com.android.telephony.certificate",
+    file_contexts: ":com.android.telephony2-file_contexts",
+    key: "com.android.telephony2.key",
+    certificate: ":com.android.telephony2.certificate",
     defaults: ["b-launched-apex-module"],
 }
