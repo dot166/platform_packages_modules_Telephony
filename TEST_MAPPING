@@ -1,6 +1,12 @@
 {
   "presubmit": [
     {
+      "name": "CtsTelephonyModuleTests"
+    },
+    {
+      "name": "TelephonyModuleTests"
+    },
+    {
       "name": "QualifiedNetworksServiceTests",
       "keywords": ["internal"]
     }
