@@ -38,7 +38,7 @@ android_test {
     test_suites: [
         "cts",
         "general-tests",
-        "mts-telephony",
-        "mcts-telephony",
+        "mts-telephony2",
+        "mcts-telephony2",
     ],
 }
