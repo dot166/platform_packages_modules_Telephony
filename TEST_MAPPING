@@ -5,10 +5,6 @@
     },
     {
       "name": "TelephonyModuleTests"
-    },
-    {
-      "name": "QualifiedNetworksServiceTests",
-      "keywords": ["internal"]
     }
   ]
 }
