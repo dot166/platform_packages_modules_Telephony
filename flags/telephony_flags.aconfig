@@ -1,0 +1,10 @@
+package: "com.android.telephony.flags"
+container: "com.android.telephony2"
+
+flag {
+  name: "phone_number_parsing_api"
+  namespace: "telephony"
+  description: "This is a new feature includes APIs to parse phone number"
+  bug: "412560144"
+  is_exported: true
+}

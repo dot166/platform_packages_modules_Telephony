@@ -13,29 +13,26 @@
 // limitations under the License.
 
 package {
-    default_team: "trendy_team_fwk_telephony",
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-filegroup {
-    name: "framework-telephony-module-sources",
-    srcs: ["java/**/*.java"],
-    visibility: [
-        "//visibility:private",
-    ],
+aconfig_declarations {
+    name: "telephony_aconfig_flags",
+    package: "com.android.telephony.flags",
+    container: "com.android.telephony2",
+    srcs: ["telephony_flags.aconfig"],
+    exportable: true,
 }
 
-java_sdk_library {
-    name: "framework-telephony",
-    srcs: [":framework-telephony-module-sources"],
-    defaults: ["framework-module-defaults"],
-    permitted_packages: [
-        "android.telephony",
-        "com.android.telephony",
-    ],
+java_aconfig_library {
+    name: "telephony_aconfig_flags_lib",
+    aconfig_declarations: "telephony_aconfig_flags",
+    min_sdk_version: "36",
+    defaults: ["framework-minus-apex-aconfig-java-defaults"],
     apex_available: [
         "com.android.telephony2",
     ],
-    min_sdk_version: "36",
-    aconfig_declarations: ["telephony_aconfig_flags"],
+    visibility: [
+        "//packages/modules/Telephony:__subpackages__",
+    ],
 }
