@@ -1,1 +1,23 @@
 // Signature format: 2.0
+package android.telephony {
+
+  @FlaggedApi("com.android.telephony.flags.phone_number_parsing_api") public final class ParsedPhoneNumber implements android.os.Parcelable {
+    ctor public ParsedPhoneNumber(@NonNull String, int, boolean);
+    method public int describeContents();
+    method public int getErrorCode();
+    method @NonNull public String getParsedPhoneNumber();
+    method public boolean isValidPhoneNumber();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.telephony.ParsedPhoneNumber> CREATOR;
+    field public static final int ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER = 1; // 0x1
+    field public static final int ERROR_TYPE_NONE = 0; // 0x0
+    field public static final int ERROR_TYPE_NUMBER_PARSE_EXCEPTION = 2; // 0x2
+    field public static final int ERROR_TYPE_UNKNOWN = -1; // 0xffffffff
+  }
+
+  @FlaggedApi("com.android.telephony.flags.phone_number_parsing_api") public class PhoneNumberManager {
+    method @NonNull public android.telephony.ParsedPhoneNumber parsePhoneNumber(@Nullable java.util.List<android.net.Uri>, @NonNull String);
+  }
+
+}
+

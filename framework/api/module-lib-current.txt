@@ -1,1 +1,10 @@
 // Signature format: 2.0
+package android.telephony {
+
+  @FlaggedApi("com.android.telephony.flags.phone_number_parsing_api") public final class TelephonyServicesInitializer {
+    method public static void initialize();
+    method public static void registerServiceWrappers();
+  }
+
+}
+

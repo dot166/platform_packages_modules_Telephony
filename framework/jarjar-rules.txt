@@ -1,0 +1,3 @@
+rule kotlin.** android.telephony.@0
+rule com.android.i18n.phonenumbers.**  android.telephony.@0
+rule androidx.annotation.** android.telephony.@0

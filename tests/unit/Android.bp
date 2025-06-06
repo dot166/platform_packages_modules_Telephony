@@ -32,6 +32,8 @@ android_test {
     static_libs: [
         "androidx.test.runner",
         "junit",
+        "telephony_aconfig_flags_lib",
+        "flag-junit",
     ],
 
     // Tag this module as an mts test artifact
