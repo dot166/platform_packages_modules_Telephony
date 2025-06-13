@@ -19,6 +19,11 @@ package {
 }
 
 android_test {
+    enabled: select(release_flag("RELEASE_TELEPHONY_MODULE"), {
+        true: true,
+        false: false,
+    }),
+
     name: "CtsTelephonyModuleTests",
     team: "trendy_team_fwk_telephony",
     platform_apis: true,
