@@ -37,7 +37,10 @@ java_library {
     aidl: {
         local_include_dirs: ["java"],
     },
-    apex_available: ["com.android.telephony2"],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.telephony2",
+    ],
     min_sdk_version: "36",
     static_libs: [
         "telephony_aconfig_flags_lib",
@@ -67,4 +70,34 @@ java_sdk_library {
         "//packages/modules/Telephony:__subpackages__",
     ],
     jarjar_rules: "jarjar-rules.txt",
+}
+
+java_sdk_library {
+    name: "framework-platformtelephony",
+    srcs: [":framework-telephony-module-sources"],
+    defaults: ["framework-non-updatable-unbundled-defaults"],
+    permitted_packages: [
+        "android.telephony",
+        "com.android.telephony",
+        "com.android.internal.telephony",
+    ],
+    apex_available: [
+        "//apex_available:platform",
+    ],
+    static_libs: [
+        "telephony_aconfig_flags_lib",
+        "framework-telephony-aidl-stubs",
+        "libphonenumber-platform-nogeocoder",
+    ],
+    min_sdk_version: "36",
+    impl_library_visibility: [
+        "//frameworks/base:__subpackages__",
+        "//packages/modules/Telephony:__subpackages__",
+    ],
+    jarjar_rules: "jarjar-rules.txt",
+}
+
+platform_compat_config {
+    name: "framework-platformtelephony-compat-config",
+    src: ":framework-platformtelephony",
 }
