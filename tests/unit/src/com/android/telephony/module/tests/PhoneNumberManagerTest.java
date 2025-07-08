@@ -229,4 +229,20 @@ public class PhoneNumberManagerTest {
             // expected
         }
     }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingNumberWhenCountryHasDifferentNumbersSelectsFirst() {
+        ParsedPhoneNumber result =
+            mPhoneNumberManager.parsePhoneNumber(
+                new ArrayList<Uri>(
+                    Arrays.asList(
+                        Uri.parse("sip:0041446681802@ims.mnc260.mcc310.3gppnetwork.org"),
+                        Uri.parse("tel:0041446681801"))),
+                "CH");
+
+        assertEquals(true, result.isValidPhoneNumber());
+        assertEquals("+41446681802", result.getParsedPhoneNumber());
+        assertEquals(0, result.getErrorCode());
+    }
 }

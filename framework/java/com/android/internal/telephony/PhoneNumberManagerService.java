@@ -29,7 +29,7 @@ import com.android.i18n.phonenumbers.PhoneNumberUtil;
 import com.android.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.android.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -106,7 +106,7 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
 
     private ParsedPhoneNumber extractPhoneNumber(List<Uri> associatedUris, String countryIso) {
         PhoneNumberUtil util = PhoneNumberUtil.getInstance();
-        Set<String> extractedPhoneNumbers = new HashSet<>();
+        Set<String> extractedPhoneNumbers = new LinkedHashSet<>();
         final int[] error = {ParsedPhoneNumber.ERROR_TYPE_NONE};
 
         associatedUris.stream()
