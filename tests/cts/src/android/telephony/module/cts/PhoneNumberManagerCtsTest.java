@@ -20,6 +20,7 @@ import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeTrue;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.platform.test.annotations.RequiresFlagsEnabled;
 import android.telephony.ParsedPhoneNumber;
@@ -56,6 +57,8 @@ public class PhoneNumberManagerCtsTest {
     @Before
     public void setup() {
         mPhoneNumberManager = sContext.getSystemService(PhoneNumberManager.class);
+        PackageManager packageManager = sContext.getPackageManager();
+        assumeTrue(packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY));
         assumeTrue(mPhoneNumberManager != null);
     }
 
