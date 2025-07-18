@@ -42,6 +42,10 @@ apex {
     certificate: ":com.android.telephony2.certificate",
     defaults: ["b-launched-apex-module"],
     bootclasspath_fragments: ["com.android.telephony-bootclasspath-fragment"],
+    licenses: [
+        "Android-Apache-2.0",
+        "opensourcerequest",
+    ],
 }
 
 // Encapsulate the contributions made by the com.android.telephony2 to the bootclasspath.
