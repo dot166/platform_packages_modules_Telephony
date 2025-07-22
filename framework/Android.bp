@@ -62,7 +62,7 @@ java_sdk_library {
     static_libs: [
         "telephony_aconfig_flags_lib",
         "framework-telephony-aidl-stubs",
-        "libphonenumber-platform-nogeocoder",
+        "telephony_libphonenumber_nogeocoder",
     ],
     min_sdk_version: "36",
     impl_library_visibility: [
@@ -87,7 +87,7 @@ java_sdk_library {
     static_libs: [
         "telephony_aconfig_flags_lib",
         "framework-telephony-aidl-stubs",
-        "libphonenumber-platform-nogeocoder",
+        "telephony_libphonenumber_nogeocoder",
     ],
     min_sdk_version: "36",
     impl_library_visibility: [
