@@ -23,6 +23,6 @@ import java.util.List;
  *  Interface for PhoneNumberManagerService.
  */
 interface IPhoneNumber {
-
+  @RequiresNoPermission
   ParsedPhoneNumber parsePhoneNumber(in List<Uri> associatedUris, in String countryIso);
 }
