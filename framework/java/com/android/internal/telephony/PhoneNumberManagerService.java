@@ -29,9 +29,7 @@ import com.android.i18n.phonenumbers.PhoneNumberUtil;
 import com.android.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.android.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Provides a system service for parsing and extracting phone numbers from IMS registration
@@ -79,8 +77,8 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
      * @param associatedUris list of uris to parse which contain phone number.
      * @param countryIso country the uri belongs to.
      *
-     * @return ParsePhoneNumber returns a parsed phone number or an error code
-     * explain what issue was seen.
+     * @return ParsePhoneNumber returns first valid parsed phone number or an error code
+     * explaining what issue was seen.
      * @throws IllegalArgumentException if called with null associatedUris or
      * countryIso.
      *
@@ -106,45 +104,45 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
 
     private ParsedPhoneNumber extractPhoneNumber(List<Uri> associatedUris, String countryIso) {
         PhoneNumberUtil util = PhoneNumberUtil.getInstance();
-        Set<String> extractedPhoneNumbers = new LinkedHashSet<>();
-        final int[] error = {ParsedPhoneNumber.ERROR_TYPE_NONE};
+        int firstErrorType = ParsedPhoneNumber.ERROR_TYPE_NONE;
 
-        associatedUris.stream()
-                // Phone number is an opaque URI "tel:<phone-number>" or "sip:<phone-number>@<...>"
-                .filter(u -> u != null && u.isOpaque())
-                .map(Uri::getSchemeSpecificPart)
-                // LibPhoneNumber can strip "tel:" and "sip:" prefixes, but it does not remove
-                // any characters following the phone number in "sip:" URIs (e.g., "@<...>").
-                // This trailing data causes LibPhoneNumber to incorrectly report the number as
-                // invalid.
-                .map(u -> u.split("@")[0])
-                .forEach(uriString -> {
-                    try {
-                        PhoneNumber phoneNumber = util.parse(uriString, countryIso);
-                        if (util.isValidNumber(phoneNumber)) {
-                            extractedPhoneNumbers.add(util.format(
-                                    phoneNumber, PhoneNumberFormat.E164));
-                        } else {
-                            logd("Failed to parse the following number: {"
-                                    + anonymizePhoneNumberSimple(uriString) + "} for country: {"
-                                    +  countryIso + "}");
-                            error[0] =
-                                ParsedPhoneNumber
-                                    .ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER;
-                        }
-                    } catch (NumberParseException e) {
-                        logd("NumberParseException for number: {"
-                                + anonymizePhoneNumberSimple(uriString) + "} - {"
-                                + e.getMessage() + "}");
-                        error[0] = ParsedPhoneNumber.ERROR_TYPE_NUMBER_PARSE_EXCEPTION;
+        for (Uri uri : associatedUris) {
+            if (uri != null && uri.isOpaque()) {
+                String phoneNumberCandidate = uri.getSchemeSpecificPart().split("@")[0];
+                try {
+                    PhoneNumber phoneNumber = util.parse(phoneNumberCandidate, countryIso);
+
+                    if (util.isValidNumber(phoneNumber)) {
+                        // If a valid number is found, return it immediately.
+                        return new ParsedPhoneNumber(
+                            util.format(phoneNumber, PhoneNumberFormat.E164),
+                            ParsedPhoneNumber.ERROR_TYPE_NONE, true);
+                    } else {
+                        logd("Failed to validate the following number: {"
+                                + anonymizePhoneNumberSimple(phoneNumberCandidate)
+                                + "} for country: {"
+                                + countryIso + "}");
+                        firstErrorType = updateFirstErrorType(firstErrorType,
+                            ParsedPhoneNumber
+                                .ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER);
                     }
-                });
+                } catch (NumberParseException e) {
+                    logd("NumberParseException for number: {"
+                            + anonymizePhoneNumberSimple(phoneNumberCandidate) + "} - {"
+                            + e.getMessage() + "}");
+                    firstErrorType = updateFirstErrorType(firstErrorType,
+                        ParsedPhoneNumber.ERROR_TYPE_NUMBER_PARSE_EXCEPTION);
+                }
+            }
+            // TODO(b/434607712): add else statement that catches error if uri is null
+            // and not opaque.
+        }
 
-        boolean isValid = error[0] == ParsedPhoneNumber.ERROR_TYPE_NONE;
-
-        return new ParsedPhoneNumber(
-            extractedPhoneNumbers.stream().findFirst().orElse(""), error[0], isValid);
+        // If the loop completes and no valid phone number was found, return an empty string
+        // with the first error encountered (or NONE if no specific error).
+        return new ParsedPhoneNumber("", firstErrorType, false);
     }
+
 
 
     private static String anonymizePhoneNumberSimple(String phoneNumber) {
@@ -162,6 +160,13 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
             }
         }
         return anonymized.toString();
+    }
+
+    private int updateFirstErrorType(int currentFirstErrorType, int newErrorType) {
+        if (currentFirstErrorType == ParsedPhoneNumber.ERROR_TYPE_NONE) {
+            return newErrorType;
+        }
+        return currentFirstErrorType;
     }
 
     private void loge(String message) {
