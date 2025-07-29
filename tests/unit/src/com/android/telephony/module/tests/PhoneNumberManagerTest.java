@@ -17,6 +17,8 @@ package com.android.telephony.module.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
 import android.content.Context;
@@ -37,6 +39,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 @SmallTest
@@ -237,15 +241,256 @@ public class PhoneNumberManagerTest {
     @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
     public void testParsingNumberWhenCountryHasDifferentNumbersSelectsFirst() {
         ParsedPhoneNumber result =
-            mPhoneNumberManager.parsePhoneNumber(
-                new ArrayList<Uri>(
-                    Arrays.asList(
-                        Uri.parse("sip:0041446681802@ims.mnc260.mcc310.3gppnetwork.org"),
-                        Uri.parse("tel:0041446681801"))),
-                "CH");
+                mPhoneNumberManager.parsePhoneNumber(
+                    new ArrayList<Uri>(
+                        Arrays.asList(
+                            Uri.parse("sip:0041446681802@ims.mnc260.mcc310.3gppnetwork.org"),
+                            Uri.parse("tel:0041446681801"))),
+                    "CH");
 
         assertEquals(true, result.isValidPhoneNumber());
         assertEquals("+41446681802", result.getParsedPhoneNumber());
         assertEquals(0, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingNumberWhenFirstUrisAreInvalid() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    new ArrayList<Uri>(
+                        Arrays.asList(
+                            Uri.parse("sip:16504958132@msg.pc.t-mobile.com"),
+                            Uri.parse("sip:310260317432526@ims.mnc260.mcc310.3gppnetwork.org"),
+                            Uri.parse("sip:+16504958132@ims.mnc260.mcc310.3gppnetwork.org"))),
+                    "US");
+
+        assertEquals(true, result.isValidPhoneNumber());
+        assertEquals("+16504958132", result.getParsedPhoneNumber());
+        assertEquals(0, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingWithNullUriInList() {
+        List<Uri> uris = new ArrayList<>();
+        uris.add(null);
+        uris.add(Uri.parse("tel:+12125551234"));
+
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(uris, "US");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+12125551234", result.getParsedPhoneNumber());
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingUkGlobalNumberSuccess() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("tel:+442079460000")),
+                    "GB");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+442079460000", result.getParsedPhoneNumber());
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingUkNationalNumberSuccess() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("tel:02079460001")),
+                    "GB");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+442079460001", result.getParsedPhoneNumber());
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingUsNumberSuccess() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("tel:+12125550100")),
+                    "US");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+12125550100", result.getParsedPhoneNumber());
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingJapaneseNumberSuccess() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("tel:+81312345678")),
+                    "JP");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+81312345678", result.getParsedPhoneNumber());
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingTooShortNumberReturnError() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("tel:123")),
+                    "US");
+
+        assertEquals(false, result.isValidPhoneNumber());
+        assertThrows(IllegalStateException.class, result::getParsedPhoneNumber);
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER,
+                result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingTooLongNumberReturnError() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    // Too long for US
+                    Collections.singletonList(Uri.parse("tel:+1212555010099999")),
+                    "US");
+
+        assertEquals(false, result.isValidPhoneNumber());
+        assertThrows(IllegalStateException.class, result::getParsedPhoneNumber);
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER,
+                result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingNonNumericCharactersReturnError() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("tel:abcde")),
+                    "US");
+
+        assertEquals(false, result.isValidPhoneNumber());
+        assertThrows(IllegalStateException.class, result::getParsedPhoneNumber);
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NUMBER_PARSE_EXCEPTION, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingListWithInvalidThenValidUri() {
+        List<Uri> uris = Arrays.asList(
+                Uri.parse("invalid-scheme:123"), // Invalid URI scheme
+                Uri.parse("tel:short"),          // Invalid number format
+                Uri.parse("tel:+41446681800")    // Valid CH number
+        );
+
+        ParsedPhoneNumber result = mPhoneNumberManager.parsePhoneNumber(uris, "CH");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+41446681800", result.getParsedPhoneNumber());
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingListWithValidThenInvalidUri() {
+        List<Uri> uris = Arrays.asList(
+                Uri.parse("tel:+41446681800"),   // Valid CH number
+                Uri.parse("tel:short"),          // Invalid number format
+                Uri.parse("invalid-scheme:123")  // Invalid URI scheme
+        );
+
+        ParsedPhoneNumber result = mPhoneNumberManager.parsePhoneNumber(uris, "CH");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+41446681800", result.getParsedPhoneNumber());
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingListWithNoValidPhoneNumber() {
+        List<Uri> uris = Arrays.asList(
+                Uri.parse("tel:123"),
+                Uri.parse("sip:invalid@domain.com"),
+                Uri.parse("tel:verylongnumberthatisntvalidforcH1234567890"),
+                Uri.parse("http://example.com") // Non-opaque URI
+        );
+
+        ParsedPhoneNumber result = mPhoneNumberManager.parsePhoneNumber(uris, "CH");
+
+        assertEquals(false, result.isValidPhoneNumber());
+        assertThrows(IllegalStateException.class, result::getParsedPhoneNumber);
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER,
+                result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingTelUri() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("tel:+17862668501")),
+                    "US");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+17862668501", result.getParsedPhoneNumber());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingSipUri() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("sip:17862668501@example.com")),
+                    "US");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+17862668501", result.getParsedPhoneNumber());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingSipUriWithPlusSignInUserPart() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("sip:+12125550100@ims.example.com")),
+                    "US");
+
+        assertTrue(result.isValidPhoneNumber());
+        assertEquals("+12125550100", result.getParsedPhoneNumber());
+    }
+
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingWithAllNullUrisInList() {
+        List<Uri> uris = Arrays.asList(null, null, null);
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(uris, "US");
+
+        assertEquals(false, result.isValidPhoneNumber());
+        assertThrows(IllegalStateException.class, result::getParsedPhoneNumber);
+        // TODO(b/434607712) - Update with new value to catch null or non opaque uri
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingNonOpaqueUriReturnsError() {
+        // HTTP URI is not opaque and should return an error.
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    Collections.singletonList(Uri.parse("http://www.google.com/search?q=12345")),
+                    "US");
+
+        assertEquals(false, result.isValidPhoneNumber());
+        assertThrows(IllegalStateException.class, result::getParsedPhoneNumber);
+        // TODO(b/434607712) - Update with new value to catch null or non opaque uri
+        assertEquals(ParsedPhoneNumber.ERROR_TYPE_NONE, result.getErrorCode());
     }
 }
