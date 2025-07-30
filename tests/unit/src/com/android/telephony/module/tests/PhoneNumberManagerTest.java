@@ -255,7 +255,7 @@ public class PhoneNumberManagerTest {
 
     @Test
     @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
-    public void testParsingNumberWhenFirstUrisAreInvalid() {
+    public void testParsingNumberInDifferentFormats() {
         ParsedPhoneNumber result =
                 mPhoneNumberManager.parsePhoneNumber(
                     new ArrayList<Uri>(
@@ -264,6 +264,22 @@ public class PhoneNumberManagerTest {
                             Uri.parse("sip:310260317432526@ims.mnc260.mcc310.3gppnetwork.org"),
                             Uri.parse("sip:+16504958132@ims.mnc260.mcc310.3gppnetwork.org"))),
                     "US");
+
+        assertEquals(true, result.isValidPhoneNumber());
+        assertEquals("+16504958132", result.getParsedPhoneNumber());
+        assertEquals(0, result.getErrorCode());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_PHONE_NUMBER_PARSING_API)
+    public void testParsingNumberWhenCountryIsoLowercase() {
+        ParsedPhoneNumber result =
+                mPhoneNumberManager.parsePhoneNumber(
+                    new ArrayList<Uri>(
+                        Arrays.asList(
+                            Uri.parse("sip:16504958132@msg.pc.t-mobile.com"),
+                            Uri.parse("sip:310260317432526@ims.mnc260.mcc310.3gppnetwork.org"))),
+                    "us");
 
         assertEquals(true, result.isValidPhoneNumber());
         assertEquals("+16504958132", result.getParsedPhoneNumber());

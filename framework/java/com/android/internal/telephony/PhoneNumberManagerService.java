@@ -30,6 +30,7 @@ import com.android.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.android.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Provides a system service for parsing and extracting phone numbers from IMS registration
@@ -110,7 +111,9 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
             if (uri != null && uri.isOpaque()) {
                 String phoneNumberCandidate = uri.getSchemeSpecificPart().split("@")[0];
                 try {
-                    PhoneNumber phoneNumber = util.parse(phoneNumberCandidate, countryIso);
+                    // Converts countryIso to uppercase as required by libphonenumber.
+                    PhoneNumber phoneNumber = util.parse(phoneNumberCandidate,
+                            countryIso.toUpperCase(Locale.ENGLISH));
 
                     if (util.isValidNumber(phoneNumber)) {
                         // If a valid number is found, return it immediately.
