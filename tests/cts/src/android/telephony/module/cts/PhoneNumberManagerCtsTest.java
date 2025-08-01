@@ -23,6 +23,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.platform.test.annotations.RequiresFlagsEnabled;
+import android.platform.test.flag.junit.CheckFlagsRule;
+import android.platform.test.flag.junit.DeviceFlagsValueProvider;
 import android.telephony.ParsedPhoneNumber;
 import android.telephony.PhoneNumberManager;
 
@@ -32,6 +34,7 @@ import com.android.telephony.flags.Flags;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -39,6 +42,8 @@ import java.util.Arrays;
 
 
 public class PhoneNumberManagerCtsTest {
+    @Rule
+    public final CheckFlagsRule mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule();
     private PhoneNumberManager mPhoneNumberManager;
     protected static Context sContext;
 
