@@ -17,7 +17,7 @@ java_import {
     jars: ["libphonenumber-platform-nogeocoder.jar"],
     apex_available: [
         "//apex_available:platform",
-        "com.android.telephony2",
+        "com.android.telephonycore",
     ],
     min_sdk_version: "36", // Match the min_sdk_version of the consumer
 }

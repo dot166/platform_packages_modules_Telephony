@@ -1,5 +1,5 @@
 package: "com.android.telephony.flags"
-container: "com.android.telephony2"
+container: "com.android.telephonycore"
 
 flag {
   name: "phone_number_parsing_api"

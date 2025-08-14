@@ -24,7 +24,7 @@ java_library {
     ],
     apex_available: [
         "//apex_available:platform",
-        "com.android.telephony2",
+        "com.android.telephonycore",
     ],
 }
 

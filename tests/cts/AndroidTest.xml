@@ -29,6 +29,6 @@
     </test>
 
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.MainlineTestModuleController">
-        <option name="mainline-module-package-name" value="com.google.android.telephony2" />
+        <option name="mainline-module-package-name" value="com.google.android.telephonycore" />
     </object>
 </configuration>
