@@ -20,7 +20,8 @@ package {
 java_defaults {
     name: "framework-telecom-defaults",
     srcs: [
-        ":framework-telecomm-sources",
+        ":framework-telecom-aidl-export-sources",
+        ":framework-telecom-internal-sources",
     ],
     visibility: [
         "//visibility:public",
@@ -70,13 +71,72 @@ java_defaults {
     min_sdk_version: "36",
 }
 
-java_sdk_library {
-    name: "framework-telecom",
+java_defaults {
+    name: "framework-telecom-non-updatable-defaults",
+    defaults: [
+        "framework-non-updatable-unbundled-defaults",
+        "framework-telecom-defaults",
+    ],
+    apex_available: ["//apex_available:platform"],
+}
+
+java_defaults {
+    name: "framework-telecom-updatable-defaults",
     defaults: [
         "framework-module-defaults",
         "framework-telecom-defaults",
     ],
-    apex_available: [
-        "com.android.telephonycore",
+    apex_available: ["com.android.telephonycore"],
+    srcs: [
+        ":framework-telecom-annotation-sources",
+        ":framework-telecom-ext-annotation-srcs",
     ],
+    static_libs: [
+        "telecom_flags_core_java_lib",
+        "modules-utils-build",
+        "modules-utils-infra",
+        "modules-utils-list-slice",
+    ],
+    libs: [
+        "framework-connectivity.stubs.module_lib",
+        "unsupportedappusage",
+    ],
+    jarjar_rules: "jarjar-rules.txt",
+}
+
+soong_config_module_type {
+    name: "framework_telecom_availability_soong_config",
+    module_type: "java_defaults",
+    config_namespace: "ANDROID",
+    bool_variables: [
+        "release_telecom_mainline_module",
+    ],
+    properties: [
+        "defaults",
+    ],
+}
+
+// Swap configuration related to the source of where the SDK lib lives based on the release flag.
+framework_telecom_availability_soong_config {
+    name: "framework-telecom-soong-availability-defaults",
+    soong_config_variables: {
+        release_telecom_mainline_module: {
+            defaults: ["framework-telecom-updatable-defaults"],
+            conditions_default: {
+                defaults: ["framework-telecom-non-updatable-defaults"],
+            },
+        },
+    },
+}
+
+java_sdk_library {
+    name: "framework-telecom",
+    defaults: [
+        "framework-telecom-soong-availability-defaults",
+    ],
+}
+
+platform_compat_config {
+    name: "framework-telecom-compat-config",
+    src: ":framework-telecom",
 }
