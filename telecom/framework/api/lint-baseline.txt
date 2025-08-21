@@ -1,0 +1,49 @@
+// Baseline format: 1.0
+ChangedType: android.telecom.CallAudioState#getActiveBluetoothDevice():
+    Binary breaking change: Method android.telecom.CallAudioState.getActiveBluetoothDevice has changed return type from android.bluetooth.BluetoothDevice to BluetoothDevice
+ChangedType: android.telecom.CallAudioState#getSupportedBluetoothDevices():
+    Binary breaking change: Method android.telecom.CallAudioState.getSupportedBluetoothDevices has changed return type from java.util.Collection<android.bluetooth.BluetoothDevice> to java.util.Collection<BluetoothDevice>
+
+
+EqualsAndHashCode: android.telecom.CallAudioState#equals(Object):
+    Must override both equals and hashCode; missing one in android.telecom.CallAudioState
+
+
+MissingNullability: android.telecom.CallScreeningService#onUnbind(android.content.Intent) parameter #0:
+    Missing nullability on parameter `intent` in method `onUnbind`
+MissingNullability: android.telecom.ConnectionService#onUnbind(android.content.Intent) parameter #0:
+    Missing nullability on parameter `intent` in method `onUnbind`
+MissingNullability: android.telecom.InCallService#onUnbind(android.content.Intent) parameter #0:
+    Missing nullability on parameter `intent` in method `onUnbind`
+
+
+RemovedDeprecatedMethod: android.telecom.Connection#requestBluetoothAudio(android.bluetooth.BluetoothDevice):
+    Binary breaking change: Removed deprecated method android.telecom.Connection.requestBluetoothAudio(android.bluetooth.BluetoothDevice)
+RemovedDeprecatedMethod: android.telecom.InCallService#requestBluetoothAudio(android.bluetooth.BluetoothDevice):
+    Binary breaking change: Removed deprecated method android.telecom.InCallService.requestBluetoothAudio(android.bluetooth.BluetoothDevice)
+
+
+RequiresPermission: android.telecom.Call.Details#getContactDisplayName():
+    Method 'getContactDisplayName' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.Call.Details#getContactPhotoUri():
+    Method 'getContactPhotoUri' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#acceptHandover(android.net.Uri, int, android.telecom.PhoneAccountHandle):
+    Method 'acceptHandover' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#addNewIncomingCall(android.telecom.PhoneAccountHandle, android.os.Bundle):
+    Method 'addNewIncomingCall' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#addNewIncomingConference(android.telecom.PhoneAccountHandle, android.os.Bundle):
+    Method 'addNewIncomingConference' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#getOwnSelfManagedPhoneAccounts():
+    Method 'getOwnSelfManagedPhoneAccounts' documentation duplicates auto-generated documentation by @RequiresPermission. If the permissions are only required under certain circumstances use conditional=true to suppress the auto-documentation
+RequiresPermission: android.telecom.TelecomManager#getPhoneAccount(android.telecom.PhoneAccountHandle):
+    Method 'getPhoneAccount' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#getSelfManagedPhoneAccounts():
+    Method 'getSelfManagedPhoneAccounts' documentation duplicates auto-generated documentation by @RequiresPermission. If the permissions are only required under certain circumstances use conditional=true to suppress the auto-documentation
+RequiresPermission: android.telecom.TelecomManager#hasManageOngoingCallsPermission():
+    Method 'hasManageOngoingCallsPermission' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#placeCall(android.net.Uri, android.os.Bundle):
+    Method 'placeCall' documentation duplicates auto-generated documentation by @RequiresPermission. If the permissions are only required under certain circumstances use conditional=true to suppress the auto-documentation
+RequiresPermission: android.telecom.TelecomManager#showInCallScreen(boolean):
+    Method 'showInCallScreen' documentation duplicates auto-generated documentation by @RequiresPermission. If the permissions are only required under certain circumstances use conditional=true to suppress the auto-documentation
+RequiresPermission: android.telecom.TelecomManager#silenceRinger():
+    Method 'silenceRinger' documentation duplicates auto-generated documentation by @RequiresPermission. If the permissions are only required under certain circumstances use conditional=true to suppress the auto-documentation
