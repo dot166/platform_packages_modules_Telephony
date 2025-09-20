@@ -12,6 +12,18 @@ flag {
   bug: "433774385"
 }
 
+# OWNER=gargakash TARGET=26Q2
+flag {
+  name: "phone_account_changed"
+  namespace: "telecom"
+  is_exported: true
+  description: "Enables the EVENT_PHONE_ACCOUNT_CHANGED connection event"
+  bug: "184714787"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+    }
+}
+
 # OWNER=arunrajms TARGET=26Q2
 flag {
   name: "explicit_call_transfer"
