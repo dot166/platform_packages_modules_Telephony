@@ -91,6 +91,11 @@ package android.telecom {
     field public static final int MESSAGE_DEVICE_NETWORK_COVERAGE = 4; // 0x4
   }
 
+  public abstract class CallScreeningService extends android.app.Service {
+    method @FlaggedApi("android.telecom.flags.enable_oem_outgoing_call_screening") public void onScreenOutgoingCall(@NonNull android.telecom.Call.Details);
+    field @FlaggedApi("android.telecom.flags.enable_oem_outgoing_call_screening") public static final String METADATA_SCREEN_OUTGOING_CALLS = "android.telecom.METADATA_SCREEN_OUTGOING_CALLS";
+  }
+
   public static class CallScreeningService.CallResponse.Builder {
     method @NonNull @RequiresPermission(android.Manifest.permission.CAPTURE_AUDIO_OUTPUT) public android.telecom.CallScreeningService.CallResponse.Builder setShouldScreenCallViaAudioProcessing(boolean);
   }
