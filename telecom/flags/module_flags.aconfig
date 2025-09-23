@@ -47,3 +47,15 @@ flag {
       purpose: PURPOSE_FEATURE
   }
 }
+
+# OWNER=arunvoddu TARGET=26Q2
+flag {
+  name: "is_using_crs"
+  is_exported: true
+  namespace: "telecom"
+  description: "Add support for customized ringing signal (CRS) feature."
+  bug: "282581376"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
