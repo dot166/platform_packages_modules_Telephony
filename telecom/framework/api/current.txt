@@ -371,6 +371,7 @@ package android.telecom {
     method public android.telecom.Connection.VideoProvider getVideoProvider();
     method public int getVideoState();
     method public final boolean isRingbackRequested();
+    method @FlaggedApi("com.android.server.telecom.flags.conference_modify_merge_fail") public void notifyConferenceMergeFailed();
     method public void onAddConferenceParticipants(@NonNull java.util.List<android.net.Uri>);
     method public void onAnswer(int);
     method public void onAvailableCallEndpointsChanged(@NonNull java.util.List<android.telecom.CallEndpoint>);
