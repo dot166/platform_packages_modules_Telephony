@@ -40,6 +40,8 @@ package android.telecom {
     method public void stopDtmfTone();
     method public void stopRtt();
     method public void swapConference();
+    method @FlaggedApi("android.telecom.flags.explicit_call_transfer") public void transfer(@NonNull android.net.Uri, boolean);
+    method @FlaggedApi("android.telecom.flags.explicit_call_transfer") public void transfer(@NonNull android.telecom.Call);
     method public void unhold();
     method public void unregisterCallback(android.telecom.Call.Callback);
     field @FlaggedApi("com.android.server.telecom.flags.enable_audio_processing_use_case") public static final int AUDIO_PROCESSING_USE_CASE_ASK_TO_HOLD = 3; // 0x3

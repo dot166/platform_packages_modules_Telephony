@@ -11,3 +11,15 @@ flag {
   description: "Clients can check if an external call is in progress."
   bug: "433774385"
 }
+
+# OWNER=arunrajms TARGET=26Q2
+flag {
+  name: "explicit_call_transfer"
+  is_exported: true
+  namespace: "telecom"
+  description: "Make explicit call transfer (see 3GPP TS 24.629) API public"
+  bug: "429255861"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
