@@ -37,26 +37,28 @@ java_defaults {
         "telecom_flags_core_java_lib",
     ],
     libs: [
-        "framework-bluetooth.stubs.module_lib",
         "framework-permission.stubs.module_lib",
         "framework-permission-s.stubs.module_lib",
         "telephony_flags_core_java_exported_lib",
         "androidx.annotation_annotation",
         "app-compat-annotations",
+        // This strange dep is declared instead of framework-bluetooth.stubs.module_lib to break a
+        // circular dep chain between Telecom, BT, tethering,and connectivity.
+        "sdk_module-lib_current_framework-bluetooth",
     ],
     public: {
         libs: [
-            "framework-bluetooth.stubs",
+            "sdk_public_current_framework-bluetooth",
         ],
     },
     system: {
         libs: [
-            "framework-bluetooth.stubs.system",
+            "sdk_system_current_framework-bluetooth",
         ],
     },
     module_lib: {
         libs: [
-            "framework-bluetooth.stubs.module_lib",
+            "sdk_module-lib_current_framework-bluetooth",
         ],
     },
     permitted_packages: [
