@@ -18,66 +18,16 @@ package {
 }
 
 java_defaults {
-    name: "framework-telecom-defaults",
-    srcs: [
-        ":framework-telecom-aidl-export-sources",
-        ":framework-telecom-internal-sources",
-    ],
-    visibility: [
-        "//visibility:public",
-    ],
-    aidl: {
-        include_dirs: [
-            "frameworks/base/core/java",
-            "frameworks/base/telephony/java",
-            "frameworks/native/aidl/gui", // For Surface.java
-        ],
-    },
-    static_libs: [
-        "telecom_flags_core_java_lib",
-    ],
-    libs: [
-        "framework-permission.stubs.module_lib",
-        "framework-permission-s.stubs.module_lib",
-        "telephony_flags_core_java_exported_lib",
-        "androidx.annotation_annotation",
-        "app-compat-annotations",
-        // This strange dep is declared instead of framework-bluetooth.stubs.module_lib to break a
-        // circular dep chain between Telecom, BT, tethering,and connectivity.
-        "sdk_module-lib_current_framework-bluetooth",
-    ],
-    public: {
-        libs: [
-            "sdk_public_current_framework-bluetooth",
-        ],
-    },
-    system: {
-        libs: [
-            "sdk_system_current_framework-bluetooth",
-        ],
-    },
-    module_lib: {
-        libs: [
-            "sdk_module-lib_current_framework-bluetooth",
-        ],
-    },
-    permitted_packages: [
-        "android.telecom",
-        "com.android.internal.telecom",
-        "com.android.internal.telephony",
-        "com.android.server.telecom",
-    ],
-    aconfig_declarations: [
-        "telecom_flags",
-    ],
-    min_sdk_version: "36",
-}
-
-java_defaults {
     name: "framework-telecom-non-updatable-defaults",
     defaults: [
         "framework-non-updatable-unbundled-defaults",
-        "framework-telecom-defaults",
+    ],
+    libs: [
+        "telephony_flags_core_java_exported_lib",
+    ],
+    static_libs: [
+        "telecom_flags_core_java_lib",
+        "telecom_module_flags-export-java",
     ],
     apex_available: ["//apex_available:platform"],
 }
@@ -86,7 +36,6 @@ java_defaults {
     name: "framework-telecom-updatable-defaults",
     defaults: [
         "framework-module-defaults",
-        "framework-telecom-defaults",
     ],
     apex_available: ["com.android.telephonycore"],
     srcs: [
@@ -94,12 +43,14 @@ java_defaults {
         ":framework-telecom-ext-annotation-srcs",
     ],
     static_libs: [
-        "telecom_flags_core_java_lib",
+        "telecom_flags_core_java_aconfig_java_exported_lib",
+        "telecom_module_flags-java",
+        "telephony_flags_core_java_exported_lib",
         "modules-utils-build",
         "modules-utils-infra",
         "modules-utils-list-slice",
     ],
-    libs: [
+    impl_only_libs: [
         "framework-connectivity.stubs.module_lib",
         "unsupportedappusage",
     ],
@@ -136,6 +87,51 @@ java_sdk_library {
     defaults: [
         "framework-telecom-soong-availability-defaults",
     ],
+    srcs: [
+        ":framework-telecom-aidl-export-sources",
+        ":framework-telecom-internal-sources",
+    ],
+    visibility: [
+        "//visibility:public",
+    ],
+    aidl: {
+        include_dirs: [
+            "frameworks/base/core/java",
+            "frameworks/base/telephony/java",
+            "frameworks/native/aidl/gui", // For Surface.java
+        ],
+    },
+    libs: [
+        "framework-permission.stubs.module_lib",
+        "framework-permission-s.stubs.module_lib",
+        "androidx.annotation_annotation",
+        "app-compat-annotations",
+        // This strange dep is declared instead of framework-bluetooth.stubs.module_lib to break a
+        // circular dep chain between Telecom, BT, tethering,and connectivity.
+        "sdk_module-lib_current_framework-bluetooth",
+    ],
+    public: {
+        libs: [
+            "sdk_public_current_framework-bluetooth",
+        ],
+    },
+    system: {
+        libs: [
+            "sdk_system_current_framework-bluetooth",
+        ],
+    },
+    module_lib: {
+        libs: [
+            "sdk_module-lib_current_framework-bluetooth",
+        ],
+    },
+    permitted_packages: [
+        "android.telecom",
+        "com.android.internal",
+        "com.android.server.telecom",
+    ],
+    min_sdk_version: "36",
+    aconfig_declarations: ["telecom_module_flags"],
 }
 
 platform_compat_config {

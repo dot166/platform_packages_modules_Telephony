@@ -1,0 +1,13 @@
+package: "android.telecom.flags"
+container: "com.android.telephonycore"
+
+## Add 26Q2 flags here.
+
+# OWNER=con TARGET=26Q2
+flag {
+  name: "is_in_external_call"
+  is_exported: true
+  namespace: "telecom"
+  description: "Clients can check if an external call is in progress."
+  bug: "433774385"
+}
