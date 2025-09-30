@@ -41,7 +41,7 @@ aconfig_declarations {
 
 java_aconfig_library {
     name: "telecom_module_flags-java",
-    sdk_version: "module_current",
+    defaults: ["framework-minus-apex-aconfig-java-defaults"],
     min_sdk_version: "36",
     apex_available: [
         "com.android.telephonycore",
@@ -51,13 +51,8 @@ java_aconfig_library {
 
 java_aconfig_library {
     name: "telecom_module_flags-export-java",
-    aconfig_declarations: "telecom_module_flags",
-    sdk_version: "module_current",
+    defaults: ["framework-minus-apex-aconfig-java-defaults"],
     min_sdk_version: "36",
-    apex_available: [
-        "//apex_available:platform",
-    ],
-    // required here or Telecom will not be able to resolve module flags at runtime.
-    jarjar_prefix: "com.android.internal.telephonycore.hidden_from_BootClassPath",
+    aconfig_declarations: "telecom_module_flags",
     mode: "exported",
 }
