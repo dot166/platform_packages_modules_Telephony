@@ -57,7 +57,12 @@ bootclasspath_fragment {
     }),
 
     name: "com.android.telephony-bootclasspath-fragment",
-    contents: ["framework-telephony"],
+    contents: [
+        "framework-telephony",
+    ] + select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
+        true: ["framework-telecom"],
+        default: [],
+    }),
     apex_available: ["com.android.telephonycore"],
     hidden_api: {
         split_packages: ["*"], // TODO(b/409547011) be more specific
