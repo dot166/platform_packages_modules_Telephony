@@ -203,6 +203,7 @@ package android.telecom {
     method @NonNull public java.util.concurrent.Executor getExecutor();
     method @Nullable public android.os.IBinder onBind(@Nullable android.content.Intent);
     method @RequiresPermission(allOf={android.Manifest.permission.CALL_AUDIO_INTERCEPTION, android.Manifest.permission.MODIFY_AUDIO_ROUTING, android.Manifest.permission.RECORD_AUDIO}) public abstract void onVoicemailRequested(@NonNull android.telecom.Call.Details);
+    method public abstract void onVoicemailStopped(@NonNull android.telecom.Call.Details);
     field public static final String SERVICE_INTERFACE = "android.telecom.LocalVoicemailService";
   }
 
@@ -475,7 +476,6 @@ package android.telecom {
     field public static final String EXTRA_IS_USER_INTENT_EMERGENCY_CALL = "android.telecom.extra.IS_USER_INTENT_EMERGENCY_CALL";
     field public static final String EXTRA_TTY_PREFERRED_MODE = "android.telecom.extra.TTY_PREFERRED_MODE";
     field public static final String EXTRA_UNKNOWN_CALL_HANDLE = "android.telecom.extra.UNKNOWN_CALL_HANDLE";
-    field @FlaggedApi("com.android.server.telecom.flags.local_voicemail") @NonNull public static final java.time.Duration LOCAL_VOICEMAIL_DISABLED;
     field @Deprecated @FlaggedApi("com.android.server.telecom.flags.move_get_tty_mode_to_telephony_manager") public static final int TTY_MODE_FULL = 1; // 0x1
     field @Deprecated @FlaggedApi("com.android.server.telecom.flags.move_get_tty_mode_to_telephony_manager") public static final int TTY_MODE_HCO = 2; // 0x2
     field @Deprecated @FlaggedApi("com.android.server.telecom.flags.move_get_tty_mode_to_telephony_manager") public static final int TTY_MODE_OFF = 0; // 0x0
