@@ -136,6 +136,7 @@ flag {
 flag {
   name: "move_get_tty_mode_to_telephony_manager"
   namespace: "telecom"
+  is_exported: true
   description: "Moving getTTYMode to TelephonyManager as part of Telecom mainline modularization"
   bug: "433987834"
 }
