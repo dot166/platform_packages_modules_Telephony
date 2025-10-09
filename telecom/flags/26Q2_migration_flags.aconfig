@@ -19,6 +19,7 @@ flag {
 flag {
   name: "is_using_video_ringback"
   namespace: "telecom"
+  is_exported: true
   description: "Indicate that the call is a video color ring back tone call."
   bug: "408116489"
 }
