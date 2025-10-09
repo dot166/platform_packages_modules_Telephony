@@ -359,7 +359,7 @@ package android.telecom {
     method public final void destroy();
     method @Deprecated public final android.telecom.CallAudioState getCallAudioState();
     method public final java.util.List<android.telecom.Connection> getConferenceableConnections();
-    method @FlaggedApi("com.android.server.telecom.flags.multi_party_anchor_conf") @NonNull public final java.util.List<android.telecom.Conferenceable> getConferenceables();
+    method @FlaggedApi("android.telecom.flags.multi_party_anchor_conf") @NonNull public final java.util.List<android.telecom.Conferenceable> getConferenceables();
     method public final int getConnectionCapabilities();
     method public final int getConnectionProperties();
     method public final long getConnectionStartElapsedRealtimeMillis();
@@ -385,7 +385,7 @@ package android.telecom {
     method public void onExtrasChanged(android.os.Bundle);
     method public void onHold();
     method public void onMerge(android.telecom.Connection);
-    method @FlaggedApi("com.android.server.telecom.flags.multi_party_anchor_conf") public void onMerge(@NonNull android.telecom.Conference);
+    method @FlaggedApi("android.telecom.flags.multi_party_anchor_conf") public void onMerge(@NonNull android.telecom.Conference);
     method public void onMerge();
     method public void onMuteStateChanged(boolean);
     method public void onPlayDtmfTone(char);
@@ -400,8 +400,8 @@ package android.telecom {
     method public final void removeExtras(java.lang.String...);
     method public void sendConferenceEvent(@NonNull String, @Nullable android.os.Bundle);
     method public final void setActive();
-    method @Deprecated @FlaggedApi("com.android.server.telecom.flags.multi_party_anchor_conf") public final void setConferenceableConnections(java.util.List<android.telecom.Connection>);
-    method @FlaggedApi("com.android.server.telecom.flags.multi_party_anchor_conf") public final void setConferenceables(@NonNull java.util.List<android.telecom.Conferenceable>);
+    method @Deprecated @FlaggedApi("android.telecom.flags.multi_party_anchor_conf") public final void setConferenceableConnections(java.util.List<android.telecom.Connection>);
+    method @FlaggedApi("android.telecom.flags.multi_party_anchor_conf") public final void setConferenceables(@NonNull java.util.List<android.telecom.Conferenceable>);
     method public final void setConnectionCapabilities(int);
     method public final void setConnectionProperties(int);
     method @Deprecated public final void setConnectionStartElapsedRealTime(long);
