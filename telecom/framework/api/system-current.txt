@@ -448,7 +448,7 @@ package android.telecom {
     method @FlaggedApi("com.android.server.telecom.flags.local_voicemail") @NonNull @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public java.time.Duration getLocalVoicemailTimeout(@NonNull android.telecom.PhoneAccountHandle);
     method @Deprecated public java.util.List<android.telecom.PhoneAccountHandle> getPhoneAccountsForPackage();
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE, android.Manifest.permission.READ_PHONE_STATE}) public java.util.List<android.telecom.PhoneAccountHandle> getPhoneAccountsSupportingScheme(String);
-    method @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs_stage2") @NonNull @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public java.util.Map<java.lang.String,java.lang.Boolean> getVoipCallLogIntegrationStatus();
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") @NonNull @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public java.util.Map<java.lang.String,java.lang.Boolean> getVoipCallLogIntegrationStatus();
     method @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public boolean isInEmergencyCall();
     method @FlaggedApi("com.android.server.telecom.flags.telecom_resolve_hidden_dependencies") @RequiresPermission(allOf={android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE, android.Manifest.permission.INTERACT_ACROSS_USERS}, conditional=true) public boolean isInSelfManagedCall(@NonNull String, @NonNull android.os.UserHandle);
     method @FlaggedApi("com.android.server.telecom.flags.local_voicemail") @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public boolean isLocalVoicemailEnabled(@NonNull android.telecom.PhoneAccountHandle);
@@ -456,7 +456,7 @@ package android.telecom {
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE, android.Manifest.permission.READ_PHONE_STATE}) public boolean isRinging();
     method @FlaggedApi("com.android.server.telecom.flags.call_connected_indicator_preference") @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setCallConnectedIndicatorPreference(int);
     method @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setUserSelectedOutgoingPhoneAccount(@Nullable android.telecom.PhoneAccountHandle);
-    method @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs_stage2") @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setVoipCallLogIntegrationEnabled(@NonNull String, boolean);
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setVoipCallLogIntegrationEnabled(@NonNull String, boolean);
     field public static final String ACTION_CURRENT_TTY_MODE_CHANGED = "android.telecom.action.CURRENT_TTY_MODE_CHANGED";
     field public static final String ACTION_TTY_PREFERRED_MODE_CHANGED = "android.telecom.action.TTY_PREFERRED_MODE_CHANGED";
     field @FlaggedApi("com.android.server.telecom.flags.call_connected_indicator_preference") public static final int CALL_CONNECTED_INDICATOR_NONE = 0; // 0x0
