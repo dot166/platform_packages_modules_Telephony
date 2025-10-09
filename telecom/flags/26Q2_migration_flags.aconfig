@@ -125,6 +125,7 @@ flag {
 flag {
   name: "local_voicemail"
   namespace: "telecom"
+  is_exported: true
   description: "Support for local voicemail."
   bug: "394367444"
   metadata {
