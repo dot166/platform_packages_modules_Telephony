@@ -49,6 +49,7 @@ flag {
 flag {
   name: "remotely_hosted_property"
   namespace: "telecom"
+  is_exported: true
   description: "Add PROPERTY_REMOTELY_HOSTED to call to mirror what is in Connection."
   bug: "430293079"
   metadata {
