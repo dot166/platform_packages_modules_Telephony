@@ -38,6 +38,7 @@ flag {
 flag {
   name: "call_connected_indicator_preference"
   namespace: "telecom"
+  is_exported: true
   description: "Add call connected indicator support for playing a tone or starting a vibration"
   bug: "146090790"
   metadata {
