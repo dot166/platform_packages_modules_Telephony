@@ -95,6 +95,7 @@ flag {
 flag {
   name: "place_call_to_alternate_number"
   namespace: "telecom"
+  is_exported: true
   description: "Adds an API to display the alternate number dialed post redirection"
   bug: "429255861"
   metadata {

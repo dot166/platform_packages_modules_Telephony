@@ -314,7 +314,7 @@ package android.telecom {
     method @FlaggedApi("com.android.server.telecom.flags.send_original_number_on_place_call") public void onPlaceCall(@NonNull android.net.Uri, @NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     method public void onRedirectionTimeout();
     method public final boolean onUnbind(@NonNull android.content.Intent);
-    method @FlaggedApi("com.android.server.telecom.flags.place_call_to_alternate_number") public final void placeCallToAlternateNumber(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
+    method @FlaggedApi("android.telecom.flags.place_call_to_alternate_number") public final void placeCallToAlternateNumber(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     method public final void placeCallUnmodified();
     method public final void redirectCall(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     field public static final String SERVICE_INTERFACE = "android.telecom.CallRedirectionService";
