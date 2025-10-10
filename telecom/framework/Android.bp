@@ -99,6 +99,7 @@ java_sdk_library {
             "frameworks/base/core/java",
             "frameworks/base/telephony/java",
             "frameworks/native/aidl/gui", // For Surface.java
+            "frameworks/libs/modules-utils/java", // ParceledListSlice
         ],
     },
     libs: [
