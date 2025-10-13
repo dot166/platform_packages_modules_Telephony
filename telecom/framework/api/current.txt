@@ -849,6 +849,7 @@ package android.telecom {
     field @Deprecated @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs") public static final String EXTRA_LOG_SELF_MANAGED_CALLS = "android.telecom.extra.LOG_SELF_MANAGED_CALLS";
     field public static final String EXTRA_SUPPORTS_HANDOVER_FROM = "android.telecom.extra.SUPPORTS_HANDOVER_FROM";
     field public static final String EXTRA_SUPPORTS_HANDOVER_TO = "android.telecom.extra.SUPPORTS_HANDOVER_TO";
+    field @FlaggedApi("com.android.internal.telephony.flags.support_low_battery_alert") public static final int LOW_BATTERY_ALERT_DISABLED = -1; // 0xffffffff
     field public static final int NO_HIGHLIGHT_COLOR = 0; // 0x0
     field public static final int NO_RESOURCE_ID = -1; // 0xffffffff
     field public static final String SCHEME_SIP = "sip";
