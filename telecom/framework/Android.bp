@@ -44,6 +44,7 @@ java_defaults {
         ":framework-telecom-annotation-sources",
         ":framework-telecom-ext-annotation-srcs",
         ":framework-telecom-shared-srcs",
+        ":framework-telecom-core-shared-srcs",
     ],
     static_libs: [
         "telecom_flags_core_java_aconfig_java_exported_lib",
