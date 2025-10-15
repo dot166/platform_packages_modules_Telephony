@@ -49,10 +49,17 @@ package android.telecom {
     field @FlaggedApi("com.android.server.telecom.flags.enable_audio_processing_use_case") public static final int AUDIO_PROCESSING_USE_CASE_UNKNOWN = 0; // 0x0
     field @FlaggedApi("com.android.server.telecom.flags.enable_audio_processing_use_case") public static final int AUDIO_PROCESSING_USE_CASE_VOICEMAIL = 1; // 0x1
     field @Deprecated public static final String AVAILABLE_PHONE_ACCOUNTS = "selectPhoneAccountAccounts";
+    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MEDIA_TYPE_AUDIO = 1; // 0x1
+    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MEDIA_TYPE_NONE = 0; // 0x0
+    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MEDIA_TYPE_VIDEO = 2; // 0x2
+    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MODE_IN_CALL = 2; // 0x2
+    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MODE_RINGTONE = 1; // 0x1
     field public static final String EVENT_CLEAR_DIAGNOSTIC_MESSAGE = "android.telecom.event.CLEAR_DIAGNOSTIC_MESSAGE";
     field public static final String EVENT_DISPLAY_DIAGNOSTIC_MESSAGE = "android.telecom.event.DISPLAY_DIAGNOSTIC_MESSAGE";
     field @FlaggedApi("android.telecom.flags.phone_account_changed") public static final String EVENT_PHONE_ACCOUNT_CHANGED = "android.telecom.event.PHONE_ACCOUNT_CHANGED";
     field @FlaggedApi("com.android.server.telecom.flags.business_call_composer") public static final String EXTRA_ASSERTED_DISPLAY_NAME = "android.telecom.extra.ASSERTED_DISPLAY_NAME";
+    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final String EXTRA_CRS_AUDIO_MODE = "android.telecom.extra.CRS_AUDIO_MODE";
+    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final String EXTRA_CRS_MEDIA_TYPE = "android.telecom.extra.CRS_MEDIA_TYPE";
     field public static final String EXTRA_DIAGNOSTIC_MESSAGE = "android.telecom.extra.DIAGNOSTIC_MESSAGE";
     field public static final String EXTRA_DIAGNOSTIC_MESSAGE_ID = "android.telecom.extra.DIAGNOSTIC_MESSAGE_ID";
     field @FlaggedApi("com.android.server.telecom.flags.business_call_composer") public static final String EXTRA_IS_BUSINESS_CALL = "android.telecom.extra.IS_BUSINESS_CALL";
