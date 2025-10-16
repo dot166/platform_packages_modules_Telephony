@@ -147,7 +147,7 @@ flag {
   description: "Adds a UserHandle to the Call Details"
   bug: "408470449"
   metadata {
-      purpose: PURPOSE_BUGFIX
+    purpose: PURPOSE_FEATURE
   }
 }
 
