@@ -52,8 +52,6 @@ package android.telecom {
     field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MEDIA_TYPE_AUDIO = 1; // 0x1
     field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MEDIA_TYPE_NONE = 0; // 0x0
     field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MEDIA_TYPE_VIDEO = 2; // 0x2
-    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MODE_IN_CALL = 2; // 0x2
-    field @FlaggedApi("android.telecom.flags.is_using_crs") public static final int CRS_MODE_RINGTONE = 1; // 0x1
     field public static final String EVENT_CLEAR_DIAGNOSTIC_MESSAGE = "android.telecom.event.CLEAR_DIAGNOSTIC_MESSAGE";
     field public static final String EVENT_DISPLAY_DIAGNOSTIC_MESSAGE = "android.telecom.event.DISPLAY_DIAGNOSTIC_MESSAGE";
     field @FlaggedApi("android.telecom.flags.phone_account_changed") public static final String EVENT_PHONE_ACCOUNT_CHANGED = "android.telecom.event.PHONE_ACCOUNT_CHANGED";
