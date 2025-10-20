@@ -1,0 +1,61 @@
+package: "android.telecom.flags"
+container: "com.android.telephonycore"
+
+## Add 26Q2 flags here.
+
+# OWNER=con TARGET=26Q2
+flag {
+  name: "is_in_external_call"
+  is_exported: true
+  namespace: "telecom"
+  description: "Clients can check if an external call is in progress."
+  bug: "433774385"
+}
+
+# OWNER=gargakash TARGET=26Q2
+flag {
+  name: "phone_account_changed"
+  namespace: "telecom"
+  is_exported: true
+  description: "Enables the EVENT_PHONE_ACCOUNT_CHANGED connection event"
+  bug: "184714787"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+    }
+}
+
+# OWNER=donaldahn TARGET=26Q2
+flag {
+  name: "enable_oem_outgoing_call_screening"
+  is_exported: true
+  namespace: "telecom"
+  description: "Enables the OEM-defined CallScreeningService to screen and block outgoing calls."
+  bug: "429229951"
+  metadata {
+      purpose: PURPOSE_FEATURE
+    }
+}
+
+# OWNER=arunrajms TARGET=26Q2
+flag {
+  name: "explicit_call_transfer"
+  is_exported: true
+  namespace: "telecom"
+  description: "Make explicit call transfer (see 3GPP TS 24.629) API public"
+  bug: "429255861"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
+# OWNER=arunvoddu TARGET=26Q2
+flag {
+  name: "is_using_crs"
+  is_exported: true
+  namespace: "telecom"
+  description: "Add support for customized ringing signal (CRS) feature."
+  bug: "282581376"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}

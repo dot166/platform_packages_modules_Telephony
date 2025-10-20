@@ -1,0 +1,45 @@
+// Baseline format: 1.0
+DeprecationMismatch: android.telecom.StatusHints#StatusHints(android.content.ComponentName, CharSequence, int, android.os.Bundle):
+    Constructor android.telecom.StatusHints.StatusHints(android.content.ComponentName, CharSequence, int, android.os.Bundle): @Deprecated annotation (present) and @deprecated doc tag (not present) do not match
+DeprecationMismatch: android.telecom.StatusHints#getIcon(android.content.Context):
+    Method android.telecom.StatusHints.getIcon(android.content.Context): @Deprecated annotation (present) and @deprecated doc tag (not present) do not match
+DeprecationMismatch: android.telecom.StatusHints#getIconResId():
+    Method android.telecom.StatusHints.getIconResId(): @Deprecated annotation (present) and @deprecated doc tag (not present) do not match
+DeprecationMismatch: android.telecom.StatusHints#getPackageName():
+    Method android.telecom.StatusHints.getPackageName(): @Deprecated annotation (present) and @deprecated doc tag (not present) do not match
+
+MissingGetterMatchingBuilder: android.telecom.CallScreeningService.CallResponse.Builder#setShouldScreenCallViaAudioProcessing(boolean):
+    android.telecom.CallScreeningService.CallResponse does not declare a `shouldScreenCallViaAudioProcessing()` method matching method android.telecom.CallScreeningService.CallResponse.Builder.setShouldScreenCallViaAudioProcessing(boolean)
+
+RequiresPermission: android.telecom.Call.Details#getContactDisplayName():
+    Method 'getContactDisplayName' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.Call.Details#getContactPhotoUri():
+    Method 'getContactPhotoUri' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#acceptHandover(android.net.Uri, int, android.telecom.PhoneAccountHandle):
+    Method 'acceptHandover' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#addNewIncomingCall(android.telecom.PhoneAccountHandle, android.os.Bundle):
+    Method 'addNewIncomingCall' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#addNewIncomingConference(android.telecom.PhoneAccountHandle, android.os.Bundle):
+    Method 'addNewIncomingConference' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#getCallState():
+    Method 'getCallState' documentation mentions permissions already declared by @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#getLine1Number(android.telecom.PhoneAccountHandle):
+    Method 'getLine1Number' documentation mentions permissions already declared by @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#getOwnSelfManagedPhoneAccounts():
+    Method 'getOwnSelfManagedPhoneAccounts' documentation mentions permissions already declared by @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#getPhoneAccount(android.telecom.PhoneAccountHandle):
+    Method 'getPhoneAccount' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#getSelfManagedPhoneAccounts():
+    Method 'getSelfManagedPhoneAccounts' documentation mentions permissions already declared by @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#hasManageOngoingCallsPermission():
+    Method 'hasManageOngoingCallsPermission' documentation mentions permissions without declaring @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#placeCall(android.net.Uri, android.os.Bundle):
+    Method 'placeCall' documentation mentions permissions already declared by @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#showInCallScreen(boolean):
+    Method 'showInCallScreen' documentation mentions permissions already declared by @RequiresPermission
+RequiresPermission: android.telecom.TelecomManager#silenceRinger():
+    Method 'silenceRinger' documentation mentions permissions already declared by @RequiresPermission
+
+UnflaggedApi: android.telecom.StreamingCall#EXTRA_CALL_ID:
+    New API must be flagged with @FlaggedApi: field android.telecom.StreamingCall.EXTRA_CALL_ID
+

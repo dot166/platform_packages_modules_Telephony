@@ -1,0 +1,1 @@
+rule com.android.modules.utils.HandlerExecutor com.android.internal.telecom.jarjar.@0
