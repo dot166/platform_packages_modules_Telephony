@@ -95,6 +95,9 @@ java_sdk_library {
         "//packages/modules/Telephony:__subpackages__",
     ],
     jarjar_rules: "jarjar-rules.txt",
+    lint: {
+        baseline_filename: "lint-baseline2.xml",
+    },
 }
 
 java_sdk_library {
@@ -128,6 +131,9 @@ java_sdk_library {
         "//packages/modules/Telephony:__subpackages__",
     ],
     jarjar_rules: "jarjar-rules.txt",
+    lint: {
+        baseline_filename: "lint-baseline.xml",
+    },
 }
 
 platform_compat_config {
