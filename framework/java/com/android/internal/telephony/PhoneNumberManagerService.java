@@ -17,12 +17,12 @@ package com.android.internal.telephony;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.content.Context;
 import android.net.Uri;
 import android.os.TelephonyServiceManager;
 import android.os.TelephonyServiceManager.ServiceRegisterer;
 import android.telephony.ParsedPhoneNumber;
 import android.telephony.TelephonyFrameworkInitializer;
-import android.util.Log;
 
 import com.android.i18n.phonenumbers.NumberParseException;
 import com.android.i18n.phonenumbers.PhoneNumberUtil;
@@ -42,13 +42,25 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
     private static final String TAG = "PhoneNumberManagerService";
     private static final String ANONYMIZATION_CHAR = "X";
 
+    private Ts43PhoneNumberController mTs43PhoneNumberController;
+
+    /**
+     * Constructor for PhoneNumberManagerService.
+     * This delegates to the context-aware constructor with a null context.
+     *
+     * @hide
+     */
+    public PhoneNumberManagerService() {
+        this(null);
+    }
+
     /**
      * Constructor for PhoneNumberManagerService.
      * This registers the service with the TelephonyFrameworkInitializer.
      *
      * @hide
      */
-    public PhoneNumberManagerService() {
+    public PhoneNumberManagerService(Context context) {
         logd("Attempting to register PhoneNumberManagerService.");
         TelephonyServiceManager telephonyServiceManager = TelephonyFrameworkInitializer
                 .getTelephonyServiceManager();
@@ -68,6 +80,10 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
             }
         } else {
             logd("PhoneNumberManagerService already registered. Skipping re-registration.");
+        }
+        if (context != null) {
+            logd("PhoneNumberManagerService creating and initializing with context.");
+            mTs43PhoneNumberController = new Ts43PhoneNumberController(context);
         }
     }
 
@@ -92,12 +108,12 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
         if (associatedUris == null || associatedUris.isEmpty()) {
             loge("IMS Registration header is invalid. Either null or empty.");
             throw new IllegalArgumentException(
-              "Unable to parse number as the associatedUris received is invalid.");
+                    "Unable to parse number as the associatedUris received is invalid.");
         }
         if (countryIso == null || countryIso.isEmpty()) {
             loge("Country code is invalid. Either null or empty.");
             throw new IllegalArgumentException(
-              "Unable to parse number as the countryIso received is invalid.");
+                    "Unable to parse number as the countryIso received is invalid.");
         }
 
         return extractPhoneNumber(associatedUris, countryIso);
@@ -118,23 +134,23 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
                     if (util.isValidNumber(phoneNumber)) {
                         // If a valid number is found, return it immediately.
                         return new ParsedPhoneNumber(
-                            util.format(phoneNumber, PhoneNumberFormat.E164),
-                            ParsedPhoneNumber.ERROR_TYPE_NONE, true);
+                                util.format(phoneNumber, PhoneNumberFormat.E164),
+                                ParsedPhoneNumber.ERROR_TYPE_NONE, true);
                     } else {
                         logd("Failed to validate the following number: {"
                                 + anonymizePhoneNumberSimple(phoneNumberCandidate)
                                 + "} for country: {"
                                 + countryIso + "}");
                         firstErrorType = updateFirstErrorType(firstErrorType,
-                            ParsedPhoneNumber
-                                .ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER);
+                                ParsedPhoneNumber
+                                        .ERROR_TYPE_FAILED_TO_VALIDATE_EXTRACTED_PHONE_NUMER);
                     }
                 } catch (NumberParseException e) {
                     logd("NumberParseException for number: {"
                             + anonymizePhoneNumberSimple(phoneNumberCandidate) + "} - {"
                             + e.getMessage() + "}");
                     firstErrorType = updateFirstErrorType(firstErrorType,
-                        ParsedPhoneNumber.ERROR_TYPE_NUMBER_PARSE_EXCEPTION);
+                            ParsedPhoneNumber.ERROR_TYPE_NUMBER_PARSE_EXCEPTION);
                 }
             }
             // TODO(b/434607712): add else statement that catches error if uri is null
@@ -173,11 +189,11 @@ public final class PhoneNumberManagerService extends IPhoneNumber.Stub {
     }
 
     private void loge(String message) {
-        Log.logToRadioBuffer(Log.ERROR, TAG, message);
+        Rlogger.e(TAG, message);
     }
 
     private void logd(String message) {
-        Log.logToRadioBuffer(Log.DEBUG, TAG, message);
+        Rlogger.d(TAG, message);
     }
 
 }

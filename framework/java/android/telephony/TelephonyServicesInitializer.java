@@ -16,6 +16,7 @@
 package android.telephony;
 
 import android.annotation.FlaggedApi;
+import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.app.SystemServiceRegistry;
 import android.content.Context;
@@ -48,6 +49,24 @@ public final class TelephonyServicesInitializer {
         try {
             if (sPhoneNumberManagerService == null) {
                 sPhoneNumberManagerService = new PhoneNumberManagerService();
+            } else {
+                Log.w(TAG, "PhoneNumberManagerService is already initialized.");
+            }
+        } catch (Throwable t) {
+            Log.e(TAG, "Error while initializing PhoneNumberManagerService: " + t);
+        }
+    }
+
+    /**
+     * Initializes telephony services with the given context. This method should be called
+     * during the phone process startup.
+     * @param context The context.
+     */
+    @FlaggedApi(com.android.telephony.flags.Flags.FLAG_SUPPORT_GET_PHONE_NUMBER_TS43)
+    public static void initialize(@NonNull Context context) {
+        try {
+            if (sPhoneNumberManagerService == null) {
+                sPhoneNumberManagerService = new PhoneNumberManagerService(context);
             } else {
                 Log.w(TAG, "PhoneNumberManagerService is already initialized.");
             }

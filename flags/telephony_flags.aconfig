@@ -8,3 +8,11 @@ flag {
   bug: "412560144"
   is_exported: true
 }
+
+flag {
+  name: "support_get_phone_number_ts43"
+  namespace: "telephony"
+  description: "logic for getting phone number ts43 and saving number"
+  bug: "435429723"
+  is_exported: true
+}
