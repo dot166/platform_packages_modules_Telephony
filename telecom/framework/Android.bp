@@ -94,10 +94,14 @@ java_sdk_library {
     ],
     srcs: [
         ":framework-telecom-aidl-export-sources",
+        ":framework-telecom-aidl-internal-sources",
         ":framework-telecom-internal-sources",
     ],
     visibility: [
         "//visibility:public",
+    ],
+    impl_library_visibility: [
+        "//packages/services/Telecomm",
     ],
     aidl: {
         include_dirs: [
