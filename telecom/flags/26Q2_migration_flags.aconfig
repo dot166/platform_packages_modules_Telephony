@@ -26,6 +26,7 @@ flag {
 # OWNER=arunvoddu TARGET=26Q2
 flag {
   name: "is_using_unidirectional_video_service"
+  is_exported: true
   namespace: "telecom"
   description: "Indicate that the call is a unidirectional video service call."
   bug: "408116489"
@@ -76,6 +77,7 @@ flag {
 flag {
   name: "send_original_number_on_place_call"
   namespace: "telecom"
+  is_exported: true
   description: "Adds an API to send the original number when placing a call."
   bug: "431102980"
   metadata {
