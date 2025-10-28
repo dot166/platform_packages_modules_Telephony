@@ -89,6 +89,7 @@ flag {
 flag {
   name: "get_last_known_cell_identity"
   namespace: "telecom"
+  is_exported: true
   description: "Formalizes the getLastKnownCellIdentity API that Telecom reliees on as a system api"
   bug: "327454165"
 }
