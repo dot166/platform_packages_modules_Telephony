@@ -439,7 +439,7 @@ package android.telecom {
     method public int getAllPhoneAccountsCount();
     method @NonNull @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public java.util.List<android.telecom.PhoneAccountHandle> getCallCapablePhoneAccounts(boolean);
     method @FlaggedApi("com.android.internal.telephony.flags.work_profile_api_split") @NonNull @RequiresPermission(allOf={android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE, android.Manifest.permission.INTERACT_ACROSS_PROFILES}) public java.util.List<android.telecom.PhoneAccountHandle> getCallCapablePhoneAccountsAcrossProfiles(boolean);
-    method @FlaggedApi("com.android.server.telecom.flags.call_connected_indicator_preference") @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public int getCallConnectedIndicatorPreference();
+    method @FlaggedApi("android.telecom.flags.call_connected_indicator_preference") @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public int getCallConnectedIndicatorPreference();
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE, android.Manifest.permission.READ_PHONE_STATE}, conditional=true) public int getCallState();
     method public android.telecom.PhoneAccountHandle getConnectionManager();
     method @Deprecated @FlaggedApi("com.android.server.telecom.flags.move_get_tty_mode_to_telephony_manager") @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public int getCurrentTtyMode();
@@ -454,14 +454,14 @@ package android.telecom {
     method @FlaggedApi("com.android.server.telecom.flags.local_voicemail") @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public boolean isLocalVoicemailEnabled(@NonNull android.telecom.PhoneAccountHandle);
     method @FlaggedApi("com.android.server.telecom.flags.local_voicemail") @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE) public boolean isLocalVoicemailSupported();
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE, android.Manifest.permission.READ_PHONE_STATE}) public boolean isRinging();
-    method @FlaggedApi("com.android.server.telecom.flags.call_connected_indicator_preference") @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setCallConnectedIndicatorPreference(int);
+    method @FlaggedApi("android.telecom.flags.call_connected_indicator_preference") @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setCallConnectedIndicatorPreference(int);
     method @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setUserSelectedOutgoingPhoneAccount(@Nullable android.telecom.PhoneAccountHandle);
     method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setVoipCallLogIntegrationEnabled(@NonNull String, boolean);
     field public static final String ACTION_CURRENT_TTY_MODE_CHANGED = "android.telecom.action.CURRENT_TTY_MODE_CHANGED";
     field public static final String ACTION_TTY_PREFERRED_MODE_CHANGED = "android.telecom.action.TTY_PREFERRED_MODE_CHANGED";
-    field @FlaggedApi("com.android.server.telecom.flags.call_connected_indicator_preference") public static final int CALL_CONNECTED_INDICATOR_NONE = 0; // 0x0
-    field @FlaggedApi("com.android.server.telecom.flags.call_connected_indicator_preference") public static final int CALL_CONNECTED_INDICATOR_TONE = 1; // 0x1
-    field @FlaggedApi("com.android.server.telecom.flags.call_connected_indicator_preference") public static final int CALL_CONNECTED_INDICATOR_VIBRATION = 2; // 0x2
+    field @FlaggedApi("android.telecom.flags.call_connected_indicator_preference") public static final int CALL_CONNECTED_INDICATOR_NONE = 0; // 0x0
+    field @FlaggedApi("android.telecom.flags.call_connected_indicator_preference") public static final int CALL_CONNECTED_INDICATOR_TONE = 1; // 0x1
+    field @FlaggedApi("android.telecom.flags.call_connected_indicator_preference") public static final int CALL_CONNECTED_INDICATOR_VIBRATION = 2; // 0x2
     field public static final int CALL_SOURCE_EMERGENCY_DIALPAD = 1; // 0x1
     field public static final int CALL_SOURCE_EMERGENCY_SHORTCUT = 2; // 0x2
     field public static final int CALL_SOURCE_UNSPECIFIED = 0; // 0x0
