@@ -48,6 +48,18 @@ flag {
   }
 }
 
+# OWNER=grantmenke TARGET=26Q2
+flag {
+  name: "call_endpoint_requested_api"
+  is_exported: true
+  namespace: "telecom"
+  description: "Add a new API InCallService#callEndpointRequested() to the InCallService interface"
+  bug: "426100640"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
 # OWNER=arunvoddu TARGET=26Q2
 flag {
   name: "is_using_crs"

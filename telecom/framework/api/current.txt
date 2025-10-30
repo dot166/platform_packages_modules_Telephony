@@ -770,6 +770,7 @@ package android.telecom {
     method public void onCallAdded(android.telecom.Call);
     method @Deprecated public void onCallAudioStateChanged(android.telecom.CallAudioState);
     method public void onCallEndpointChanged(@NonNull android.telecom.CallEndpoint);
+    method @FlaggedApi("android.telecom.flags.call_endpoint_requested_api") public void onCallEndpointRequested(@NonNull android.telecom.CallEndpoint);
     method public void onCallRemoved(android.telecom.Call);
     method public void onCanAddCallChanged(boolean);
     method public void onConnectionEvent(android.telecom.Call, String, android.os.Bundle);
