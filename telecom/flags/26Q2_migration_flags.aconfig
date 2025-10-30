@@ -152,7 +152,7 @@ flag {
 
 # OWNER=ntmyren TARGET=26Q2
 flag {
-  name: "call_details_get_associated_user_api"
+  name: "call_details_get_associated_user_api2"
   namespace: "telecom"
   description: "Adds a UserHandle to the Call Details"
   bug: "408470449"
