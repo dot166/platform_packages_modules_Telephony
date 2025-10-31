@@ -71,3 +71,15 @@ flag {
       purpose: PURPOSE_FEATURE
   }
 }
+
+# OWNER=stevestatia TARGET=26Q2
+flag {
+  name: "release_icon_as_api"
+  is_exported: true
+  namespace: "telecom"
+  description: "Flag used for unhiding the StatusBarManager's icon APIs."
+  bug: "450092456"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
