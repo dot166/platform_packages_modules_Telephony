@@ -83,3 +83,16 @@ flag {
       purpose: PURPOSE_FEATURE
   }
 }
+
+# OWNER=tgunn TARGET=26Q2
+flag {
+  name: "deprecate_self_managed_cs"
+  is_exported: true
+  namespace: "telecom"
+  description: "Deprecate self managed CS"
+  bug: "168211626"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+

@@ -838,7 +838,7 @@ package android.telecom {
     field public static final int CAPABILITY_CONNECTION_MANAGER = 1; // 0x1
     field public static final int CAPABILITY_PLACE_EMERGENCY_CALLS = 16; // 0x10
     field public static final int CAPABILITY_RTT = 4096; // 0x1000
-    field public static final int CAPABILITY_SELF_MANAGED = 2048; // 0x800
+    field @Deprecated @FlaggedApi("android.telecom.flags.deprecate_self_managed_cs") public static final int CAPABILITY_SELF_MANAGED = 2048; // 0x800
     field public static final int CAPABILITY_SIM_SUBSCRIPTION = 4; // 0x4
     field public static final int CAPABILITY_SUPPORTS_CALL_STREAMING = 524288; // 0x80000
     field public static final int CAPABILITY_SUPPORTS_TRANSACTIONAL_OPERATIONS = 262144; // 0x40000
