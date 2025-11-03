@@ -63,7 +63,7 @@ package android.telecom {
     field @FlaggedApi("com.android.server.telecom.flags.business_call_composer") public static final String EXTRA_IS_BUSINESS_CALL = "android.telecom.extra.IS_BUSINESS_CALL";
     field public static final String EXTRA_IS_SUPPRESSED_BY_DO_NOT_DISTURB = "android.telecom.extra.IS_SUPPRESSED_BY_DO_NOT_DISTURB";
     field @FlaggedApi("android.telecom.flags.is_using_unidirectional_video_service") public static final String EXTRA_IS_USING_UNIDIRECTIONAL_VIDEO_SERVICE = "android.telecom.extra.IS_USING_UNIDIRECTIONAL_VIDEO_SERVICE";
-    field @FlaggedApi("com.android.server.telecom.flags.is_using_video_ringback") public static final String EXTRA_IS_USING_VIDEO_RINGBACK = "android.telecom.extra.IS_USING_VIDEO_RINGBACK";
+    field @FlaggedApi("android.telecom.flags.is_using_video_ringback") public static final String EXTRA_IS_USING_VIDEO_RINGBACK = "android.telecom.extra.IS_USING_VIDEO_RINGBACK";
     field public static final String EXTRA_LAST_EMERGENCY_CALLBACK_TIME_MILLIS = "android.telecom.extra.LAST_EMERGENCY_CALLBACK_TIME_MILLIS";
     field public static final String EXTRA_SILENT_RINGING_REQUESTED = "android.telecom.extra.SILENT_RINGING_REQUESTED";
     field public static final String EXTRA_SUGGESTED_PHONE_ACCOUNTS = "android.telecom.extra.SUGGESTED_PHONE_ACCOUNTS";
@@ -173,7 +173,7 @@ package android.telecom {
     field public static final int PROPERTY_IS_EXTERNAL_CALL = 64; // 0x40
     field @FlaggedApi("com.android.server.telecom.flags.voip_app_actions_support") public static final int PROPERTY_IS_TRANSACTIONAL = 32768; // 0x8000
     field public static final int PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL = 2048; // 0x800
-    field @FlaggedApi("com.android.server.telecom.flags.remotely_hosted_property") public static final int PROPERTY_REMOTELY_HOSTED = 65536; // 0x10000
+    field @FlaggedApi("android.telecom.flags.remotely_hosted_property") public static final int PROPERTY_REMOTELY_HOSTED = 65536; // 0x10000
     field public static final int PROPERTY_RTT = 1024; // 0x400
     field public static final int PROPERTY_SELF_MANAGED = 256; // 0x100
     field public static final int PROPERTY_VOIP_AUDIO_MODE = 4096; // 0x1000
@@ -319,7 +319,7 @@ package android.telecom {
     method @FlaggedApi("android.telecom.flags.send_original_number_on_place_call") public void onPlaceCall(@NonNull android.net.Uri, @NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     method public void onRedirectionTimeout();
     method public final boolean onUnbind(@NonNull android.content.Intent);
-    method @FlaggedApi("com.android.server.telecom.flags.place_call_to_alternate_number") public final void placeCallToAlternateNumber(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
+    method @FlaggedApi("android.telecom.flags.place_call_to_alternate_number") public final void placeCallToAlternateNumber(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     method public final void placeCallUnmodified();
     method public final void redirectCall(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     field public static final String SERVICE_INTERFACE = "android.telecom.CallRedirectionService";
@@ -770,6 +770,7 @@ package android.telecom {
     method public void onCallAdded(android.telecom.Call);
     method @Deprecated public void onCallAudioStateChanged(android.telecom.CallAudioState);
     method public void onCallEndpointChanged(@NonNull android.telecom.CallEndpoint);
+    method @FlaggedApi("android.telecom.flags.call_endpoint_requested_api") public void onCallEndpointRequested(@NonNull android.telecom.CallEndpoint);
     method public void onCallRemoved(android.telecom.Call);
     method public void onCanAddCallChanged(boolean);
     method public void onConnectionEvent(android.telecom.Call, String, android.os.Bundle);
@@ -837,7 +838,7 @@ package android.telecom {
     field public static final int CAPABILITY_CONNECTION_MANAGER = 1; // 0x1
     field public static final int CAPABILITY_PLACE_EMERGENCY_CALLS = 16; // 0x10
     field public static final int CAPABILITY_RTT = 4096; // 0x1000
-    field public static final int CAPABILITY_SELF_MANAGED = 2048; // 0x800
+    field @Deprecated @FlaggedApi("android.telecom.flags.deprecate_self_managed_cs") public static final int CAPABILITY_SELF_MANAGED = 2048; // 0x800
     field public static final int CAPABILITY_SIM_SUBSCRIPTION = 4; // 0x4
     field public static final int CAPABILITY_SUPPORTS_CALL_STREAMING = 524288; // 0x80000
     field public static final int CAPABILITY_SUPPORTS_TRANSACTIONAL_OPERATIONS = 262144; // 0x40000

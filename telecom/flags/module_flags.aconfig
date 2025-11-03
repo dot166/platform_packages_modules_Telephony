@@ -48,6 +48,18 @@ flag {
   }
 }
 
+# OWNER=grantmenke TARGET=26Q2
+flag {
+  name: "call_endpoint_requested_api"
+  is_exported: true
+  namespace: "telecom"
+  description: "Add a new API InCallService#callEndpointRequested() to the InCallService interface"
+  bug: "426100640"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
 # OWNER=arunvoddu TARGET=26Q2
 flag {
   name: "is_using_crs"
@@ -59,3 +71,28 @@ flag {
       purpose: PURPOSE_FEATURE
   }
 }
+
+# OWNER=stevestatia TARGET=26Q2
+flag {
+  name: "release_icon_as_api"
+  is_exported: true
+  namespace: "telecom"
+  description: "Flag used for unhiding the StatusBarManager's icon APIs."
+  bug: "450092456"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
+# OWNER=tgunn TARGET=26Q2
+flag {
+  name: "deprecate_self_managed_cs"
+  is_exported: true
+  namespace: "telecom"
+  description: "Deprecate self managed CS"
+  bug: "168211626"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
