@@ -835,6 +835,7 @@ package android.telecom {
     field public static final int CAPABILITY_CALL_COMPOSER = 32768; // 0x8000
     field public static final int CAPABILITY_CALL_PROVIDER = 2; // 0x2
     field public static final int CAPABILITY_CALL_SUBJECT = 64; // 0x40
+    field @FlaggedApi("android.telecom.flags.change_rtt_to_audio") public static final int CAPABILITY_CHANGE_RTT_CALL_TO_AUDIO_CALL = 1048576; // 0x100000
     field public static final int CAPABILITY_CONNECTION_MANAGER = 1; // 0x1
     field public static final int CAPABILITY_PLACE_EMERGENCY_CALLS = 16; // 0x10
     field public static final int CAPABILITY_RTT = 4096; // 0x1000
