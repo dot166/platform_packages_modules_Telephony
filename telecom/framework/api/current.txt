@@ -205,6 +205,7 @@ package android.telecom {
     field @NonNull public static final android.os.Parcelable.Creator<android.telecom.CallAttributes> CREATOR;
     field public static final int DIRECTION_INCOMING = 1; // 0x1
     field public static final int DIRECTION_OUTGOING = 2; // 0x2
+    field @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs_stage2") public static final int MESSAGING = 3; // 0x3
     field public static final int SUPPORTS_SET_INACTIVE = 2; // 0x2
     field public static final int SUPPORTS_STREAM = 4; // 0x4
     field public static final int SUPPORTS_TRANSFER = 8; // 0x8
@@ -1117,6 +1118,7 @@ package android.telecom {
     field @FlaggedApi("com.android.server.telecom.flags.add_call_uri_for_missed_calls") public static final String EXTRA_CALL_LOG_URI = "android.telecom.extra.CALL_LOG_URI";
     field public static final String EXTRA_CALL_NETWORK_TYPE = "android.telecom.extra.CALL_NETWORK_TYPE";
     field public static final String EXTRA_CALL_SUBJECT = "android.telecom.extra.CALL_SUBJECT";
+    field @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs_stage2") public static final String EXTRA_CALL_TYPE = "android.telecom.extra.CALL_TYPE";
     field public static final String EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME = "android.telecom.extra.CHANGE_DEFAULT_DIALER_PACKAGE_NAME";
     field public static final String EXTRA_DEFAULT_CALL_SCREENING_APP_COMPONENT_NAME = "android.telecom.extra.DEFAULT_CALL_SCREENING_APP_COMPONENT_NAME";
     field public static final String EXTRA_DISCONNECT_CAUSE = "android.telecom.extra.DISCONNECT_CAUSE";
