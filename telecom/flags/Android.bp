@@ -28,6 +28,22 @@ aconfig_declarations {
     ],
 }
 
+aconfig_declarations {
+    name: "telecom_bugfix_flags",
+    package: "com.android.internal.telecom.flags",
+    container: "com.android.telephonycore",
+    srcs: [
+        "bugfix_flags.aconfig",
+    ],
+}
+
+java_aconfig_library {
+    name: "telecom_module_bugfix_flags-java",
+    defaults: ["framework-minus-apex-aconfig-java-defaults"],
+    min_sdk_version: "36",
+    aconfig_declarations: "telecom_bugfix_flags",
+}
+
 java_aconfig_library {
     name: "telecom_module_flags-java",
     defaults: ["framework-minus-apex-aconfig-java-defaults"],
