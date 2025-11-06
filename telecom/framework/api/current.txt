@@ -196,9 +196,11 @@ package android.telecom {
     method @NonNull public android.net.Uri getAddress();
     method public int getCallCapabilities();
     method public int getCallType();
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") @Nullable public android.net.Uri getContactUri();
     method public int getDirection();
     method @NonNull public CharSequence getDisplayName();
     method @NonNull public android.telecom.PhoneAccountHandle getPhoneAccountHandle();
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public boolean isGroupCall();
     method @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs") public boolean isLogExcluded();
     method public void writeToParcel(@Nullable android.os.Parcel, int);
     field public static final int AUDIO_CALL = 1; // 0x1
@@ -217,6 +219,8 @@ package android.telecom {
     method @NonNull public android.telecom.CallAttributes build();
     method @NonNull public android.telecom.CallAttributes.Builder setCallCapabilities(int);
     method @NonNull public android.telecom.CallAttributes.Builder setCallType(int);
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") @NonNull public android.telecom.CallAttributes.Builder setContactUri(@NonNull android.net.Uri);
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") @NonNull public android.telecom.CallAttributes.Builder setIsGroupCall(boolean);
     method @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs") @NonNull public android.telecom.CallAttributes.Builder setLogExcluded(boolean);
   }
 
