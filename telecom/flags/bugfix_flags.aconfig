@@ -1,0 +1,13 @@
+package: "com.android.internal.telecom.flags"
+container: "com.android.telephonycore"
+
+# OWNER=grantmenke TARGET=26Q2
+ flag {
+   name: "get_main_user_for_block_checker"
+   namespace: "telecom"
+   description: "When enabled, the block checker will use the main user's context instead of the call's associated user."
+   bug: "445311509"
+   metadata {
+       purpose: PURPOSE_BUGFIX
+   }
+ }
