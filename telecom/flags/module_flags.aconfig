@@ -60,6 +60,18 @@ flag {
   }
 }
 
+# OWNER=tgunn TARGET=26Q2
+flag {
+  name: "change_rtt_to_audio"
+  is_exported: true
+  namespace: "telecom"
+  description: "Phone account capability to determine if rtt to audio transition is possible."
+  bug: "425992164"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
 # OWNER=arunvoddu TARGET=26Q2
 flag {
   name: "is_using_crs"
