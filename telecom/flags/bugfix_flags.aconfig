@@ -11,3 +11,14 @@ container: "com.android.telephonycore"
        purpose: PURPOSE_BUGFIX
    }
  }
+
+# OWNER=tjstuart TARGET=26Q1
+flag {
+  name: "disconnect_on_timeout_while_disconnecting"
+  namespace: "telecom"
+  description: "When a call is disconnecting, if the disconnect transaction times out, force disconnect the call."
+  bug: "437864306"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
