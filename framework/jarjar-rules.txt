@@ -1,3 +1,7 @@
 rule kotlin.** android.telephony.@0
 rule com.android.i18n.phonenumbers.**  android.telephony.@0
 rule androidx.annotation.** android.telephony.@0
+rule com.android.libraries.entitlement.** com.android.internal.telephony.@0
+rule com.google.common.** com.android.internal.telephony.@0
+rule javax.annotation.** com.android.internal.telephony.@0
+rule com.google.thirdparty.** com.android.internal.telephony.@0

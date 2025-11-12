@@ -59,10 +59,15 @@ java_sdk_library {
     apex_available: [
         "com.android.telephonycore",
     ],
+    libs: [
+        "framework-connectivity.stubs.module_lib",
+        "androidx.annotation_annotation",
+    ],
     static_libs: [
         "telephony_aconfig_flags_lib",
         "framework-telephony-aidl-stubs",
         "telephony_libphonenumber_nogeocoder",
+        "service-entitlement",
     ],
     min_sdk_version: "36",
     impl_library_visibility: [
@@ -84,10 +89,15 @@ java_sdk_library {
     apex_available: [
         "//apex_available:platform",
     ],
+    libs: [
+        "framework-connectivity.stubs.module_lib",
+        "androidx.annotation_annotation",
+    ],
     static_libs: [
         "telephony_aconfig_flags_lib",
         "framework-telephony-aidl-stubs",
         "telephony_libphonenumber_nogeocoder",
+        "service-entitlement",
     ],
     min_sdk_version: "36",
     impl_library_visibility: [
