@@ -22,3 +22,14 @@ flag {
       purpose: PURPOSE_BUGFIX
   }
 }
+
+# OWNER=pmadapurmath TARGET=26Q2
+flag {
+  name: "skip_audio_update_to_ics"
+  namespace: "telecom"
+  description: "If we're in unfocused state with no calls (or all disconnected) we should skip sending an audio state update to the ICS."
+  bug: "459266282"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
