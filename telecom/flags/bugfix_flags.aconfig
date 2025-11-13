@@ -33,3 +33,14 @@ flag {
       purpose: PURPOSE_BUGFIX
   }
 }
+
+# OWNER=tjstuart TARGET=26Q2
+flag {
+  name: "voip_background_activity_launch_fix"
+  namespace: "telecom"
+  description: "Fixes a bug where voip apps could not launch InCall UI when calls were answered from a bluetooth surface"
+  bug: "375692816"
+  metadata {
+       purpose: PURPOSE_BUGFIX
+  }
+}
