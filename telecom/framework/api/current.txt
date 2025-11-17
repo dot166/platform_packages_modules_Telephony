@@ -253,6 +253,8 @@ package android.telecom {
     method @FlaggedApi("com.android.server.telecom.flags.transactional_video_state") public void requestVideoState(int, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<java.lang.Void,android.telecom.CallException>);
     method public void sendEvent(@NonNull String, @NonNull android.os.Bundle);
     method public void setActive(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<java.lang.Void,android.telecom.CallException>);
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public void setContactUri(@Nullable android.net.Uri, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<java.lang.Void,android.telecom.CallException>);
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public void setGroupCallState(boolean, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<java.lang.Void,android.telecom.CallException>);
     method public void setInactive(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<java.lang.Void,android.telecom.CallException>);
     method public void startCallStreaming(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<java.lang.Void,android.telecom.CallException>);
   }
