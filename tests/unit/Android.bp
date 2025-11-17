@@ -33,12 +33,18 @@ android_test {
     srcs: [
         "src/**/*.java",
     ],
+    libs: [
+        "framework-connectivity.stubs.module_lib",
+    ],
 
     static_libs: [
         "androidx.test.runner",
         "junit",
+        "mockito-target-minus-junit4",
+        "framework-telephony.impl",
         "telephony_aconfig_flags_lib",
         "flag-junit",
+        "frameworks-base-testutils",
     ],
 
     // Tag this module as an mts test artifact

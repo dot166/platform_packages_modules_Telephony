@@ -15,40 +15,23 @@
 //
 
 package {
+    default_team: "trendy_team_fwk_telephony",
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
 android_test {
-    enabled: select(release_flag("RELEASE_TELEPHONY_MODULE"), {
-        true: true,
-        false: false,
-    }),
-
-    name: "CtsTelephonyModuleTests",
-    team: "trendy_team_fwk_telephony",
-    platform_apis: true,
-    min_sdk_version: "36",
-    sdk_version: "test_current",
-
+    name: "Ts43EntitlementTestServerApp",
     srcs: [
         "src/**/*.java",
     ],
-    libs: [
-        "framework-telephony.stubs.module_lib",
-    ],
 
+    resource_dirs: ["res"],
+
+    platform_apis: true,
     static_libs: [
-        "androidx.test.runner",
-        "junit",
-        "telephony_aconfig_flags_lib",
-        "flag-junit",
+        "androidx.appcompat_appcompat",
     ],
 
-    // Tag this module as an mts test artifact
-    test_suites: [
-        "cts",
-        "general-tests",
-        "mts-telephonycore",
-        "mcts-telephonycore",
-    ],
+    certificate: "platform",
+    privileged: true,
 }
