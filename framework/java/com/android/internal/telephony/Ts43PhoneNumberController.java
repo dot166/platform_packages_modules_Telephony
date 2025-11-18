@@ -216,7 +216,11 @@ public class Ts43PhoneNumberController extends Handler {
             if (phoneNumber != null && !phoneNumber.isEmpty()) {
                 Rlogger.d(TAG, "Successfully retrieved phone number for subId: " + subId);
                 String formattedNumber = formatNumber(phoneNumber, subId);
-                mSubscriptionManager.setTs43PhoneNumber(subId, formattedNumber);
+                try {
+                    mSubscriptionManager.setTs43PhoneNumber(subId, formattedNumber);
+                } catch (java.lang.NoSuchMethodError e) {
+                    Rlogger.e(TAG, "setTs43PhoneNumber API does not exist");
+                }
             }
             // On success, release the lock and reset all states.
             queryCompleted(subId);
