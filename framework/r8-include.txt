@@ -1,0 +1,4 @@
+com.android.internal.telephony.com.android.libraries.entitlement.**
+com.android.internal.telephony.com.google.common.**
+com.android.internal.telephony.javax.annotation.**
+com.android.internal.telephony.com.google.thirdparty.**
