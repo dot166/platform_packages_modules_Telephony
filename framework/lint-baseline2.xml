@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.4.0-alpha08" type="baseline" client="" dependencies="true" name="" variant="all" version="8.4.0-alpha08">
-
+<issues
+    format="6"
+    by="lint 8.4.0-alpha08"
+    type="baseline"
+    client=""
+    dependencies="true"
+    name=""
+    variant="all"
+    version="8.4.0-alpha08">
     <issue
         id="NewApi"
         message="Call requires API level 36.1 (current min is 36): `android.telephony.TelephonyFrameworkInitializer#getTelephonyServiceManager`"
@@ -75,6 +82,50 @@
         <location
             file="packages/modules/Telephony/framework/java/com/android/internal/telephony/PhoneNumberManagerService.java"
             line="64"
+            column="46"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 36.1 (current min is 36): `android.telephony.TelephonyFrameworkInitializer#getTelephonyServiceManager`"
+        errorLine1="                .getTelephonyServiceManager();"
+        errorLine2="                 ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/com/android/internal/telephony/PhoneNumberManagerService.java"
+            line="66"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 36.1 (current min is 36): `android.os.TelephonyServiceManager#getPhoneNumberServiceRegisterer`"
+        errorLine1="                telephonyServiceManager.getPhoneNumberServiceRegisterer();"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/com/android/internal/telephony/PhoneNumberManagerService.java"
+            line="73"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 36.1 (current min is 36): `android.os.TelephonyServiceManager.ServiceRegisterer#get`"
+        errorLine1="        if (phoneNumberServiceRegisterer.get() == null) {"
+        errorLine2="                                         ~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/com/android/internal/telephony/PhoneNumberManagerService.java"
+            line="74"
+            column="42"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 36.1 (current min is 36): `android.os.TelephonyServiceManager.ServiceRegisterer#publishBinderService`"
+        errorLine1="                phoneNumberServiceRegisterer.publishBinderService(this);"
+        errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/com/android/internal/telephony/PhoneNumberManagerService.java"
+            line="76"
             column="46"/>
     </issue>
 
