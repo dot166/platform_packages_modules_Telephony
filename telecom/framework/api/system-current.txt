@@ -118,6 +118,7 @@ package android.telecom {
     method @Deprecated public final long getConnectTimeMillis();
     method public android.telecom.Connection getPrimaryConnection();
     method @NonNull public final String getTelecomCallId();
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public boolean isConferenceState();
     method @Deprecated public void onAudioStateChanged(android.telecom.AudioState);
     method @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public final void setAddress(@NonNull android.net.Uri, int);
     method public final void setCallerDisplayName(@NonNull String, int);
