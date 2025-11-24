@@ -27,6 +27,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.os.Build;
 import android.os.Handler;
 import android.os.PersistableBundle;
 import android.os.test.TestLooper;
@@ -123,6 +124,18 @@ public class Ts43PhoneNumberControllerTest {
         }
     }
 
+    private void verifySetTs43PhoneNumberIsCalled(int subId, String number) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN) {
+            verify(mSubscriptionManager).setTs43PhoneNumber(subId, number);
+        }
+    }
+
+    private void verifySetTs43PhoneNumberIsNotCalled() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN) {
+            verify(mSubscriptionManager, never()).setTs43PhoneNumber(anyInt(), any());
+        }
+    }
+
     @Test
     public void testFetch_success_formatsNumberCorrectly() throws ServiceEntitlementException {
         givenTs43Enabled(true);
@@ -135,7 +148,7 @@ public class Ts43PhoneNumberControllerTest {
 
         // Verify
         verify(mTs43PhoneNumberRetriever).fetchPhoneNumber(SUB_ID);
-        verify(mSubscriptionManager).setTs43PhoneNumber(SUB_ID, FAKE_E164_PHONE_NUMBER);
+        verifySetTs43PhoneNumberIsCalled(SUB_ID, FAKE_E164_PHONE_NUMBER);
     }
 
     @Test
@@ -153,7 +166,7 @@ public class Ts43PhoneNumberControllerTest {
 
         // Verify
         verify(mTs43PhoneNumberRetriever).fetchPhoneNumber(SUB_ID);
-        verify(mSubscriptionManager).setTs43PhoneNumber(SUB_ID, invalidNumber);
+        verifySetTs43PhoneNumberIsCalled(SUB_ID, invalidNumber);
     }
 
     @Test
@@ -200,7 +213,7 @@ public class Ts43PhoneNumberControllerTest {
 
         // Then: The pending fetch task is executed and succeeds.
         verify(mTs43PhoneNumberRetriever).fetchPhoneNumber(SUB_ID);
-        verify(mSubscriptionManager).setTs43PhoneNumber(SUB_ID, FAKE_E164_PHONE_NUMBER);
+        verifySetTs43PhoneNumberIsCalled(SUB_ID, FAKE_E164_PHONE_NUMBER);
     }
     @Test
     public void testFetch_permanentError_doesNotRetry() throws ServiceEntitlementException {
@@ -242,7 +255,7 @@ public class Ts43PhoneNumberControllerTest {
 
         // Verify that the first attempt failed
         verify(mTs43PhoneNumberRetriever, times(1)).fetchPhoneNumber(SUB_ID);
-        verify(mSubscriptionManager, never()).setTs43PhoneNumber(anyInt(), any());
+        verifySetTs43PhoneNumberIsNotCalled();
 
         // Advance the looper by less than the Retry-After time and verify that no retry occur
         mTestLooper.moveTimeForward(retryAfterSeconds * 1000 - 2000);
@@ -255,7 +268,7 @@ public class Ts43PhoneNumberControllerTest {
 
         // Verify that the second attempt (retry) was successful
         verify(mTs43PhoneNumberRetriever, times(2)).fetchPhoneNumber(SUB_ID);
-        verify(mSubscriptionManager).setTs43PhoneNumber(SUB_ID, FAKE_E164_PHONE_NUMBER);
+        verifySetTs43PhoneNumberIsCalled(SUB_ID, FAKE_E164_PHONE_NUMBER);
     }
 
     @Test
@@ -275,7 +288,7 @@ public class Ts43PhoneNumberControllerTest {
 
         // Verify first attempt failed
         verify(mTs43PhoneNumberRetriever, times(1)).fetchPhoneNumber(SUB_ID);
-        verify(mSubscriptionManager, never()).setTs43PhoneNumber(anyInt(), any());
+        verifySetTs43PhoneNumberIsNotCalled();
 
         // Advance looper time to trigger the retry
         mTestLooper.moveTimeForward(2000); // INITIAL_DELAY_MILLIS
@@ -283,6 +296,6 @@ public class Ts43PhoneNumberControllerTest {
 
         // Verify second attempt (the retry) succeeded
         verify(mTs43PhoneNumberRetriever, times(2)).fetchPhoneNumber(SUB_ID);
-        verify(mSubscriptionManager).setTs43PhoneNumber(SUB_ID, FAKE_E164_PHONE_NUMBER);
+        verifySetTs43PhoneNumberIsCalled(SUB_ID, FAKE_E164_PHONE_NUMBER);
     }
 }

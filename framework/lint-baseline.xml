@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues
+    format="6"
+    by="lint 8.4.0-alpha08"
+    type="baseline"
+    client=""
+    dependencies="true"
+    name=""
+    variant="all"
+    version="8.4.0-alpha08">
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mPhoneNumber`"
+        errorLine1="        dest.writeString(mPhoneNumber);"
+        errorLine2="                         ~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="57"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mErrorCode`"
+        errorLine1="        dest.writeInt(mErrorCode);"
+        errorLine2="                      ~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="58"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="        dest.writeBoolean(mIsValidNumber);"
+        errorLine2="                          ~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="59"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mPhoneNumber`"
+        errorLine1="        return Objects.equals(mPhoneNumber, that.mPhoneNumber)"
+        errorLine2="                              ~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="66"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mPhoneNumber`"
+        errorLine1="        return Objects.equals(mPhoneNumber, that.mPhoneNumber)"
+        errorLine2="                                            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="66"
+            column="45"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mErrorCode`"
+        errorLine1="            &amp;&amp; Objects.equals(mErrorCode, that.mErrorCode)"
+        errorLine2="                              ~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="67"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mErrorCode`"
+        errorLine1="            &amp;&amp; Objects.equals(mErrorCode, that.mErrorCode)"
+        errorLine2="                                          ~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="67"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="            &amp;&amp; Objects.equals(mIsValidNumber, that.mIsValidNumber);"
+        errorLine2="                              ~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="68"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="            &amp;&amp; Objects.equals(mIsValidNumber, that.mIsValidNumber);"
+        errorLine2="                                              ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="68"
+            column="47"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mErrorCode`"
+        errorLine1="        return Objects.hash(mPhoneNumber, mErrorCode, mIsValidNumber);"
+        errorLine2="                                          ~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="73"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="        return Objects.hash(mPhoneNumber, mErrorCode, mIsValidNumber);"
+        errorLine2="                                                      ~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="73"
+            column="55"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mPhoneNumber`"
+        errorLine1="        return Objects.hash(mPhoneNumber, mErrorCode, mIsValidNumber);"
+        errorLine2="                            ~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="73"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mPhoneNumber`"
+        errorLine1="            + anonymizePhoneNumber(mPhoneNumber)"
+        errorLine2="                                   ~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="85"
+            column="36"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mErrorCode`"
+        errorLine1="            + mErrorCode"
+        errorLine2="              ~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="87"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="            + mIsValidNumber"
+        errorLine2="              ~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="89"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="        if (!mIsValidNumber) {"
+        errorLine2="             ~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="120"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mPhoneNumber`"
+        errorLine1="        return mPhoneNumber;"
+        errorLine2="               ~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="123"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="        return mIsValidNumber;"
+        errorLine2="               ~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="130"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mErrorCode`"
+        errorLine1="        return mErrorCode;"
+        errorLine2="               ~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="139"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mPhoneNumber`"
+        errorLine1="        this.mPhoneNumber = phoneNumber;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="149"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mErrorCode`"
+        errorLine1="        this.mErrorCode = errorCode;"
+        errorLine2="        ~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="150"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Field requires API level 36.1 (current min is 36): `android.telephony.ParsedPhoneNumber#mIsValidNumber`"
+        errorLine1="        this.mIsValidNumber = isValidPhoneNumber;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/ParsedPhoneNumber.java"
+            line="151"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Class requires API level 36.1 (current min is 36): `android.telephony.PhoneNumberManager`"
+        errorLine1="                PhoneNumberManager.class, PhoneNumberManager::new);"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/TelephonyServicesInitializer.java"
+            line="70"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Method reference requires API level 36.1 (current min is 36): `PhoneNumberManager::new`"
+        errorLine1="                PhoneNumberManager.class, PhoneNumberManager::new);"
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/TelephonyServicesInitializer.java"
+            line="70"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Class requires API level 36.1 (current min is 36): `android.telephony.PhoneNumberManager`"
+        errorLine1="                PhoneNumberManager.class, PhoneNumberManager::new);"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/TelephonyServicesInitializer.java"
+            line="89"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Method reference requires API level 36.1 (current min is 36): `PhoneNumberManager::new`"
+        errorLine1="                PhoneNumberManager.class, PhoneNumberManager::new);"
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Telephony/framework/java/android/telephony/TelephonyServicesInitializer.java"
+            line="89"
+            column="43"/>
+    </issue>
+
+</issues>

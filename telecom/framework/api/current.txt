@@ -1099,6 +1099,7 @@ package android.telecom {
     field @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs") public static final String ACTION_CALL_BACK = "android.telecom.action.CALL_BACK";
     field public static final String ACTION_CHANGE_DEFAULT_DIALER = "android.telecom.action.CHANGE_DEFAULT_DIALER";
     field public static final String ACTION_CHANGE_PHONE_ACCOUNTS = "android.telecom.action.CHANGE_PHONE_ACCOUNTS";
+    field @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public static final String ACTION_CONFIGURE_CALL_LOG_INTEGRATION = "android.telecom.action.CONFIGURE_CALL_LOG_INTEGRATION";
     field public static final String ACTION_CONFIGURE_PHONE_ACCOUNT = "android.telecom.action.CONFIGURE_PHONE_ACCOUNT";
     field public static final String ACTION_DEFAULT_CALL_SCREENING_APP_CHANGED = "android.telecom.action.DEFAULT_CALL_SCREENING_APP_CHANGED";
     field public static final String ACTION_DEFAULT_DIALER_CHANGED = "android.telecom.action.DEFAULT_DIALER_CHANGED";
@@ -1110,6 +1111,7 @@ package android.telecom {
     field public static final String ACTION_SHOW_CALL_SETTINGS = "android.telecom.action.SHOW_CALL_SETTINGS";
     field public static final String ACTION_SHOW_MISSED_CALLS_NOTIFICATION = "android.telecom.action.SHOW_MISSED_CALLS_NOTIFICATION";
     field public static final String ACTION_SHOW_RESPOND_VIA_SMS_SETTINGS = "android.telecom.action.SHOW_RESPOND_VIA_SMS_SETTINGS";
+    field @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public static final String ACTION_VOIP_CALL_LOG_PREFERENCE = "android.telecom.action.VOIP_CALL_LOG_PREFERENCE";
     field public static final char DTMF_CHARACTER_PAUSE = 44; // 0x002c ','
     field public static final char DTMF_CHARACTER_WAIT = 59; // 0x003b ';'
     field public static final int DURATION_LONG = 3; // 0x3
@@ -1146,6 +1148,7 @@ package android.telecom {
     field public static final String EXTRA_START_CALL_WITH_VIDEO_STATE = "android.telecom.extra.START_CALL_WITH_VIDEO_STATE";
     field public static final String EXTRA_USE_ASSISTED_DIALING = "android.telecom.extra.USE_ASSISTED_DIALING";
     field @FlaggedApi("com.android.server.telecom.flags.integrated_call_logs") public static final String EXTRA_UUID = "android.telecom.extra.UUID";
+    field @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public static final String EXTRA_VOIP_CALL_LOG_PREFERENCE_STATUS = "android.telecom.extra.VOIP_CALL_LOG_PREFERENCE_STATUS";
     field public static final String GATEWAY_ORIGINAL_ADDRESS = "android.telecom.extra.GATEWAY_ORIGINAL_ADDRESS";
     field public static final String GATEWAY_PROVIDER_PACKAGE = "android.telecom.extra.GATEWAY_PROVIDER_PACKAGE";
     field public static final String METADATA_INCLUDE_EXTERNAL_CALLS = "android.telecom.INCLUDE_EXTERNAL_CALLS";
