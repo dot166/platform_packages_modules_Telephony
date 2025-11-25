@@ -121,6 +121,7 @@ package android.telecom {
     method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public boolean isConferenceState();
     method @Deprecated public void onAudioStateChanged(android.telecom.AudioState);
     method @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public final void setAddress(@NonNull android.net.Uri, int);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public final void setCallDirection(int);
     method public final void setCallerDisplayName(@NonNull String, int);
     method @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void setConferenceState(boolean);
     method @Deprecated public final void setConnectTimeMillis(long);
