@@ -44,3 +44,14 @@ flag {
        purpose: PURPOSE_BUGFIX
   }
 }
+
+# OWNER=gargakash TARGET=26Q2
+flag {
+  name: "use_are_same_phone_number"
+  namespace: "telecom"
+  description: "Use PhoneNumberUtils.areSamePhoneNumber instead of compare"
+  bug: "451863406"
+  metadata {
+    purpose: PURPOSE_BUGFIX
+  }
+}
