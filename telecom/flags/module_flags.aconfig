@@ -96,6 +96,18 @@ flag {
   }
 }
 
+# OWNER=breadley TARGET=26Q2
+flag {
+  name: "telecom_mainline_api"
+  is_exported: true
+  namespace: "telecom"
+  description: "API required to release telecom as a Mainline Module"
+  bug: "443131372"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
 # OWNER=tgunn TARGET=26Q2
 flag {
   name: "deprecate_self_managed_cs"
