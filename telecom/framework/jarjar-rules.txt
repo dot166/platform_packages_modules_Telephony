@@ -1,4 +1,6 @@
 rule com.android.modules.** com.android.internal.telecom.jarjar.@0
+rule android.telecom.Annotation com.android.internal.telecom.jarjar.@0
+rule android.telecom.Annotation$* com.android.internal.telecom.jarjar.@0
 rule android.telephony.Annotation com.android.internal.telecom.jarjar.@0
 rule android.telephony.Annotation$* com.android.internal.telecom.jarjar.@0
 rule com.android.internal.** com.android.internal.telecom.jarjar.@0
