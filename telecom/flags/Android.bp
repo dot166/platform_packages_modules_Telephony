@@ -47,7 +47,7 @@ java_aconfig_library {
 java_aconfig_library {
     name: "telecom_module_flags-java",
     defaults: ["framework-minus-apex-aconfig-java-defaults"],
-    min_sdk_version: "36",
+    min_sdk_version: "30",
     apex_available: [
         "com.android.telephonycore",
     ],
@@ -57,7 +57,11 @@ java_aconfig_library {
 java_aconfig_library {
     name: "telecom_module_flags-export-java",
     defaults: ["framework-minus-apex-aconfig-java-defaults"],
-    min_sdk_version: "36",
+    min_sdk_version: "30",
+    apex_available: [
+        "com.android.permission",
+        "//apex_available:platform",
+    ],
     aconfig_declarations: "telecom_module_flags",
     mode: "exported",
 }
