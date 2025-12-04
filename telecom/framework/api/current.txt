@@ -706,6 +706,10 @@ package android.telecom {
     method public final java.util.Collection<android.telecom.Connection> getAllConnections();
     method public final android.os.IBinder onBind(android.content.Intent);
     method public void onConference(android.telecom.Connection, android.telecom.Connection);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConferenceAdded(@NonNull android.telecom.Conference);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConferenceRemoved(@NonNull android.telecom.Conference);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConnectionAdded(@NonNull android.telecom.Connection);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConnectionRemoved(@NonNull android.telecom.Connection);
     method public void onConnectionServiceFocusGained();
     method public void onConnectionServiceFocusLost();
     method @FlaggedApi("com.android.server.telecom.flags.telecom_resolve_hidden_dependencies") public void onCreateConferenceComplete(@NonNull android.telecom.Conference);
