@@ -157,6 +157,7 @@ flag {
 flag {
   name: "call_details_get_associated_user_api2"
   namespace: "telecom"
+  is_exported: true
   description: "Adds a UserHandle to the Call Details"
   bug: "408470449"
   metadata {

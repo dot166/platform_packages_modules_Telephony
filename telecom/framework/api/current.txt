@@ -113,7 +113,7 @@ package android.telecom {
     method public boolean can(int);
     method public static String capabilitiesToString(int);
     method public android.telecom.PhoneAccountHandle getAccountHandle();
-    method @FlaggedApi("com.android.server.telecom.flags.call_details_get_associated_user_api") @NonNull public android.os.UserHandle getAssociatedUser();
+    method @FlaggedApi("android.telecom.flags.call_details_get_associated_user_api2") @NonNull public android.os.UserHandle getAssociatedUser();
     method public int getCallCapabilities();
     method public int getCallDirection();
     method public int getCallProperties();
@@ -490,6 +490,8 @@ package android.telecom {
     method public void onStopDtmfTone();
     method public void onStopRtt();
     method public void onTrackedByNonUiService(boolean);
+    method @FlaggedApi("android.telecom.flags.explicit_call_transfer") public void onTransfer(@NonNull android.net.Uri, boolean);
+    method @FlaggedApi("android.telecom.flags.explicit_call_transfer") public void onTransfer(@NonNull android.telecom.Connection);
     method public void onUnhold();
     method public void onUsingAlternativeUi(boolean);
     method public static String propertiesToString(int);
@@ -575,6 +577,8 @@ package android.telecom {
     field public static final int CAPABILITY_SUPPORT_DEFLECT = 33554432; // 0x2000000
     field public static final int CAPABILITY_SUPPORT_HOLD = 2; // 0x2
     field public static final int CAPABILITY_SWAP_CONFERENCE = 8; // 0x8
+    field @FlaggedApi("android.telecom.flags.explicit_call_transfer") public static final int CAPABILITY_TRANSFER = 134217728; // 0x8000000
+    field @FlaggedApi("android.telecom.flags.explicit_call_transfer") public static final int CAPABILITY_TRANSFER_CONSULTATIVE = 268435456; // 0x10000000
     field public static final String EVENT_CALL_HOLD_FAILED = "android.telecom.event.CALL_HOLD_FAILED";
     field public static final String EVENT_CALL_MERGE_FAILED = "android.telecom.event.CALL_MERGE_FAILED";
     field public static final String EVENT_CALL_PULL_FAILED = "android.telecom.event.CALL_PULL_FAILED";
@@ -702,6 +706,10 @@ package android.telecom {
     method public final java.util.Collection<android.telecom.Connection> getAllConnections();
     method public final android.os.IBinder onBind(android.content.Intent);
     method public void onConference(android.telecom.Connection, android.telecom.Connection);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConferenceAdded(@NonNull android.telecom.Conference);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConferenceRemoved(@NonNull android.telecom.Conference);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConnectionAdded(@NonNull android.telecom.Connection);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onConnectionRemoved(@NonNull android.telecom.Connection);
     method public void onConnectionServiceFocusGained();
     method public void onConnectionServiceFocusLost();
     method @FlaggedApi("com.android.server.telecom.flags.telecom_resolve_hidden_dependencies") public void onCreateConferenceComplete(@NonNull android.telecom.Conference);

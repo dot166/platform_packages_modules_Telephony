@@ -45,6 +45,17 @@ flag {
   }
 }
 
+# OWNER=pmadapurmath TARGET=26Q2
+flag {
+  name: "quick_responses_backup"
+  namespace: "telecom"
+  description: "Support backup/restore for quick responses"
+  bug: "458170745"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
+
 # OWNER=gargakash TARGET=26Q2
 flag {
   name: "use_are_same_phone_number"
