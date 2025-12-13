@@ -1,0 +1,12 @@
+rule kotlin.** com.android.server.telecom.jarjar.@0
+rule kotlinx.** com.android.server.telecom.jarjar.@0
+rule androidx.** com.android.server.telecom.jarjar.@0
+rule com.google.protobuf.** com.android.server.telecom.jarjar.@0
+rule com.android.modules.utils.** com.android.server.telecom.jarjar.@0
+rule com.android.internal.telecom.flags.*FeatureFlags* com.android.server.telecom.jarjar.@0
+rule com.android.internal.telecom.flags.FeatureFlags* com.android.server.telecom.jarjar.@0
+rule com.android.internal.telecom.flags.FeatureFlags com.android.server.telecom.jarjar.@0
+rule com.android.internal.telecom.flags.Flags com.android.server.telecom.jarjar.@0
+rule android.util.LocalLog* com.android.server.telecom.utils.LocalLog@1
+rule android.telecom.Annotation* com.android.server.telecom.jarjar.@0
+rule com.android.internal.telephony.flags.** com.android.server.telecom.jarjar.@1

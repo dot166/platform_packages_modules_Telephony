@@ -87,21 +87,12 @@ framework_telecom_availability_soong_config {
     },
 }
 
-java_sdk_library {
-    name: "framework-telecom",
-    defaults: [
-        "framework-telecom-soong-availability-defaults",
-    ],
+java_defaults {
+    name: "framework-telecom-defaults",
     srcs: [
         ":framework-telecom-aidl-export-sources",
         ":framework-telecom-aidl-internal-sources",
         ":framework-telecom-internal-sources",
-    ],
-    visibility: [
-        "//visibility:public",
-    ],
-    impl_library_visibility: [
-        "//packages/services/Telecomm",
     ],
     aidl: {
         include_dirs: [
@@ -135,6 +126,38 @@ java_sdk_library {
             "sdk_module-lib_current_framework-bluetooth",
         ],
     },
+}
+
+java_library {
+    name: "framework-telecom-pre-jarjar",
+    defaults: [
+        "framework-telecom-updatable-defaults",
+        "framework-telecom-defaults",
+    ],
+    libs: [
+        "androidx.annotation_annotation",
+        "app-compat-annotations",
+        "framework-connectivity.stubs.module_lib",
+        "unsupportedappusage",
+    ],
+    visibility: [
+        "//packages/modules/Telephony:__subpackages__",
+    ],
+}
+
+java_sdk_library {
+    name: "framework-telecom",
+    defaults: [
+        "framework-telecom-soong-availability-defaults",
+        "framework-telecom-defaults",
+    ],
+    visibility: [
+        "//visibility:public",
+    ],
+    impl_library_visibility: [
+        "//packages/services/Telecomm",
+        "//packages/modules/Telephony:__subpackages__",
+    ],
     permitted_packages: [
         "android.telecom",
         "com.android.internal",
