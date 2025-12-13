@@ -168,6 +168,7 @@ package android.telecom {
 
   public abstract class ConnectionService extends android.app.Service {
     method public final void addExistingConnection(@NonNull android.telecom.PhoneAccountHandle, @NonNull android.telecom.Connection, @NonNull android.telecom.Conference);
+    method @FlaggedApi("android.telecom.flags.telecom_mainline_api") public void onBindClient(@Nullable android.content.Intent);
   }
 
   public final class DisconnectCause implements android.os.Parcelable {
