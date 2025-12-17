@@ -67,6 +67,17 @@ flag {
   }
 }
 
+# OWNER=pmadapurmath TARGET=26Q2
+flag {
+  name: "delay_requested_handle_selection"
+  namespace: "telecom"
+  description: "Wait to set the requested handle until after the suggestion future to see if there are any accounts that should be prioritized."
+  bug: "436290270"
+  metadata {
+    purpose: PURPOSE_BUGFIX
+  }
+}
+
 # OWNER=tgunn TARGET=26Q2
 flag {
   name: "vibration_accounts_for_main_setting"
