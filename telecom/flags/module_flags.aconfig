@@ -107,3 +107,16 @@ flag {
       purpose: PURPOSE_FEATURE
   }
 }
+
+# OWNER=nagendranb TARGET=26Q2
+flag {
+  name: "opt_out_premium_network"
+  is_exported: true
+  namespace: "telecom"
+  description: "opt out of premium network"
+  bug: "430509489"
+  metadata {
+      purpose: PURPOSE_FEATURE
+  }
+}
+
