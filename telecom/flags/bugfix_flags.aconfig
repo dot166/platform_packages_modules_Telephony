@@ -88,3 +88,15 @@ flag {
       purpose: PURPOSE_BUGFIX
     }
 }
+
+
+# OWNER=tgunn TARGET=26Q2
+flag {
+  name: "connection_service_bal"
+  namespace: "telecom"
+  description: "Limits background activity launch for a ConnectionService."
+  bug: "168211626"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+    }
+}
