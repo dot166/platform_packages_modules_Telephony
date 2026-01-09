@@ -52,6 +52,7 @@ java_aconfig_library {
         "com.android.telephonycore",
     ],
     aconfig_declarations: "telecom_module_flags",
+    preserve_legacy_impl_interface: true,
 }
 
 java_aconfig_library {
@@ -64,4 +65,5 @@ java_aconfig_library {
     ],
     aconfig_declarations: "telecom_module_flags",
     mode: "exported",
+    preserve_legacy_impl_interface: true,
 }
