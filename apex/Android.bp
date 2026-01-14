@@ -41,6 +41,7 @@ apex {
     key: "com.android.telephonycore.key",
     certificate: ":com.android.telephonycore.certificate",
     defaults: ["b-launched-apex-module"],
+    apps: ["TelecomUi"],
     bootclasspath_fragments: ["com.android.telephony-bootclasspath-fragment"],
     systemserverclasspath_fragments: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
         true: ["com.android.telephony-systemserverclasspath-fragment"],
@@ -107,6 +108,10 @@ sdk {
 
 systemserverclasspath_fragment {
     name: "com.android.telephony-systemserverclasspath-fragment",
-    standalone_contents: ["service-telecom"],
+    enabled: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
+        true: true,
+        default: false,
+    }),
+    contents: ["service-telecom"],
     apex_available: ["com.android.telephonycore"],
 }

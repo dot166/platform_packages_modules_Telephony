@@ -3,5 +3,6 @@ rule android.telecom.Annotation com.android.internal.telecom.jarjar.@0
 rule android.telecom.Annotation$* com.android.internal.telecom.jarjar.@0
 rule android.telephony.Annotation com.android.internal.telecom.jarjar.@0
 rule android.telephony.Annotation$* com.android.internal.telecom.jarjar.@0
-rule com.android.internal.** com.android.internal.telecom.jarjar.@0
-rule android.util.** com.android.internal.telecom.jarjar.@0
+rule android.util.IndentingPrintWriter com.android.internal.telecom.jarjar.@0
+rule com.android.internal.os.SomeArgs com.android.internal.telecom.jarjar.@0
+rule com.android.internal.util.Preconditions com.android.internal.telecom.jarjar.@0

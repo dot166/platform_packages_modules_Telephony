@@ -1,1 +1,5 @@
 rule com.android.modules.utils.HandlerExecutor com.android.internal.telecom.jarjar.@0
+rule com.android.internal.telephony.flags.*FeatureFlags* com.android.internal.telecom.jarjar.@0
+rule com.android.internal.telephony.flags.FeatureFlags* com.android.internal.telecom.jarjar.@0
+rule com.android.internal.telephony.flags.FeatureFlags com.android.internal.telecom.jarjar.@0
+rule com.android.internal.telephony.flags.Flags com.android.internal.telecom.jarjar.@0
