@@ -1,0 +1,10 @@
+// Signature format: 2.0
+package android.telecom.service {
+
+  @FlaggedApi("android.telecom.flags.telecom_mainline_api") public final class TelecomService extends android.app.Service {
+    ctor public TelecomService();
+    method @Nullable public android.os.IBinder onBind(@Nullable android.content.Intent);
+  }
+
+}
+
