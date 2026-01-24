@@ -22,15 +22,11 @@ java_defaults {
     defaults: [
         "framework-non-updatable-unbundled-defaults",
     ],
-    libs: [
-        "telephony_flags_core_java_exported_lib",
-    ],
     static_libs: [
         "modules-utils-handlerexecutor",
         "telecom_flags_core_java_lib",
         "telecom_module_flags-export-java",
     ],
-    jarjar_rules: "jarjar-platform-rules.txt",
     apex_available: ["//apex_available:platform"],
 }
 
@@ -43,23 +39,22 @@ java_defaults {
     srcs: [
         ":framework-telecom-annotation-sources",
         ":framework-telecom-ext-annotation-srcs",
-        ":framework-telecom-shared-srcs",
         ":framework-telecom-core-shared-srcs",
     ],
     static_libs: [
         "telecom_flags_core_java_aconfig_java_exported_lib",
         "telecom_module_flags-java",
-        "telephony_flags_core_java_exported_lib",
+        "modules-utils-list-slice",
+    ],
+    impl_only_static_libs: [
         "modules-utils-build",
         "modules-utils-handlerexecutor",
         "modules-utils-infra",
-        "modules-utils-list-slice",
     ],
     impl_only_libs: [
         "framework-connectivity.stubs.module_lib",
         "unsupportedappusage",
     ],
-    jarjar_rules: "jarjar-rules.txt",
 }
 
 soong_config_module_type {
@@ -102,6 +97,10 @@ java_defaults {
             "frameworks/libs/modules-utils/java", // ParceledListSlice
         ],
     },
+    static_libs: [
+        "telecom_flags_core_java_lib",
+        "telephony_flags_core_java_lib",
+    ],
     libs: [
         "framework-permission.stubs.module_lib",
         "framework-permission-s.stubs.module_lib",
@@ -145,9 +144,41 @@ java_library {
     ],
 }
 
+soong_config_module_type {
+    name: "framework_telecom_availability_jarjar_soong_config",
+    module_type: "java_defaults",
+    config_namespace: "ANDROID",
+    bool_variables: [
+        "release_telecom_mainline_module",
+    ],
+    properties: [
+        "jarjar_rules",
+    ],
+}
+
+framework_telecom_availability_jarjar_soong_config {
+    name: "framework-telecom-jarjar-soong-availability-defaults",
+    soong_config_variables: {
+        release_telecom_mainline_module: {
+            jarjar_rules: "jarjar-rules.txt",
+            conditions_default: {
+                jarjar_rules: "jarjar-platform-rules.txt",
+            },
+        },
+    },
+}
+
+java_defaults {
+    name: "framework-telecom-jarjar-defaults",
+    defaults: [
+        "framework-telecom-jarjar-soong-availability-defaults",
+    ],
+}
+
 java_sdk_library {
     name: "framework-telecom",
     defaults: [
+        "framework-telecom-jarjar-defaults",
         "framework-telecom-soong-availability-defaults",
         "framework-telecom-defaults",
     ],

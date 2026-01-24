@@ -9,16 +9,13 @@ package android.telecom {
     method public static void registerServiceWrapper();
   }
 
-  @FlaggedApi("android.telecom.flags.telecom_mainline_api") public abstract class TelecomLoaderServiceConnection implements android.content.ServiceConnection {
-    ctor public TelecomLoaderServiceConnection();
-    method public abstract void onConnected(@NonNull android.telecom.TelecomLoaderServiceConnection.TelecomLoader);
-    method public void onDisconnected();
-    method public final void onServiceConnected(@Nullable android.content.ComponentName, @Nullable android.os.IBinder);
-    method public final void onServiceDisconnected(@Nullable android.content.ComponentName);
+  @FlaggedApi("android.telecom.flags.telecom_mainline_api") public final class TelecomServiceInitializerRepository {
+    method @Nullable public static android.telecom.TelecomServiceInitializerRepository.Initializer getInitializer();
+    method public static void setInitializer(@Nullable android.telecom.TelecomServiceInitializerRepository.Initializer);
   }
 
-  public static interface TelecomLoaderServiceConnection.TelecomLoader {
-    method @Nullable public android.os.IBinder createTelecomService(@NonNull String);
+  public static interface TelecomServiceInitializerRepository.Initializer {
+    method @Nullable public android.os.IBinder initialize(@NonNull android.content.Context);
   }
 
 }
