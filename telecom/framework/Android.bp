@@ -205,3 +205,9 @@ platform_compat_config {
     name: "framework-telecom-compat-config",
     src: ":framework-telecom",
 }
+
+filegroup {
+    name: "framework-telecom-jarjar-rules",
+    srcs: ["jarjar-rules.txt"],
+    visibility: ["//packages/services/Telecomm"],
+}
