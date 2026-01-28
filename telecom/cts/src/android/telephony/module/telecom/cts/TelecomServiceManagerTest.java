@@ -17,11 +17,15 @@
 package android.telephony.module.telecom.cts;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assume.assumeTrue;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.os.TelecomServiceManager;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +38,11 @@ public class TelecomServiceManagerTest {
 
     @Test
     public void testAvailable() {
+        Context context = InstrumentationRegistry.getInstrumentation().getContext();
+        PackageManager packageManager = context.getPackageManager();
+        assumeTrue("Telecom feature not supported on this device",
+                packageManager.hasSystemFeature(PackageManager.FEATURE_TELECOM));
+
         TelecomServiceManager.ServiceRegisterer registerer =
                 TelecomServiceManager.getTelecomServiceRegisterer();
         assertNotNull(registerer);
