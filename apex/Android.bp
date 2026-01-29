@@ -42,6 +42,9 @@ apex {
     certificate: ":com.android.telephonycore.certificate",
     defaults: ["b-launched-apex-module"],
     apps: ["TelecomUi"],
+    prebuilts: [
+        "com.android.server.telecomui-default-permissions.xml",
+    ],
     bootclasspath_fragments: ["com.android.telephony-bootclasspath-fragment"],
     systemserverclasspath_fragments: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
         true: ["com.android.telephony-systemserverclasspath-fragment"],
