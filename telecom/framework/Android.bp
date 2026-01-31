@@ -187,6 +187,7 @@ java_sdk_library {
     ],
     impl_library_visibility: [
         "//packages/services/Telecomm",
+        "//packages/services/Telephony:__subpackages__",
         "//packages/modules/Telephony:__subpackages__",
     ],
     permitted_packages: [
