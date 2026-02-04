@@ -6,3 +6,4 @@ rule android.telephony.Annotation$* com.android.internal.telecom.jarjar.@0
 rule android.util.IndentingPrintWriter com.android.internal.telecom.jarjar.@0
 rule com.android.internal.os.SomeArgs com.android.internal.telecom.jarjar.@0
 rule com.android.internal.util.Preconditions com.android.internal.telecom.jarjar.@0
+rule com.android.internal.telephony.flags.** com.android.internal.telecom.jarjar.@0
