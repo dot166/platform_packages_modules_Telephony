@@ -41,10 +41,14 @@ apex {
     key: "com.android.telephonycore.key",
     certificate: ":com.android.telephonycore.certificate",
     defaults: ["b-launched-apex-module"],
-    apps: ["TelecomUi"],
-    prebuilts: [
-        "com.android.server.telecomui-default-permissions.xml",
-    ],
+    apps: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
+        true: ["TelecomUi"],
+        default: [],
+    }),
+    prebuilts: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
+        true: ["com.android.server.telecomui-default-permissions.xml"],
+        default: [],
+    }),
     bootclasspath_fragments: ["com.android.telephony-bootclasspath-fragment"],
     systemserverclasspath_fragments: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
         true: ["com.android.telephony-systemserverclasspath-fragment"],
