@@ -28,6 +28,12 @@ android_app_certificate {
     certificate: "com.android.telephonycore",
 }
 
+// Certificate for the TelecomUi APK in APEX.
+android_app_certificate {
+    name: "com.android.telecomui.certificate",
+    certificate: "com.android.telecomui",
+}
+
 apex {
     // This apex will be enabled using release_telephony_module flag
     enabled: select(release_flag("RELEASE_TELEPHONY_MODULE"), {

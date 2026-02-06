@@ -13,6 +13,7 @@ rule android.telecom.Annotation* com.android.internal.telecom.jarjar.@0
 rule com.android.internal.telephony.flags.** com.android.server.telecom.jarjar.@1
 rule com.android.i18n.phonenumbers.**  com.android.server.telecom.jarjar.@0
 rule com.android.internal.util.** com.android.server.telecom.jarjar.@0
+rule com.android.internal.os.SomeArgs com.android.internal.os.SomeArgs
 rule com.android.internal.os.** com.android.server.telecom.jarjar.@0
 rule android.sysprop.*Properties com.android.server.telecom.jarjar.@0
 rule android.sysprop.*Properties* com.android.server.telecom.jarjar.@0
