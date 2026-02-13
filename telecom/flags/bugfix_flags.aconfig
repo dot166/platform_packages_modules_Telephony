@@ -100,7 +100,6 @@ flag {
     }
 }
 
-
 # OWNER=tgunn TARGET=26Q2
 flag {
   name: "connection_service_bal"
@@ -167,6 +166,17 @@ flag {
   }
 }
 
+# OWNER=huiwang TARGET=26Q3
+flag {
+  name: "call_audio_route_rf"
+  namespace: "telecom"
+  description: "Use the new AudioModeSession API for call audio routing."
+  bug: "482086440"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
+
 # OWNER=pmadapurmath TARGET=26Q3
 flag {
   name: "cleanup_calls_in_select_account"
@@ -177,4 +187,3 @@ flag {
       purpose: PURPOSE_BUGFIX
   }
 }
-
