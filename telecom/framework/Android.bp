@@ -47,9 +47,7 @@ java_defaults {
         "modules-utils-list-slice",
     ],
     impl_only_static_libs: [
-        "modules-utils-build",
         "modules-utils-handlerexecutor",
-        "modules-utils-infra",
     ],
     impl_only_libs: [
         "framework-connectivity.stubs.module_lib",
