@@ -67,6 +67,17 @@ flag {
   }
 }
 
+# OWNER=tgunn TARGET=26Q2
+flag {
+  name: "voip_dnd_focus"
+  namespace: "telecom"
+  description: "Ensure VoIP calls suppressed by DND don't get audio focus."
+  bug: "421990659"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+    }
+}
+
 # OWNER=pmadapurmath TARGET=26Q2
 flag {
   name: "delay_requested_handle_selection"
