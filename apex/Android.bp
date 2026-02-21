@@ -133,3 +133,10 @@ systemserverclasspath_fragment {
     contents: ["service-telecom"],
     apex_available: ["com.android.telephonycore"],
 }
+
+filegroup {
+    name: "preinstalled-packages-com.android.server.telecomui.xml",
+    srcs: [
+        "preinstalled-packages-com.android.server.telecomui.xml",
+    ],
+}
