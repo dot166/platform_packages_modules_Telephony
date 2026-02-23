@@ -111,3 +111,14 @@ flag {
       purpose: PURPOSE_BUGFIX
     }
 }
+
+# OWNER=arunrajms TARGET=26Q3
+flag {
+    name: "move_get_phone_account_outside_lock"
+    namespace: "telecom"
+    description: "Moving the canGetPhoneAccount check outside the lock to prevent ANRs"
+    bug: "451536800"
+    metadata {
+        purpose: PURPOSE_BUGFIX
+    }
+}
