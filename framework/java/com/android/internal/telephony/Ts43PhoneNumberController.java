@@ -20,6 +20,7 @@ import static java.time.temporal.ChronoUnit.SECONDS;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -178,6 +179,7 @@ public class Ts43PhoneNumberController extends Handler {
         sendMessage(obtainMessage(EVENT_PROCESS_TS43_FETCH, subId, 0));
     }
 
+    @SuppressLint("NewApi")
     private void processPhoneNumberFetch(int subId, boolean isRetry) {
         // Check internet connection first.
         if (!isInternetConnected()) {
