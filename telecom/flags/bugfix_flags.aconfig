@@ -112,6 +112,17 @@ flag {
     }
 }
 
+# OWNER=tjstuart TARGET=26Q2
+flag {
+  name: "register_bluetooth_receiver_for_all_users"
+  namespace: "telecom"
+  description: "Register BluetoothStateReceiver for all users to ensure Bluetooth state is tracked correctly for secondary users."
+  bug: "480821340"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
+
 # OWNER=arunrajms TARGET=26Q3
 flag {
     name: "move_get_phone_account_outside_lock"
