@@ -17,6 +17,7 @@
 <config>
     <!-- Telecom UI (com.android.server.telecomui) -->
     <install-in-user-type package="com.android.server.telecomui">
+        <install-in user-type="SYSTEM" />
         <install-in user-type="FULL" />
         <install-in user-type="PROFILE" />
     </install-in-user-type>
