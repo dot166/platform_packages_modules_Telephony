@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues
+    type="baseline"
+    client=""
+    dependencies="true"
+    name=""
+    variant=""
+    version="">
+    <issue
+        id="NewApi"
+        message="Field requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.provider.CallLog.Calls#CONTENT_URI_WITH_VOIP_CALLS`"
+        errorLine1="                CallLog.Calls.CONTENT_URI_WITH_VOIP_CALLS, userHandle);"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/CallLogIntegrationAdapterImpl.java"
+            line="472"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.telephony.TelephonyManager#getLastKnownCellIdentity`"
+        errorLine1="                        CellIdentity cellIdentity = tm.getLastKnownCellIdentity();"
+        errorLine2="                                                       ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/CallsManager.java"
+            line="2201"
+            column="56"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.AudioManager#setRttEnabled`"
+        errorLine1="            AudioManager.setRttEnabled(hasActiveRttCall);"
+        errorLine2="                         ~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/CallsManager.java"
+            line="5602"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.telephony.TelephonyManager#getLastKnownCellIdentity`"
+        errorLine1="                CellIdentity lastKnownCellIdentity = telephonyManager.getLastKnownCellIdentity();"
+        errorLine2="                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/ConnectionServiceWrapper.java"
+            line="1644"
+            column="71"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.Ringtone#hasHapticChannels`"
+        errorLine1="                                    &amp;&amp; ringtone.hasHapticChannels();"
+        errorLine2="                                                ~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/Ringer.java"
+            line="571"
+            column="49"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneVibrationUtils#hasVibrationParameter`"
+        errorLine1="            return RingtoneVibrationUtils.hasVibrationParameter(ringtoneUri);"
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/Ringer.java"
+            line="613"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneVibrationUtils#hasVibrationParameter`"
+        errorLine1="            return RingtoneVibrationUtils.hasVibrationParameter("
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/Ringer.java"
+            line="616"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneManager#getRingtoneUriForPhoneAccountHandle`"
+        errorLine1="                    RingtoneManager.getRingtoneUriForPhoneAccountHandle("
+        errorLine2="                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/Ringer.java"
+            line="617"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneVibrationUtils#hasVibrationParameter`"
+        errorLine1="            return RingtoneVibrationUtils.hasVibrationParameter("
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/Ringer.java"
+            line="620"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneVibrationUtils#hasVibrationParameter`"
+        errorLine1="                &amp;&amp; RingtoneVibrationUtils.hasVibrationParameter(ringtoneUri)) {"
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/Ringer.java"
+            line="658"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneManager#getRingtone`"
+        errorLine1="                    ringtone = RingtoneManager.getRingtone("
+        errorLine2="                                               ~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/RingtoneFactory.java"
+            line="82"
+            column="48"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneManager#getRingtoneUriForPhoneAccountHandle`"
+        errorLine1="                    defaultRingtoneUri = RingtoneManager.getRingtoneUriForPhoneAccountHandle("
+        errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/RingtoneFactory.java"
+            line="102"
+            column="58"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.media.RingtoneManager#getRingtone`"
+        errorLine1="                ringtone = RingtoneManager.getRingtone("
+        errorLine2="                                           ~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/RingtoneFactory.java"
+            line="140"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.app.StatusBarManager#setIcon`"
+        errorLine1="            mStatusBarManager.setIcon("
+        errorLine2="                              ~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/StatusBarNotifier.java"
+            line="69"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.app.StatusBarManager#removeIcon`"
+        errorLine1="            mStatusBarManager.removeIcon(SLOT_MUTE);"
+        errorLine2="                              ~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/StatusBarNotifier.java"
+            line="75"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.app.StatusBarManager#setIcon`"
+        errorLine1="            mStatusBarManager.setIcon("
+        errorLine2="                              ~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/StatusBarNotifier.java"
+            line="96"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.app.StatusBarManager#removeIcon`"
+        errorLine1="            mStatusBarManager.removeIcon(SLOT_SPEAKERPHONE);"
+        errorLine2="                              ~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/StatusBarNotifier.java"
+            line="102"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.telephony.TelephonyManager#getCurrentTtyMode`"
+        errorLine1="        mPreferredTtyMode =  tm.getCurrentTtyMode();"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/TtyManager.java"
+            line="48"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `new com.android.server.am.ForegroundServiceDelegationParams`"
+        errorLine1="            ForegroundServiceDelegationParams options = new ForegroundServiceDelegationParams(pid,"
+        errorLine2="                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/callsequencing/voip/VoipCallMonitor.java"
+            line="189"
+            column="57"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `com.android.server.am.ActivityManagerLocal#startForegroundServiceDelegate`"
+        errorLine1="                if (aml.startForegroundServiceDelegate(options, fgsConnection)) {"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/callsequencing/voip/VoipCallMonitor.java"
+            line="212"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `com.android.server.am.ActivityManagerLocal#stopForegroundServiceDelegate`"
+        errorLine1="                    aml.stopForegroundServiceDelegate(fgsSession.mParams);"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/services/Telecomm/src/com/android/server/telecom/callsequencing/voip/VoipCallMonitor.java"
+            line="248"
+            column="25"/>
+    </issue>
+
+</issues>

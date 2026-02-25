@@ -65,6 +65,9 @@ java_library {
         "modules-utils-preconditions",
     ],
     min_sdk_version: "36",
+    lint: {
+        baseline_filename: "lint-baseline.xml",
+    },
 }
 
 java_sdk_library {
