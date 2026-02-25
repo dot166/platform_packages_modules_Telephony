@@ -133,3 +133,14 @@ flag {
         purpose: PURPOSE_BUGFIX
     }
 }
+
+# OWNER=breadley TARGET=26Q3
+flag {
+  name: "fix_transactional_call_sequencing_future"
+  namespace: "telecom"
+  description: "Fixes the bug in TransactionalCallSequencingAdapter where the future returned by createSetActiveTransactionSequencing is never completed."
+  bug: "458829951"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
