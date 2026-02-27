@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues
+    type="baseline"
+    client=""
+    dependencies="true"
+    name=""
+    variant=""
+    version="">
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.telephony.TelephonyManager#getCurrentTtyMode`"
+        errorLine1="                return tm.getCurrentTtyMode();"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~">
+        <location
+            file="frameworks/base/telecomm/framework/java/android/telecom/TelecomManager.java"
+            line="2425"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.os.TelecomServiceManager#getTelecomServiceRegisterer`"
+        errorLine1="                    TelecomServiceManager.getTelecomServiceRegisterer().get());"
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="frameworks/base/telecomm/framework/java/android/telecom/TelecomManager.java"
+            line="3503"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level CUR_DEVELOPMENT/10000 (current min is 36): `android.os.TelecomServiceManager.ServiceRegisterer#get`"
+        errorLine1="                    TelecomServiceManager.getTelecomServiceRegisterer().get());"
+        errorLine2="                                                                        ~~~">
+        <location
+            file="frameworks/base/telecomm/framework/java/android/telecom/TelecomManager.java"
+            line="3503"
+            column="73"/>
+    </issue>
+
+</issues>

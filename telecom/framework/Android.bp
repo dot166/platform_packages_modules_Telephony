@@ -198,6 +198,9 @@ java_sdk_library {
         "telecom_module_flags",
         "telecom_bugfix_flags",
     ],
+    lint: {
+        baseline_filename: "lint-baseline.xml",
+    },
 }
 
 platform_compat_config {
