@@ -158,6 +158,17 @@ flag {
 
 # OWNER=pmadapurmath TARGET=26Q3
 flag {
+  name: "disconnect_voip_on_hold_fail"
+  namespace: "telecom"
+  description: "Ensures that the transactional call is disconnected if there's no response from the hold, to prevent failures when answering an incoming call"
+  bug: "481284693"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
+
+# OWNER=pmadapurmath TARGET=26Q3
+flag {
   name: "prevent_auto_unhold_if_user_held"
   namespace: "telecom"
   description: "Ensures that we don't try to auto-unhold when another call fails to be set up if the user had explicitly requested it to be held"
