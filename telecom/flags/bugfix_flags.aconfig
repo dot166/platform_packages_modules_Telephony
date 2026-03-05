@@ -144,3 +144,15 @@ flag {
       purpose: PURPOSE_BUGFIX
   }
 }
+
+# OWNER=pmadapurmath TARGET=26Q3
+flag {
+  name: "cleanup_calls_in_select_account"
+  namespace: "telecom"
+  description: "Clean up calls stuck in SELECT_PHONE_ACCOUNT stage (e.g. if multiple are placed)"
+  bug: "456493367"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
+
