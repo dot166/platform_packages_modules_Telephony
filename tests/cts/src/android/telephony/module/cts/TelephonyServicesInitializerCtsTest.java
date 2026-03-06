@@ -16,9 +16,11 @@
 package com.android.telephony.module.tests;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assume.assumeTrue;
 import static org.junit.Assert.fail;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.platform.test.annotations.RequiresFlagsEnabled;
 import android.platform.test.flag.junit.CheckFlagsRule;
@@ -47,6 +49,8 @@ public class TelephonyServicesInitializerCtsTest {
     @Before
     public void setUp() throws Exception {
         mContext = InstrumentationRegistry.getInstrumentation().getContext();
+        PackageManager packageManager = mContext.getPackageManager();
+        assumeTrue(packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY));
     }
 
     @Test

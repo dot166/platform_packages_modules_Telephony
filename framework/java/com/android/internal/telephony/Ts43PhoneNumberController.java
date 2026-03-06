@@ -149,6 +149,10 @@ public class Ts43PhoneNumberController extends Handler {
     }
 
     private void registerCarrierConfigChangeListener() {
+        if (mCarrierConfigManager == null) {
+            Rlogger.d(TAG, "CarrierConfigManager is not available.");
+            return;
+        }
         CarrierConfigManager.CarrierConfigChangeListener listener =
                 (slotIndex, subId, carrierId, specificCarrierId) -> {
                     Rlogger.d(TAG, "CarrierConfig changed for slot: "
