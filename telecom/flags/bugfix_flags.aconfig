@@ -134,6 +134,17 @@ flag {
     }
 }
 
+# OWNER=grantmenke TARGET=26Q3
+flag {
+    name: "add_escape_hatch_for_stuck_voip"
+    namespace: "telecom"
+    description: "When a self-managed VoIP call gets stuck in ringing state, provide an escape hatch when the user places a new MO call."
+    bug: "449253257"
+    metadata {
+        purpose: PURPOSE_BUGFIX
+    }
+}
+
 # OWNER=breadley TARGET=26Q3
 flag {
   name: "fix_transactional_call_sequencing_future"
