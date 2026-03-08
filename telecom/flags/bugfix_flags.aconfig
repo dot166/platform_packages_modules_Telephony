@@ -134,6 +134,17 @@ flag {
     }
 }
 
+# OWNER=grantmenke TARGET=26Q3
+flag {
+    name: "add_escape_hatch_for_stuck_voip"
+    namespace: "telecom"
+    description: "When a self-managed VoIP call gets stuck in ringing state, provide an escape hatch when the user places a new MO call."
+    bug: "449253257"
+    metadata {
+        purpose: PURPOSE_BUGFIX
+    }
+}
+
 # OWNER=breadley TARGET=26Q3
 flag {
   name: "fix_transactional_call_sequencing_future"
@@ -144,3 +155,15 @@ flag {
       purpose: PURPOSE_BUGFIX
   }
 }
+
+# OWNER=pmadapurmath TARGET=26Q3
+flag {
+  name: "cleanup_calls_in_select_account"
+  namespace: "telecom"
+  description: "Clean up calls stuck in SELECT_PHONE_ACCOUNT stage (e.g. if multiple are placed)"
+  bug: "456493367"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
+
