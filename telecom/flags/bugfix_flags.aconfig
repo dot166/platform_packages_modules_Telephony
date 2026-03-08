@@ -158,6 +158,17 @@ flag {
 
 # OWNER=pmadapurmath TARGET=26Q3
 flag {
+  name: "prevent_auto_unhold_if_user_held"
+  namespace: "telecom"
+  description: "Ensures that we don't try to auto-unhold when another call fails to be set up if the user had explicitly requested it to be held"
+  bug: "441531098"
+  metadata {
+      purpose: PURPOSE_BUGFIX
+  }
+}
+
+# OWNER=pmadapurmath TARGET=26Q3
+flag {
   name: "cleanup_calls_in_select_account"
   namespace: "telecom"
   description: "Clean up calls stuck in SELECT_PHONE_ACCOUNT stage (e.g. if multiple are placed)"
