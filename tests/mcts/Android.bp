@@ -18,7 +18,7 @@ package {
 }
 
 android_test {
-    name: "MctsTelecomTestCases",
+    name: "CtsTelecomTestCases",
     defaults: ["cts_defaults"],
     static_libs: [
         "CtsTelecomTestLib",
@@ -50,10 +50,11 @@ android_test {
     ],
     per_testcase_directory: true,
     manifest: ":cts-telecom-test-manifest",
-    aaptflags: [
-        "--rename-manifest-package",
-        "android.telecom.mcts",
-        "--rename-instrumentation-target-package",
-        "android.telecom.mcts",
-    ],
+}
+
+test_module_config {
+    name: "CtsTelecomTestCases_PlatinumTest",
+    base: "CtsTelecomTestCases",
+    test_suites: ["general-tests"],
+    include_annotations: ["android.platform.test.annotations.PlatinumTest"],
 }
