@@ -64,7 +64,7 @@ java_library {
         "modules-utils-fastxmlserializer",
         "modules-utils-preconditions",
     ],
-    min_sdk_version: "36",
+    min_sdk_version: "37",
     lint: {
         baseline_filename: "lint-baseline.xml",
     },
@@ -108,7 +108,7 @@ java_sdk_library {
         "service-telecom-lib",
     ],
     exclude_kotlinc_generated_files: true,
-    min_sdk_version: "36",
+    min_sdk_version: "37",
     jarjar_rules: "jarjar-rules.txt",
     api_packages: [
         "android.telecom.service",
