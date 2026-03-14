@@ -34,6 +34,12 @@ android_app_certificate {
     certificate: "com.android.telecomui",
 }
 
+// Certificate for the TelecomServiceResources APK in APEX.
+android_app_certificate {
+    name: "com.android.telecom.resources.certificate",
+    certificate: "com.android.telecom.resources",
+}
+
 apex {
     // This apex will be enabled using release_telephony_module flag
     enabled: select(release_flag("RELEASE_TELEPHONY_MODULE"), {
@@ -53,7 +59,10 @@ apex {
     certificate: ":com.android.telephonycore.certificate",
     defaults: ["b-launched-apex-module"],
     apps: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
-        true: ["TelecomUi"],
+        true: [
+            "TelecomUi",
+            "TelecomServiceResources",
+        ],
         default: [],
     }),
     prebuilts: select(release_flag("RELEASE_TELECOM_MAINLINE_MODULE"), {
@@ -138,5 +147,12 @@ filegroup {
     name: "preinstalled-packages-com.android.server.telecomui.xml",
     srcs: [
         "preinstalled-packages-com.android.server.telecomui.xml",
+    ],
+}
+
+filegroup {
+    name: "preinstalled-packages-com.android.server.telecom.resources.xml",
+    srcs: [
+        "preinstalled-packages-com.android.server.telecom.resources.xml",
     ],
 }
