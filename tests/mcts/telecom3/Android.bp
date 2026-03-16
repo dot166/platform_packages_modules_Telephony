@@ -1,0 +1,28 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_test {
+    name: "CtsTelecomTestCases3",
+    defaults: ["cts_defaults"],
+    static_libs: [
+        "CtsTelecomTestCases3Lib",
+    ],
+    aaptflags: [
+        "--auto-add-overlay",
+        "--extra-packages",
+        "android.telecom.cts",
+        "--rename-manifest-package",
+        "android.telecom3.cts",
+    ],
+    sdk_version: "test_current",
+    min_sdk_version: "23",
+    // Tag this module as a cts test artifact
+    test_suites: [
+        "cts",
+        "general-tests",
+        "mcts-telecom",
+        "mts-telecom",
+    ],
+    manifest: ":cts-telecom3-test-manifest",
+}
