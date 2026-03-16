@@ -1,0 +1,17 @@
+{
+  "mainline-presubmit": [
+    {
+      "name": "CtsTelecomTestCases2[com.google.android.telephony.apex]"
+    }
+  ],
+  "presubmit": [
+    {
+      "name": "CtsTelecomTestCases2"
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "CtsTelecomTestCases2"
+    }
+  ]
+}
