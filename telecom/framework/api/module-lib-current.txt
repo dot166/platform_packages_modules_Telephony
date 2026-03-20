@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - flagged-api-inheritance=none
 package android.telecom {
 
   public abstract class ConnectionService extends android.app.Service {
@@ -16,7 +15,7 @@ package android.telecom {
     method public static void setInitializer(@Nullable android.telecom.TelecomServiceInitializerRepository.Initializer);
   }
 
-  public static interface TelecomServiceInitializerRepository.Initializer {
+  @FlaggedApi("android.telecom.flags.telecom_mainline_api") public static interface TelecomServiceInitializerRepository.Initializer {
     method @Nullable public android.os.IBinder initialize(@NonNull android.content.Context);
   }
 
