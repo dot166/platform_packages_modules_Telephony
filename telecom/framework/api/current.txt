@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - overloaded-method-order=source
 // - strip-java-lang-prefix=legacy
 // - type-argument-spacing=legacy
 package android.telecom {
@@ -35,8 +34,8 @@ package android.telecom {
     method public void registerCallback(android.telecom.Call.Callback, android.os.Handler);
     method public void reject(boolean, String);
     method public void reject(int);
-    method public void removeExtras(java.util.List<java.lang.String>);
     method public void removeExtras(java.lang.String...);
+    method public void removeExtras(java.util.List<java.lang.String>);
     method public void respondToRttRequest(int, boolean);
     method public void sendCallEvent(String, android.os.Bundle);
     method public void sendRttRequest();
@@ -113,8 +112,8 @@ package android.telecom {
   }
 
   public static class Call.Details {
-    method public static boolean can(int, int);
     method public boolean can(int);
+    method public static boolean can(int, int);
     method public static String capabilitiesToString(int);
     method public android.telecom.PhoneAccountHandle getAccountHandle();
     method @FlaggedApi("android.telecom.flags.call_details_get_associated_user_api2") @NonNull public android.os.UserHandle getAssociatedUser();
@@ -138,8 +137,8 @@ package android.telecom {
     method public final int getState();
     method public android.telecom.StatusHints getStatusHints();
     method public int getVideoState();
-    method public static boolean hasProperty(int, int);
     method public boolean hasProperty(int);
+    method public static boolean hasProperty(int, int);
     method public static String propertiesToString(int);
     field public static final int CAPABILITY_ADD_PARTICIPANT = 33554432; // 0x2000000
     field public static final int CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO = 4194304; // 0x400000
@@ -326,8 +325,8 @@ package android.telecom {
     ctor public CallRedirectionService();
     method public final void cancelCall();
     method @Nullable public final android.os.IBinder onBind(@NonNull android.content.Intent);
-    method public abstract void onPlaceCall(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     method @FlaggedApi("android.telecom.flags.send_original_number_on_place_call") public void onPlaceCall(@NonNull android.net.Uri, @NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
+    method public abstract void onPlaceCall(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
     method public void onRedirectionTimeout();
     method public final boolean onUnbind(@NonNull android.content.Intent);
     method @FlaggedApi("android.telecom.flags.place_call_to_alternate_number") public final void placeCallToAlternateNumber(@NonNull android.net.Uri, @NonNull android.telecom.PhoneAccountHandle, boolean);
@@ -400,9 +399,9 @@ package android.telecom {
     method public void onDisconnect();
     method public void onExtrasChanged(android.os.Bundle);
     method public void onHold();
-    method public void onMerge(android.telecom.Connection);
-    method @FlaggedApi("android.telecom.flags.multi_party_anchor_conf") public void onMerge(@NonNull android.telecom.Conference);
     method public void onMerge();
+    method @FlaggedApi("android.telecom.flags.multi_party_anchor_conf") public void onMerge(@NonNull android.telecom.Conference);
+    method public void onMerge(android.telecom.Connection);
     method public void onMuteStateChanged(boolean);
     method public void onPlayDtmfTone(char);
     method public void onReject();
@@ -412,8 +411,8 @@ package android.telecom {
     method public void onUnhold();
     method public final void putExtras(@NonNull android.os.Bundle);
     method public final void removeConnection(android.telecom.Connection);
-    method public final void removeExtras(java.util.List<java.lang.String>);
     method public final void removeExtras(java.lang.String...);
+    method public final void removeExtras(java.util.List<java.lang.String>);
     method public void sendConferenceEvent(@NonNull String, @Nullable android.os.Bundle);
     method public final void setActive();
     method @Deprecated @FlaggedApi("android.telecom.flags.multi_party_anchor_conf") public final void setConferenceableConnections(java.util.List<android.telecom.Connection>);
@@ -468,8 +467,8 @@ package android.telecom {
     method public final void notifyConferenceMergeFailed();
     method public void onAbort();
     method public void onAddConferenceParticipants(@NonNull java.util.List<android.net.Uri>);
-    method public void onAnswer(int);
     method public void onAnswer();
+    method public void onAnswer(int);
     method public void onAvailableCallEndpointsChanged(@NonNull java.util.List<android.telecom.CallEndpoint>);
     method @Deprecated public void onCallAudioStateChanged(android.telecom.CallAudioState);
     method public void onCallEndpointChanged(@NonNull android.telecom.CallEndpoint);
@@ -501,8 +500,8 @@ package android.telecom {
     method public static String propertiesToString(int);
     method public final void putExtras(@NonNull android.os.Bundle);
     method public final void queryLocationForEmergency(@IntRange(from=100, to=5000) long, @NonNull String, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<android.location.Location,android.telecom.QueryLocationException>);
-    method public final void removeExtras(java.util.List<java.lang.String>);
     method public final void removeExtras(java.lang.String...);
+    method public final void removeExtras(java.util.List<java.lang.String>);
     method @Deprecated public void requestBluetoothAudio(@NonNull android.bluetooth.BluetoothDevice);
     method public final void requestCallEndpointChange(@NonNull android.telecom.CallEndpoint, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<java.lang.Void,android.telecom.CallEndpointException>);
     method public void sendConnectionEvent(String, android.os.Bundle);
@@ -736,9 +735,9 @@ package android.telecom {
 
   public final class DisconnectCause implements android.os.Parcelable {
     ctor public DisconnectCause(int);
-    ctor public DisconnectCause(int, String);
     ctor public DisconnectCause(int, CharSequence, CharSequence, String);
     ctor public DisconnectCause(int, CharSequence, CharSequence, String, int);
+    ctor public DisconnectCause(int, String);
     method public int describeContents();
     method public int getCode();
     method public CharSequence getDescription();
@@ -885,8 +884,8 @@ package android.telecom {
   }
 
   public static class PhoneAccount.Builder {
-    ctor public PhoneAccount.Builder(android.telecom.PhoneAccountHandle, CharSequence);
     ctor public PhoneAccount.Builder(android.telecom.PhoneAccount);
+    ctor public PhoneAccount.Builder(android.telecom.PhoneAccountHandle, CharSequence);
     method public android.telecom.PhoneAccount.Builder addSupportedUriScheme(String);
     method public android.telecom.PhoneAccount build();
     method @NonNull public android.telecom.PhoneAccount.Builder clearSimultaneousCallingRestriction();

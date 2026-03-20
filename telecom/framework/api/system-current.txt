@@ -1,14 +1,13 @@
 // Signature format: 6.0
 // - style=java
-// - overloaded-method-order=source
 // - strip-java-lang-prefix=legacy
 // - type-argument-spacing=legacy
 package android.telecom {
 
   @Deprecated public class AudioState implements android.os.Parcelable {
-    ctor @Deprecated public AudioState(boolean, int, int);
     ctor @Deprecated public AudioState(android.telecom.AudioState);
     ctor @Deprecated public AudioState(android.telecom.CallAudioState);
+    ctor @Deprecated public AudioState(boolean, int, int);
     method @Deprecated public static String audioRouteToString(int);
     method @Deprecated public int describeContents();
     method @Deprecated public int getRoute();
@@ -79,8 +78,8 @@ package android.telecom {
     method public final void clearDiagnosticMessage(int);
     method public final void displayDiagnosticMessage(int, @NonNull CharSequence);
     method public abstract void onCallDetailsChanged(@NonNull android.telecom.Call.Details);
-    method @Nullable public abstract CharSequence onCallDisconnected(int, int);
     method @Nullable public abstract CharSequence onCallDisconnected(@NonNull android.telephony.ims.ImsReasonInfo);
+    method @Nullable public abstract CharSequence onCallDisconnected(int, int);
     method public abstract void onCallQualityReceived(@NonNull android.telephony.CallQuality);
     method public abstract void onReceiveDeviceToDeviceMessage(int, int);
     method public final void sendDeviceToDeviceMessage(int, int);
@@ -211,8 +210,8 @@ package android.telecom {
   }
 
   public class ParcelableCallAnalytics implements android.os.Parcelable {
-    ctor public ParcelableCallAnalytics(long, long, int, boolean, boolean, int, int, boolean, String, boolean, java.util.List<android.telecom.ParcelableCallAnalytics.AnalyticsEvent>, java.util.List<android.telecom.ParcelableCallAnalytics.EventTiming>);
     ctor public ParcelableCallAnalytics(android.os.Parcel);
+    ctor public ParcelableCallAnalytics(long, long, int, boolean, boolean, int, int, boolean, String, boolean, java.util.List<android.telecom.ParcelableCallAnalytics.AnalyticsEvent>, java.util.List<android.telecom.ParcelableCallAnalytics.EventTiming>);
     method public java.util.List<android.telecom.ParcelableCallAnalytics.AnalyticsEvent> analyticsEvents();
     method public int describeContents();
     method public long getCallDurationMillis();
