@@ -1,4 +1,5 @@
-// Signature format: 2.0
+// Signature format: 6.0
+// - style=java
 package android.telecom.service {
 
   @FlaggedApi("android.telecom.flags.telecom_mainline_api") public final class TelecomServiceInitializer implements android.telecom.TelecomServiceInitializerRepository.Initializer {

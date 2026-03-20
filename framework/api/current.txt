@@ -1,4 +1,5 @@
-// Signature format: 2.0
+// Signature format: 6.0
+// - style=java
 package android.telephony {
 
   @FlaggedApi("com.android.telephony.flags.phone_number_parsing_api") public final class ParsedPhoneNumber implements android.os.Parcelable {
