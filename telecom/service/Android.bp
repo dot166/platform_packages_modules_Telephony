@@ -49,6 +49,7 @@ java_library {
         "modules-utils-infra",
     ],
     static_libs: [
+        "android.app.privatecompute.flags-aconfig-java-export",
         "modules-utils-binary-xml",
         "android.multiuser.flags-aconfig-java-export",
         "android.provider.flags-exported-aconfig-java",
