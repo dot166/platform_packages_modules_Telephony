@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - type-argument-spacing=legacy
 package android.telecom {
 
   public final class Call {
@@ -247,18 +246,18 @@ package android.telecom {
   }
 
   public final class CallControl {
-    method public void answer(int, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
-    method public void disconnect(@NonNull android.telecom.DisconnectCause, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
+    method public void answer(int, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
+    method public void disconnect(@NonNull android.telecom.DisconnectCause, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
     method @NonNull public android.os.ParcelUuid getCallId();
-    method public void requestCallEndpointChange(@NonNull android.telecom.CallEndpoint, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
-    method @FlaggedApi("com.android.server.telecom.flags.set_mute_state") public void requestMuteState(boolean, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
-    method @FlaggedApi("com.android.server.telecom.flags.transactional_video_state") public void requestVideoState(int, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
+    method public void requestCallEndpointChange(@NonNull android.telecom.CallEndpoint, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
+    method @FlaggedApi("com.android.server.telecom.flags.set_mute_state") public void requestMuteState(boolean, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
+    method @FlaggedApi("com.android.server.telecom.flags.transactional_video_state") public void requestVideoState(int, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
     method public void sendEvent(@NonNull String, @NonNull android.os.Bundle);
-    method public void setActive(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
-    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public void setContactUri(@Nullable android.net.Uri, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
-    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public void setGroupCallState(boolean, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
-    method public void setInactive(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
-    method public void startCallStreaming(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallException>);
+    method public void setActive(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public void setContactUri(@Nullable android.net.Uri, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
+    method @FlaggedApi("android.telecom.flags.integrated_call_logs_stage2") public void setGroupCallState(boolean, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
+    method public void setInactive(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
+    method public void startCallStreaming(@NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallException>);
   }
 
   public interface CallControlCallback {
@@ -498,11 +497,11 @@ package android.telecom {
     method public void onUsingAlternativeUi(boolean);
     method public static String propertiesToString(int);
     method public final void putExtras(@NonNull android.os.Bundle);
-    method public final void queryLocationForEmergency(@IntRange(from=100, to=5000) long, @NonNull String, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<android.location.Location,android.telecom.QueryLocationException>);
+    method public final void queryLocationForEmergency(@IntRange(from=100, to=5000) long, @NonNull String, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<android.location.Location, android.telecom.QueryLocationException>);
     method public final void removeExtras(String...);
     method public final void removeExtras(java.util.List<String>);
     method @Deprecated public void requestBluetoothAudio(@NonNull android.bluetooth.BluetoothDevice);
-    method public final void requestCallEndpointChange(@NonNull android.telecom.CallEndpoint, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallEndpointException>);
+    method public final void requestCallEndpointChange(@NonNull android.telecom.CallEndpoint, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallEndpointException>);
     method public void sendConnectionEvent(String, android.os.Bundle);
     method public final void sendRemoteRttRequest();
     method public final void sendRttInitiationFailure(int);
@@ -794,7 +793,7 @@ package android.telecom {
     method public void onMuteStateChanged(boolean);
     method public void onSilenceRinger();
     method @Deprecated public final void requestBluetoothAudio(@NonNull android.bluetooth.BluetoothDevice);
-    method public final void requestCallEndpointChange(@NonNull android.telecom.CallEndpoint, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void,android.telecom.CallEndpointException>);
+    method public final void requestCallEndpointChange(@NonNull android.telecom.CallEndpoint, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<Void, android.telecom.CallEndpointException>);
     method @Deprecated public final void setAudioRoute(int);
     method public final void setMuted(boolean);
     field public static final String SERVICE_INTERFACE = "android.telecom.InCallService";
@@ -1072,7 +1071,7 @@ package android.telecom {
     method public void acceptHandover(android.net.Uri, int, android.telecom.PhoneAccountHandle);
     method @Deprecated @RequiresPermission(anyOf={android.Manifest.permission.ANSWER_PHONE_CALLS, android.Manifest.permission.MODIFY_PHONE_STATE}) public void acceptRingingCall();
     method @Deprecated @RequiresPermission(anyOf={android.Manifest.permission.ANSWER_PHONE_CALLS, android.Manifest.permission.MODIFY_PHONE_STATE}) public void acceptRingingCall(int);
-    method @RequiresPermission(android.Manifest.permission.MANAGE_OWN_CALLS) public void addCall(@NonNull android.telecom.CallAttributes, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<android.telecom.CallControl,android.telecom.CallException>, @NonNull android.telecom.CallControlCallback, @NonNull android.telecom.CallEventCallback);
+    method @RequiresPermission(android.Manifest.permission.MANAGE_OWN_CALLS) public void addCall(@NonNull android.telecom.CallAttributes, @NonNull java.util.concurrent.Executor, @NonNull android.os.OutcomeReceiver<android.telecom.CallControl, android.telecom.CallException>, @NonNull android.telecom.CallControlCallback, @NonNull android.telecom.CallEventCallback);
     method public void addNewIncomingCall(android.telecom.PhoneAccountHandle, android.os.Bundle);
     method public void addNewIncomingConference(@NonNull android.telecom.PhoneAccountHandle, @NonNull android.os.Bundle);
     method @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE) public void cancelMissedCallsNotification();
