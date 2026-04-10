@@ -116,6 +116,8 @@ bootclasspath_fragment {
         // Needed to access platform APIs.
         "android-non-updatable",
     ],
+
+    min_sdk_version: "36",
 }
 
 sdk {
@@ -141,6 +143,7 @@ systemserverclasspath_fragment {
     }),
     contents: ["service-telecom"],
     apex_available: ["com.android.telephonycore"],
+    min_sdk_version: "37",
 }
 
 filegroup {
