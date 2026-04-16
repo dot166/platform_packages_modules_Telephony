@@ -193,7 +193,7 @@ java_sdk_library {
         "com.android.internal",
         "com.android.server.telecom",
     ],
-    min_sdk_version: "36",
+    min_sdk_version: "37",
     aconfig_declarations: [
         "telecom_module_flags",
         "telecom_bugfix_flags",
